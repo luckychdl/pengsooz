@@ -1,4 +1,4 @@
-import ItemDetail from "../../../../src/component/unit/itemDetail/itemDetail.container";
+import ItemDetail from "../../../../src/components/unit/itemDetail/itemDetail.container";
 
 export default function ItemDetailPage() {
   return (
