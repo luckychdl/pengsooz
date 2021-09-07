@@ -10,9 +10,5 @@ export const Button = styled.div`
 `;
 
 export default function MicroButton(props) {
-  return (
-    <Button type={props.type} isActive={props.isActive} onClick={props.onClick}>
-      {props.buttonName}
-    </Button>
-  );
+  return <Button onClick={props.onClick}>{props.buttonName}</Button>;
 }
