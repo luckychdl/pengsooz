@@ -1,13 +1,15 @@
-import { Wrapper, Title, GoogleLoginButton, MainImg } from "./login.styles";
+import { Wrapper, Title, MainImg } from "./login.styles";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 export default function LoginUI(props) {
   return (
     <Wrapper>
-      <Title> 팽수뭐해</Title>
-      <GoogleLoginButton onClick={props.onClickEnterToWS}>
-        sign in with Google
-      </GoogleLoginButton>
+      <Title>팽수뭐해</Title>
       <MainImg />
+      <StyledFirebaseAuth
+        uiConfig={props.uiConfig}
+        firebaseAuth={props.firebaseAuth}
+      />
     </Wrapper>
   );
 }
