@@ -1,16 +1,15 @@
 import LoginUI from "./login.presenter";
-import { useRouter } from "next/router";
+import firebase from "../../../commons/firebase/firebase";
 
 export default function Login() {
-	const router = useRouter();
+  const uiConfig = {
+    signInSuccessUrl: "/workspace",
+    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+  };
 
-	const onClickEnterToWS = () => {
-		router.push(`/workspace`);
-	};
-
-	return (
-		<div>
-			<LoginUI onClickEnterToWS={onClickEnterToWS} />
-		</div>
-	);
+  return (
+    <div>
+      <LoginUI uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+    </div>
+  );
 }
