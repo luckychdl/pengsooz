@@ -10,10 +10,7 @@ export default function BasketUI() {
         <BasketTitle>예정 사항</BasketTitle>
         <Item />
         <Item />
-        <Item />
-        <Item />
-        <Item /> <Item /> <Item /> <Item /> <Item /> <Item /> <Item /> <Item />{" "}
-        <Item />
+
         <ItemEdit />
         <AddBasket>+ Add Item</AddBasket>
       </Wrapper>

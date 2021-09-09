@@ -44,7 +44,25 @@ export const DetailTitleInput = styled.input`
   height: 32px;
 
   padding: 0 12px;
+
+  overflow: auto;
+
+  :focus {
+    background-color: #bbb;
+  }
 `;
+
+export const DetailTitleDiv = styled.div`
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+
+  padding: 0 12px;
+
+  /* overflow: auto; */
+  overflow: auto;
+`;
+
 export const ConfirmButton = styled.div`
   /* background-color: royalblue; */
   height: 32px;
@@ -62,5 +80,19 @@ export const DetailContents = styled.div`
 export const DetailContentsTextArea = styled.textarea`
   width: 100%;
   height: 120px;
-  padding: 0 12px;
+  padding: 4px 12px;
+
+  overflow: auto;
+
+  :focus {
+    background-color: #bbb;
+  }
+`;
+
+export const DetailContentsDiv = styled.div`
+  width: 100%;
+  height: 120px;
+  padding: 4px 12px;
+
+  overflow: auto;
 `;
