@@ -1,31 +1,38 @@
-import WorkSpaceUI from "./workSpace.presenter";
+import WorkspaceUI from "./Workspace.presenter";
+import firebase from "../../../commons/firebase/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function WorkSpace() {
+const Workspace = () => {
   const router = useRouter();
+  const [user] = useAuthState(firebase.auth());
   const [isOpen, setIsOpen] = useState(false);
 
-  const onClickEnterToBaord = () => {
-    router.push(`/workspace/board`);
-  };
-
-  const onClickLogOut = () => {
+  const onClickOpenLogoutModal = () => {
     setIsOpen(true);
   };
 
-  const onClickSelectorModal = () => {
-    setIsOpen(true);
+  const onClickCloseLogoutModal = () => {
+    setIsOpen(false);
   };
+
+  const onClickLogout = async () => {
+    await firebase.auth().signOut();
+    router.push("/");
+  };
+
   return (
     <div>
-      <WorkSpaceUI
-        onClickEnterToBaord={onClickEnterToBaord}
-        onClickLogOut={onClickLogOut}
-        onClickSelectorModal={onClickSelectorModal}
-        setIsOpen={setIsOpen}
+      <WorkspaceUI
+        user={user}
         isOpen={isOpen}
+        onClickOpenLogoutModal={onClickOpenLogoutModal}
+        onClickCloseLogoutModal={onClickCloseLogoutModal}
+        onClickLogout={onClickLogout}
       />
     </div>
   );
-}
+};
+
+export default Workspace;
