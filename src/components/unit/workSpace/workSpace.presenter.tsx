@@ -4,24 +4,35 @@ import {
   Avatar,
   DisplayName,
   LogoutButton,
-} from "./workSpace.styles";
-
+} from "./Workspace.styles";
+import { IWorkspaceUIProps } from "./Workspace.types";
 import InnerBox from "../../commons/InnerBox/InnerBox.container";
-import SelectorModal from "../../commons/modal/selector.Modal";
+import SelectorModal from "../../commons/modal/Select.Modal";
 
-export default function WorkSpaceUI(props) {
+const WorkspaceUI = (props: IWorkspaceUIProps) => {
   return (
-    <div>
-      {props.isOpen && <SelectorModal setIsOpen={props.setIsOpen} />}
+    <>
+      {props.isOpen && (
+        <SelectorModal
+          onClickLeft={props.onClickLogout}
+          onClickRight={props.onClickCloseLogoutModal}
+          buttonNameLeft="예"
+          buttonNameRight="아니요"
+          content="로그아웃 하시겠습니까?"
+        />
+      )}
       <Wrapper>
         <TopWrapper>
           <Avatar />
-          <DisplayName>Pnegsooz</DisplayName>
-          <LogoutButton onClick={props.onClickLogOut}>로그아웃</LogoutButton>
+          <DisplayName>{props.user?.displayName}</DisplayName>
+          <LogoutButton onClick={props.onClickOpenLogoutModal}>
+            로그아웃
+          </LogoutButton>
         </TopWrapper>
-
         <InnerBox />
       </Wrapper>
-    </div>
+    </>
   );
-}
+};
+
+export default WorkspaceUI;
