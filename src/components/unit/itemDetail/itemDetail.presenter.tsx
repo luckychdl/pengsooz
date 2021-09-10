@@ -12,8 +12,7 @@ import {
   DetailContentsTextArea,
   DetailContentsDiv,
 } from "./itemDetail.styles";
-
-import Comments from "../comments/comments.container";
+import Comments from "../comments/comment.container";
 
 export default function ItemDetailUI(props) {
   return (
