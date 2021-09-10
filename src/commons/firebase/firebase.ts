@@ -17,3 +17,4 @@ if (!firebase.apps.length) {
 }
 
 export default firebase;
+export const dbservice = firebase.firestore();
