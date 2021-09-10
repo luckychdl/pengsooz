@@ -1,19 +1,13 @@
-import { Wrapper, BasketTitle, AddBasket } from "./basket.styles";
-
-import Item from "../item/item.container";
-import ItemEdit from "../itemEdit/itemEdit.container";
-
-export default function BasketUI() {
+import BasketWritePage from "./basketWrite/basketWrite.container";
+import { MainWrapper } from "./basket.styles";
+import BasketDetailPage from "./basketDetail/basketDetail.container";
+export default function BasketUI(props) {
   return (
-    <div>
-      <Wrapper>
-        <BasketTitle>예정 사항</BasketTitle>
-        <Item />
-        <Item />
-
-        <ItemEdit />
-        <AddBasket>+ Add Item</AddBasket>
-      </Wrapper>
-    </div>
+    <MainWrapper>
+      {props.value?.docs.map((doc) => (
+        <BasketDetailPage key={doc.id} doc={doc} ref={props.basketDetail} />
+      ))}
+      <BasketWritePage basketDetail={props.basketDetail} />
+    </MainWrapper>
   );
 }
