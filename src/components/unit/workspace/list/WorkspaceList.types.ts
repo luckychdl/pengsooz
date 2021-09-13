@@ -1,4 +1,4 @@
-import firebase from "../../../commons/firebase/firebase";
+import firebase from "../../../../commons/firebase/firebase";
 
 export interface IWorkspaceUIProps {
   user?: firebase.User | null | undefined;
