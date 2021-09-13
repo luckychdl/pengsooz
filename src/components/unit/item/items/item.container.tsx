@@ -12,7 +12,7 @@ export default function Items(props) {
   const onClickEnterToItemDetail = (event: any) => () => {
     // alert("dd");
     const itemId = event.itemId;
-    router.push(`/workspace/board/${itemId}`);
+    router.push(`/workspace/boardId/${itemId}`);
   };
 
   useEffect(() => {

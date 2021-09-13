@@ -1,5 +1,5 @@
 import MenuModal from "../../../commons/modal/menu.Modal";
-import Item from "../../item/item.container";
+import Item from "../../item/item";
 import {
   SubWrapper,
   BasketTitle,
@@ -15,7 +15,7 @@ import {
 } from "./basketDetail.styles";
 import MicroButton from "../../../commons/button/micro.Button";
 import { Dropdown } from "antd";
-import SelectModal from "../../../commons/modal/Select.Modal";
+import SelectModal from "../../../commons/modal/Select.modal";
 import { ChangeEvent } from "react";
 interface IBasketDetailPageUI {
   isModal: boolean;
@@ -90,8 +90,7 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
               </Dropdown>
             </DetailWrapper>
           )}
-          <Item />
-          <AddBasket>+ Add item</AddBasket>
+          <Item basketId={props.doc.data().basketId} />
         </Wrapper>
       </SubWrapper>
     </>

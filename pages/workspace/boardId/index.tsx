@@ -1,4 +1,4 @@
-import Board from "../../../src/components/unit/board/Board.container";
+import Board from "../../../src/components/unit/board/board.container";
 
 export default function BoardPage() {
   return (
