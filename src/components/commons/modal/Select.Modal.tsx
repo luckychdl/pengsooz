@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   backdrop-filter: blur(2px);
 `;
 const InnerWrapper = styled.div`
-  background-color: lavenderblush;
+  background-color: #fcf9ee;
   width: 280px;
   height: 120px;
   padding: 12px;

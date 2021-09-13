@@ -14,7 +14,7 @@ const Workspace = () => {
   const [isCustomBoardOpen, setIsCustomBoardOpen] = useState(false);
   const [user, userLoading] = useAuthState(firebase.auth());
   const [boards, boardsLoading] = useCollection(
-    firebase.firestore().collection("boards"),
+    firebase.firestore().collection("boards").orderBy("createdAt"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
