@@ -1,24 +1,14 @@
 import styled from "@emotion/styled";
-
-export const Wrapper = styled.div`
-  background-color: yellowgreen;
-  width: 100%;
-  margin: auto;
-  padding: 12px;
-
+export const MainWrapper = styled.div`
+  scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+  background-color: aqua;
   display: flex;
-  flex-direction: column;
-
-  border-radius: 8px;
-`;
-export const BasketTitle = styled.div`
-  font-size: 20px;
-  font-weight: 400;
-  text-align: center;
-`;
-
-export const AddBasket = styled.div`
-  font-size: 20px;
-  font-weight: 400;
-  text-align: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  /* margin: 0 20px; */
+  /* padding-left: 20px; */
+  overflow: auto;
 `;

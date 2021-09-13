@@ -9,6 +9,11 @@ export const Button = styled.div`
   text-align: center;
 `;
 
-export default function SmallButton(props) {
+interface ISmallButtonProps {
+  onClick: () => void;
+  buttonName: string;
+}
+
+export default function SmallButton(props: ISmallButtonProps) {
   return <Button onClick={props.onClick}>{props.buttonName}</Button>;
 }
