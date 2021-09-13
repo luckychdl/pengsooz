@@ -17,7 +17,7 @@ const BasketDetailPage = (props: any) => {
     setIsMenu(false);
   };
   const onClickUpdate = async () => {
-    console.log(props.doc.id);
+ 
     try {
       await dbservice.collection("basket").doc(props.doc.id).update({
         title: updateTitle,

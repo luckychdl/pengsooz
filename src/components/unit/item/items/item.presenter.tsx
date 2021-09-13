@@ -1,6 +1,6 @@
 import { Wrapper, ItemContainer } from "./item.styles";
 
-export default function ItemUI(props) {
+export default function ItemUI(props: any) {
   return (
     <div>
       <Wrapper>

@@ -11,7 +11,7 @@ const BasketWritePage = (props: any) => {
   };
   const onChangeAddBasket = (event: ChangeEvent<HTMLInputElement>) => {
     setBasketTitle(event.target.value);
-    console.log(basketTitle);
+
   };
   const basketId = dbservice.collection("basket").doc().id;
   const value = {
