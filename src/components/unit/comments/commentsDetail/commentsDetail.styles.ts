@@ -16,6 +16,9 @@ export const CommentsWrapper = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column;
+
+
+  
 `;
 export const CommentsListWrapper = styled.div`
   background-color: skyblue;

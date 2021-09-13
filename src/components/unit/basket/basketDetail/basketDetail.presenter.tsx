@@ -1,10 +1,9 @@
-import MenuModal from "../../../commons/modal/menu.Modal";
+import MenuModal from "../../../commons/modal/Menu.modal";
 import Item from "../../item/item";
 import {
   SubWrapper,
   BasketTitle,
   Wrapper,
-  AddBasket,
   DetailWrapper,
   ShowDetail,
   AlignWrapper,

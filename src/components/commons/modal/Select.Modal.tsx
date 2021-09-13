@@ -20,10 +20,14 @@ const InnerWrapper = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
 `;
-const Content = styled.div``;
-const ButtonWrapper = styled.div`
+export const Content = styled.div`
+  text-align: center;
+`;
+export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  margin-top: 16px;
 `;
 
 interface ISelectorModalProps {
