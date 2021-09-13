@@ -22,7 +22,7 @@ import {
   Pages,
 } from "./board.styles";
 
-export default function BoardUI(props) {
+export default function BoardUI(props: any) {
   return (
     <div>
       {props.isOpen && <CreateBoard setIsOpen={props.setIsOpen} />}

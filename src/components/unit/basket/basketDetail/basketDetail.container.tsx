@@ -1,17 +1,15 @@
+import BasketDetailPageUI from "./basketDetail.presenter";
 import firebase from "firebase";
-
-import BasketUI from "./basket.presenter";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { useRef } from "react";
 
-export default function Basket() {
-  const basketDetail = useRef<HTMLDivElement>(null);
+const BasketDetailPage = (props: any) => {
   const [value] = useCollection(
     firebase.firestore().collection("basket").orderBy("createdAt", "asc"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+  return <BasketDetailPageUI value={value} doc={props.doc} />;
+};
 
-  return <BasketUI value={value} basketDetail={basketDetail} />;
-}
+export default BasketDetailPage;
