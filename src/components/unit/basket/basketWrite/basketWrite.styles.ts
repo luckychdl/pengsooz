@@ -5,6 +5,10 @@ export const MainWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
+
+  /* scroll-snap-type: x mandatory;
+  
+  /* margin: auto; */
   scroll-snap-align: center;
 `;
 export const SubWrapper = styled.div`
@@ -46,6 +50,7 @@ export const AddWrapper = styled.div`
 export const BasketContainerEdit = styled.div`
   background-color: orange;
   width: 330px;
+  /* height: 36px; */
   padding: 12px;
   margin: 10px 20px 12px 10px;
   line-height: 36px;
@@ -63,7 +68,10 @@ export const BasketEditInput = styled.input`
 
 export const BasketBtnDiv = styled.div`
   background-color: orchid;
+  /* width: 330px; */
+
   margin-top: 12px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;

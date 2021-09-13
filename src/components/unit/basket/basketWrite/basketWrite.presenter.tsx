@@ -9,7 +9,14 @@ import {
   Wrapper,
 } from "./basketWrite.styles";
 import MicroButton from "../../../commons/button/micro.Button";
-const BasketWritePageUI = (props: any) => {
+import { ChangeEvent } from "react";
+interface IBasketWritePageUIProps {
+  isAdd: boolean;
+  onClickAddBasket: () => void;
+  onClickCreateBasket: () => void;
+  onChangeAddBasket: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+const BasketWritePageUI = (props: IBasketWritePageUIProps) => {
   return (
     <MainWrapper>
       {props.isAdd ? (
