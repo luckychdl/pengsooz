@@ -1,66 +1,71 @@
 import styled from "@emotion/styled";
 import { ChangeEvent, MouseEvent } from "react";
 import SmallButton from "../button/small.Button";
+import { EditOutlined, CheckOutlined } from "@ant-design/icons";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 1;
   position: fixed;
-
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
 `;
-export const InnerWrapper = styled.div`
-  background-color: #ffffff;
+const InnerWrapper = styled.div`
+  background-color: #fcf9ee;
   width: 280px;
-  height: 236px;
   padding: 12px;
-
-  border-radius: 4px;
+  border-radius: 4%;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 50%;
   transform: translate(-50%, -50%);
 `;
-export const TitleInputDiv = styled.div`
-  background-color: #ffffff;
-  width: 100%;
+const TitleWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  padding: 5px 0px;
-  border-bottom: 2px solid gray;
+  justify-content: space-between;
+  width: 100%;
+  height: 38px;
+  background-color: #ffffff;
   margin-bottom: 12px;
 `;
-export const Title = styled.div`
-  width: 20%;
+const TitleImg = styled(EditOutlined)`
+  font-size: 18px;
+  padding: 10px;
 `;
-export const TitleInput = styled.input`
-  width: 80%;
+const TitleInput = styled.input`
+  width: 85%;
+  border: none;
+  font-size: 16px;
+  ::placeholder {
+    color: #e2e1d7;
+  }
 `;
-export const MiddleWrapper = styled.div`
-  background-color: #ffffff;
+const MiddleWrapper = styled.div`
   width: 100%;
   height: 112px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 12px;
 `;
-export const MiddleInnerDiv = styled.div`
-  background-color: #ffffff;
+const MiddleInnerDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
-
-export const ColorBox = styled.div`
+const ColorBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
   border-radius: 4px;
 `;
-export const BottomWrapper = styled.div`
+const CheckOut = styled(CheckOutlined)`
+  display: none;
+`;
+const BottomWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -79,54 +84,70 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <TitleInputDiv>
-          <Title>TITLE :</Title>
-          <TitleInput onChange={props.onChangeTitle} />
-        </TitleInputDiv>
+        <TitleWrapper>
+          <TitleImg src="/images/default_profile.png" />
+          <TitleInput onChange={props.onChangeTitle} placeholder="New Board" />
+        </TitleWrapper>
         <MiddleWrapper>
           <MiddleInnerDiv>
             <ColorBox
               onClick={props.onClickColor}
-              id="#f8bb55"
-              style={{ backgroundColor: "#f8bb55" }}
-            />
+              id="#B2EBF2"
+              style={{ backgroundColor: "#B2EBF2" }}
+            >
+              <CheckOut />
+            </ColorBox>
             <ColorBox
               onClick={props.onClickColor}
-              id="#a6bee2"
-              style={{ backgroundColor: "#a6bee2" }}
-            />
+              id="#FFE0B2"
+              style={{ backgroundColor: "#FFE0B2" }}
+            >
+              <CheckOut />
+            </ColorBox>
             <ColorBox
               onClick={props.onClickColor}
-              id="#fdf087"
-              style={{ backgroundColor: "#fdf087" }}
-            />
+              id="#C8E6C9"
+              style={{ backgroundColor: "#C8E6C9" }}
+            >
+              <CheckOut />
+            </ColorBox>
             <ColorBox
               onClick={props.onClickColor}
-              id="#2c6bc8"
-              style={{ backgroundColor: "#2c6bc8" }}
-            />
+              id="#F48FB1"
+              style={{ backgroundColor: "#F48FB1" }}
+            >
+              <CheckOut />
+            </ColorBox>
           </MiddleInnerDiv>
           <MiddleInnerDiv>
             <ColorBox
               onClick={props.onClickColor}
-              id="#a7d7a6"
-              style={{ backgroundColor: "#a7d7a6" }}
-            />
+              id="#F3E5F5"
+              style={{ backgroundColor: "#F3E5F5" }}
+            >
+              <CheckOut />
+            </ColorBox>
             <ColorBox
               onClick={props.onClickColor}
-              id="#ef8584"
-              style={{ backgroundColor: "#ef8584" }}
-            />
+              id="#FFF9C4"
+              style={{ backgroundColor: "#FFF9C4" }}
+            >
+              <CheckOut />
+            </ColorBox>
             <ColorBox
               onClick={props.onClickColor}
-              id="#8b64ac"
-              style={{ backgroundColor: "#8b64ac" }}
-            />
+              id="#E0E0E0"
+              style={{ backgroundColor: "#E0E0E0" }}
+            >
+              <CheckOut />
+            </ColorBox>
             <ColorBox
               onClick={props.onClickColor}
-              id="#d32a74"
-              style={{ backgroundColor: "#d32a74" }}
-            />
+              id="#42A5F5"
+              style={{ backgroundColor: "#42A5F5" }}
+            >
+              <CheckOut />
+            </ColorBox>
           </MiddleInnerDiv>
         </MiddleWrapper>
         <BottomWrapper>

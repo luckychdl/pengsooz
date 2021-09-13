@@ -1,10 +1,9 @@
-import { ChangeEvent, MouseEvent } from "react";
+import { Dispatch, SetStateAction } from "react";
+
+export interface IWorkspaceWriteProps {
+  setIsCustomBoardOpen: Dispatch<SetStateAction<boolean>>;
+}
 
 export interface IWorkspaceWriteUIProps {
-  isOpen: boolean;
-  onChangeBoardTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClickBoardColor: (event: MouseEvent<HTMLDivElement>) => void;
   onClickOpenBoardModal: () => void;
-  onClickCloseBoardModal: () => void;
-  onClickCreateBoard: () => void;
 }
