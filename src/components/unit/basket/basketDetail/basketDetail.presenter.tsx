@@ -90,7 +90,6 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
               </Dropdown>
             </DetailWrapper>
           )}
-
           <Item />
           <AddBasket>+ Add item</AddBasket>
         </Wrapper>

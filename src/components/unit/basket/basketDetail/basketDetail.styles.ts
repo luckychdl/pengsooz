@@ -12,8 +12,10 @@ export const Wrapper = styled.div`
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-
+  /* margin-bottom: 20px; */
   border-radius: 8px;
+  margin-bottom: 30px;
+  /* border-radius: 8px; */
 `;
 export const BasketTitle = styled.div`
   font-size: 20px;
