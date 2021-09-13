@@ -10,19 +10,23 @@ export default function CommentsWrite() {
   const [user] = useAuthState(firebase.auth());
 
   const onClickSubmit = async () => {
-    setImage(user?.photoURL);
-    setName(user.displayName);
+    setImage(user?.photoURL || "");
+    setName(user?.displayName || "");
+    if (!contents) {
+      alert("내용을 입력해주세요");
+      return;
+    }
     await dbservice.collection("comments").add({
       writer: name,
       contents: contents,
       image: image,
-      basketId: "1",
+      itemId: "1",
     });
   };
 
-  const onChange = (event) => {
+  const onChange = (event: any) => {
     setContents(event.target.value);
   };
-  console.log(firebase.auth());
+
   return <CommentsWriteUI onClickSubmit={onClickSubmit} onChange={onChange} />;
 }

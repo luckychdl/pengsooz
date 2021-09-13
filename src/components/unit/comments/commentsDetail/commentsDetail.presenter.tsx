@@ -1,48 +1,55 @@
 import {
   Wrapper,
-  CommentTitle,
-  CommentsListDiv,
-  Avater,
+  CommentsWrapper,
+  CommentsListWrapper,
+  Avatar,
   CommentsInnerWrapper,
-  CommentsInnerDiv,
   DispalayName,
+  CommentEdit,
   CommentContents,
-  CommentUpdataButton,
+  CommentUpdateButton,
+  CommentDeleteButton,
 } from "./commentsDetail.styles";
 
-export default function CommentsDetailUi(props) {
-  const basketId = "1";
+export default function CommentsDetailUi(props: any) {
+  const itemId = "1";
   return (
     <Wrapper>
-      <CommentTitle>댓글</CommentTitle>
-
-      <div>
-        {props.error && <strong>Error: {JSON.stringify(props.error)}</strong>}
-        {props.loading && <span>Collection: Loading...</span>}
-        {props.value && (
-          <>
-            {props.value.docs.map(
-              (doc) =>
-                doc.data().basketId === basketId && (
-                  <div key={doc.id}>
-                    <CommentsListDiv>
-                      <Avater src={doc.data().image} />
-                      <CommentsInnerWrapper>
-                        <DispalayName> {doc.data().writer}</DispalayName>
-                        <CommentsInnerDiv>
-                          <CommentContents>
-                            {doc.data().contents}
-                          </CommentContents>
-                          <CommentUpdataButton />
-                        </CommentsInnerDiv>
-                      </CommentsInnerWrapper>
-                    </CommentsListDiv>
-                  </div>
-                )
+      <CommentsWrapper>
+        {props.value.data().itemId === itemId && (
+          <div key={props.value.id}>
+            {props.isEdit ? (
+              <CommentsListWrapper>
+                <Avatar src={props.value.data().image} />
+                <CommentsInnerWrapper>
+                  <DispalayName> {props.value.data().writer}</DispalayName>
+                  <CommentEdit
+                    defaultValue={props.value.data().contents}
+                    onChange={props.onChange}
+                  />
+                </CommentsInnerWrapper>
+                <CommentUpdateButton
+                  onClick={props.onClickUpdate(props.value.id)}
+                />
+              </CommentsListWrapper>
+            ) : (
+              <CommentsListWrapper>
+                <Avatar src={props.value.data().image} />
+                <CommentsInnerWrapper>
+                  <DispalayName> {props.value.data().writer}</DispalayName>
+                  <CommentContents>
+                    {props.value.data().contents}
+                  </CommentContents>
+                </CommentsInnerWrapper>
+                <CommentUpdateButton onClick={props.onClickSwitchEdit} />
+                <CommentDeleteButton
+                  onClick={props.onClickDelete(props.value.id)}
+                />
+              </CommentsListWrapper>
             )}
-          </>
+          </div>
         )}
-      </div>
+      </CommentsWrapper>
     </Wrapper>
   );
 }
