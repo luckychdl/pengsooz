@@ -55,11 +55,8 @@ export const BoardTitle = styled.div`
 
 export const BasketWrapper = styled.div`
   width: 100%;
-  padding-top: 12px;
   background-color: violet;
-
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin-bottom: 50px;
 `;
@@ -74,7 +71,7 @@ export const BeforeBasket = styled.div`
 `;
 
 export const CurrentPage = styled.div`
-  width: 86%;
+  width: 100%;
 
   background-color: green;
 `;

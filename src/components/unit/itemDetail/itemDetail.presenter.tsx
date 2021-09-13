@@ -29,17 +29,17 @@ export default function ItemDetailUI(props) {
               <>
                 <DetailTitleInput
                   defaultValue="ddd"
-                  onBlur={() => props.setIsOpenTitle(false)}
+                  // onBlur={() => props.setIsOpenTitle(false)}
+                  onChange={props.onChangeItemTitle}
+                  ref={props.inputRef}
                 />
-                <ConfirmButton onClick={() => props.setIsOpenTitle(false)}>
+                <ConfirmButton onClick={props.updateItemTitle}>
                   Okay
                 </ConfirmButton>
               </>
             ) : (
               <DetailTitleDiv onClick={() => props.setIsOpenTitle(true)}>
-                {`{ItemTitle}`} {`{ItemTitle}`} {`{ItemTitle}`} {`{ItemTitle}`}{" "}
-                {`{ItemTitle}`} {`{ItemTitle}`} {`{ItemTitle}`} {`{ItemTitle}`}
-                {`{ItemTitle}`}
+                {props.itemData.itemTitle}
               </DetailTitleDiv>
             )}
           </InnerDiv>
@@ -50,27 +50,25 @@ export default function ItemDetailUI(props) {
             {props.isOpenContents ? (
               <>
                 <DetailContentsTextArea
-                  defaultValue="ddd"
-                  onBlur={() => props.setIsOpenContents(false)}
+                  placeholder={props.itemData.itemContents}
+                  defaultValue={props.itemData.itemContents}
+                  // onBlur={() => props.setIsOpenContents(false)}
+                  ref={props.inputRef}
+                  onChange={props.onChangeItemContents}
                 />
-                <ConfirmButton onClick={() => props.setIsOpenContents(false)}>
+                <ConfirmButton onClick={props.updateItemContents}>
                   Okay
                 </ConfirmButton>
               </>
             ) : (
               <DetailContentsDiv onClick={() => props.setIsOpenContents(true)}>
-                {`{ItemContents}`} dddddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddd
+                {props.itemData.itemContents}
               </DetailContentsDiv>
             )}
           </InnerDiv>
         </DetailContents>
       </Wrapper>
-      <Comments />
+      <Comments itmeData={props.itemData} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ItemContainerEdit = styled.div`
-  background-color: orange;
+  background-color: green;
   width: 100%;
   /* height: 36px; */
   padding: 12px;
@@ -34,4 +34,16 @@ export const ItemBtnDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const AddItem = styled.div`
+  /* background-color: greenyellow; */
+  width: 100%;
+  height: 96px;
+  line-height: 82px;
+  padding-top: 12px;
+  font-size: 24px;
+  text-align: center;
+
+  margin-bottom: 12px;
 `;

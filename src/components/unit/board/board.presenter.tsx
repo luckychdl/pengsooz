@@ -1,7 +1,7 @@
 import Basket from "../basket/basket.container";
 // import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import SmallButton from "../../commons/button/small.Button";
-import CreateBoard from "../../commons/modal/createBoard.Modal";
+import CreateBoard from "../../commons/modal/CustomBoard.modal";
 import MenuModal from "../../commons/modal/menu.Modal";
 import { Dropdown } from "antd";
 
@@ -22,7 +22,7 @@ import {
   Pages,
 } from "./board.styles";
 
-export default function BoardUI(props) {
+export default function BoardUI(props: any) {
   return (
     <div>
       {props.isOpen && <CreateBoard setIsOpen={props.setIsOpen} />}
