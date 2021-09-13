@@ -13,7 +13,7 @@ interface Iprops {
   onChangeItemTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickAddItem: () => void;
   isAdd: boolean;
-  setIsAdd: boolean;
+  setIsAdd: any;
 }
 
 export default function ItemEditUI(props: Iprops) {
@@ -23,10 +23,7 @@ export default function ItemEditUI(props: Iprops) {
         <div>
           <Wrapper>
             <ItemContainerEdit>
-              <ItemEditInput
-                onChange={props.onChangeItemTitle}
-                // onBlur={() => props.setIsAdd(true)}
-              />
+              <ItemEditInput onChange={props.onChangeItemTitle} />
               <ItemBtnDiv>
                 <MicroButton
                   buttonName="Cancle"

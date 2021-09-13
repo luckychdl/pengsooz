@@ -1,8 +1,8 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ItemEditUI from "./itemEdit.presenter";
 import firebase from "../../../../commons/firebase/firebase";
 
-export default function ItemEdit(props) {
+export default function ItemEdit(props: any) {
   const [isAdd, setIsAdd] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
 
