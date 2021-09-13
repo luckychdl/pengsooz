@@ -1,4 +1,4 @@
-import Workspace from "../../src/components/unit/workspace/list/WorkSpaceList.container";
+import Workspace from "../../src/components/unit/workspace/WorkSpace.container";
 
 export default function WorkspacePage() {
   return (
