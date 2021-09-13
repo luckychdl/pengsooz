@@ -12,12 +12,18 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-export default function MenuModal() {
+export default function MenuModal(props: any) {
   return (
     <Wrapper>
-      <LargeButton buttonName="보드 수정하기" />
+      <LargeButton
+        buttonName={props.buttonNameUpdate}
+        onClick={props.onClickUpdate}
+      />
 
-      <LargeButton buttonName="보드 삭제하기" />
+      <LargeButton
+        buttonName={props.buttonNameDelete}
+        onClick={props.onClickDelete}
+      />
     </Wrapper>
   );
 }

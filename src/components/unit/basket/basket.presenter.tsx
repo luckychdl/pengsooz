@@ -5,7 +5,12 @@ export default function BasketUI(props: any) {
   return (
     <MainWrapper>
       {props.value?.docs.map((doc: any) => (
-        <BasketDetailPage key={doc.id} doc={doc} ref={props.basketDetail} />
+        <BasketDetailPage
+          key={doc.id}
+          doc={doc}
+          ref={props.basketDetail}
+          onClickBasketUpdate={props.onClickBasketUpdate}
+        />
       ))}
       <BasketWritePage basketDetail={props.basketDetail} />
     </MainWrapper>

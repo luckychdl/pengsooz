@@ -34,6 +34,7 @@ export const AddWrapper = styled.div`
 export const BasketContainerEdit = styled.div`
   background-color: orange;
   width: 330px;
+  /* height: 36px; */
   padding: 12px;
   margin-bottom: 12px;
 
@@ -60,4 +61,16 @@ export const BasketBtnDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+export const DetailWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+export const ShowDetail = styled.div`
+  height: 15px;
+`;
+export const AlignWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 165px;
 `;
