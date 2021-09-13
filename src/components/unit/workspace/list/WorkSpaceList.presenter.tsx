@@ -4,10 +4,10 @@ import {
   Avatar,
   DisplayName,
   LogoutButton,
-} from "./Workspace.styles";
-import { IWorkspaceUIProps } from "./Workspace.types";
-import InnerBox from "../../commons/InnerBox/InnerBox.container";
-import SelectorModal from "../../commons/modal/Select.Modal";
+} from "./WorkspaceList.styles";
+import { IWorkspaceUIProps } from "./WorkspaceList.types";
+import InnerBox from "../write/WorkspaceWrite.container";
+import SelectorModal from "../../../commons/modal/Select.modal";
 
 const WorkspaceUI = (props: IWorkspaceUIProps) => {
   return (
