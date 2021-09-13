@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Button = styled.div`
-  background-color: red;
   width: 122px;
   height: 36px;
-
   line-height: 36px;
   text-align: center;
+  color: #1c1c1c;
+  background-color: #e2e1d7;
 `;
 
 interface ISmallButtonProps {

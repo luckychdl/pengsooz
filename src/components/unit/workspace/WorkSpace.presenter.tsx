@@ -13,7 +13,7 @@ import {
 } from "./Workspace.styles";
 import { IWorkspaceUIProps } from "./Workspace.types";
 import WorkspaceWrite from "./write/WorkspaceWrite.container";
-import SelectModal from "../../commons/modal/Select.modal";
+import Select from "../../commons/modal/Select.modal";
 import CustomBoard from "../../commons/modal/CustomBoard.modal";
 import WorkspaceDetail from "./detail/WorkspaceDetail.container";
 
@@ -21,7 +21,7 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
   return (
     <>
       {props.isSelectOpen && (
-        <SelectModal
+        <Select
           onClickLeft={props.onClickLogout}
           onClickRight={props.onClickCloseLogoutModal}
           buttonNameLeft="예"

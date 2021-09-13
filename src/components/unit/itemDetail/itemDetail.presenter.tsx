@@ -14,7 +14,7 @@ import {
   DeleteOut,
 } from "./itemDetail.styles";
 import Comments from "../comments/comment.container";
-import Select from "../../commons/modal/Select.Modal";
+import Select from "../../commons/modal/Select.modal";
 
 export default function ItemDetailUI(props: any) {
   return (
