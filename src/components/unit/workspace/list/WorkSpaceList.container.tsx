@@ -1,5 +1,5 @@
-import WorkspaceUI from "./Workspace.presenter";
-import firebase from "../../../commons/firebase/firebase";
+import WorkspaceUI from "./WorkSpaceList.presenter";
+import firebase from "../../../../commons/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
