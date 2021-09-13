@@ -34,7 +34,7 @@ const WorkspaceWrite = () => {
         content: error.message,
       });
     }
-    router.push(`workspace/board`);
+    router.push(`workspace/boardId`);
   };
 
   const onClickOpenBoardModal = () => {
