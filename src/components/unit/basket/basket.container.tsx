@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "../../../commons/firebase/firebase";
 
 import BasketUI from "./basket.presenter";
 import { useCollection } from "react-firebase-hooks/firestore";

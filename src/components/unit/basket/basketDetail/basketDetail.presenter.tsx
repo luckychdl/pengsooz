@@ -1,10 +1,5 @@
-import Item from "../../item/item.container";
-import {
-  SubWrapper,
-  BasketTitle,
-  Wrapper,
-  AddBasket,
-} from "./basketDetail.styles";
+import Items from "../../item/item";
+import { SubWrapper, BasketTitle, Wrapper } from "./basketDetail.styles";
 const BasketDetailPageUI = (props: any) => {
   return (
     <>
@@ -15,8 +10,7 @@ const BasketDetailPageUI = (props: any) => {
       <SubWrapper>
         <Wrapper>
           <BasketTitle>{props.doc.data().title}</BasketTitle>
-          <Item />
-          <AddBasket>+ Add item</AddBasket>
+          <Items basketId={props.doc.data().basketId} />
         </Wrapper>
       </SubWrapper>
     </>

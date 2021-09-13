@@ -1,6 +1,7 @@
 import BasketDetailPageUI from "./basketDetail.presenter";
 import firebase from "firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { useEffect } from "react";
 
 const BasketDetailPage = (props: any) => {
   const [value] = useCollection(
@@ -9,6 +10,7 @@ const BasketDetailPage = (props: any) => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+
   return <BasketDetailPageUI value={value} doc={props.doc} />;
 };
 
