@@ -2,20 +2,22 @@ import BasketWritePageUI from "./basketWrite.presenter";
 import { ChangeEvent, useState } from "react";
 import { Modal } from "antd";
 import { dbservice } from "../../../../commons/firebase/firebase";
+import { useRouter } from "next/router";
 const BasketWritePage = (props: any) => {
   const [isAdd, setIsAdd] = useState(false);
   const [basketTitle, setBasketTitle] = useState("");
-
+  const router = useRouter();
   const onClickAddBasket = () => {
     setIsAdd((prev) => !prev);
   };
   const onChangeAddBasket = (event: ChangeEvent<HTMLInputElement>) => {
     setBasketTitle(event.target.value);
-
   };
   const basketId = dbservice.collection("basket").doc().id;
+  const boardId = router.query.boardId;
   const value = {
     basketId: basketId,
+    boardId: boardId,
     title: basketTitle,
     createdAt: new Date(),
   };

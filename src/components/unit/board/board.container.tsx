@@ -13,13 +13,15 @@ export default function Board() {
   const onClickEnterToWS = () => {
     router.push(`/workspace`);
   };
-
+  const onClickCancel = () => {
+    setIsOpen(false);
+  };
   return (
     <div>
       <BoardUI
         isOpen={isOpen}
         onClickCreateBoardModal={onClickCreateBoardModal}
-        setIsOpen={setIsOpen}
+        onClickCancel={onClickCancel}
         onClickEnterToWS={onClickEnterToWS}
       />
     </div>

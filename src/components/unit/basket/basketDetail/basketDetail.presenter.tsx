@@ -54,11 +54,11 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                   <BasketEditInput onChange={props.onChangeUpdateTitle} />
                   <BasketBtnDiv>
                     <MicroButton
-                      buttonName="Cancel"
+                      buttonName="취소하기"
                       onClick={props.onClickCancel}
                     />
                     <MicroButton
-                      buttonName="Add"
+                      buttonName="수정하기"
                       onClick={props.onClickUpdate}
                     />
                   </BasketBtnDiv>

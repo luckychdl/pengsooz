@@ -1,5 +1,4 @@
 import Basket from "../basket/basket.container";
-// import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import SmallButton from "../../commons/button/small.Button";
 import CreateBoard from "../../commons/modal/CustomBoard.modal";
 import MenuModal from "../../commons/modal/Menu.modal";
@@ -25,12 +24,23 @@ import {
 export default function BoardUI(props: any) {
   return (
     <div>
-      {props.isOpen && <CreateBoard setIsOpen={props.setIsOpen} />}
+      {props.isOpen && (
+        <CreateBoard
+          buttonNameLeft="보드 수정하기"
+          buttonNameRight="취소하기"
+          onClickRight={props.onClickCancel}
+        />
+      )}
       <HeadWrapper>
         <TopWrapper>
           <ArrowLeftOut onClick={props.onClickEnterToWS} />
           <Dropdown
-            overlay={MenuModal}
+            overlay={
+              <MenuModal
+                buttonNameUpdate="보드 수정하기"
+                buttonNameDelete="보드 삭제하기"
+              />
+            }
             trigger={["click"]}
             placement="bottomRight"
           >

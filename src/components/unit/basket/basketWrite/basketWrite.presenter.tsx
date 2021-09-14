@@ -26,11 +26,11 @@ const BasketWritePageUI = (props: IBasketWritePageUIProps) => {
               <BasketEditInput onChange={props.onChangeAddBasket} />
               <BasketBtnDiv>
                 <MicroButton
-                  buttonName="Cancle"
+                  buttonName="취소하기"
                   onClick={props.onClickAddBasket}
                 />
                 <MicroButton
-                  buttonName="Add"
+                  buttonName="등록하기"
                   onClick={props.onClickCreateBasket}
                 />
               </BasketBtnDiv>
