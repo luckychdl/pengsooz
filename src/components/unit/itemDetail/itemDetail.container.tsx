@@ -51,10 +51,6 @@ export default function ItemDetail() {
     setIsOpenTitle(false);
   };
 
-  const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
-    setItemTitle(event.target.value);
-  };
-
   const updateItemContents = () => {
     const data = {
       createdAt: new Date(),
@@ -64,8 +60,21 @@ export default function ItemDetail() {
     setIsOpenContents(false);
   };
 
+  const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
+    setItemTitle(event.target.value);
+  };
+
   const onChangeItemContents = (event: ChangeEvent<HTMLInputElement>) => {
     setItemContents(event.target.value);
+  };
+
+  const onClickItemTitel = () => {
+    setIsOpenTitle(true);
+    setIsOpenContents(false);
+  };
+  const onClickItemContents = () => {
+    setIsOpenContents(true);
+    setIsOpenTitle(false);
   };
 
   return (
@@ -85,6 +94,8 @@ export default function ItemDetail() {
         onChangeItemContents={onChangeItemContents}
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
+        onClickItemTitel={onClickItemTitel}
+        onClickItemContents={onClickItemContents}
       />
     </div>
   );

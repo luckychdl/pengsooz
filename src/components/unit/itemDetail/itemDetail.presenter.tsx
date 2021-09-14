@@ -42,7 +42,6 @@ export default function ItemDetailUI(props: any) {
               <>
                 <DetailTitleInput
                   defaultValue={props.itemData.itemTitle}
-                  // onBlur={() => props.setIsOpenTitle(false)}
                   onChange={props.onChangeItemTitle}
                   ref={props.inputRef}
                 />
@@ -51,7 +50,7 @@ export default function ItemDetailUI(props: any) {
                 </ConfirmButton>
               </>
             ) : (
-              <DetailTitleDiv onClick={() => props.setIsOpenTitle(true)}>
+              <DetailTitleDiv onClick={props.onClickItemTitel}>
                 {props.itemData.itemTitle}
               </DetailTitleDiv>
             )}
@@ -65,7 +64,6 @@ export default function ItemDetailUI(props: any) {
                 <DetailContentsTextArea
                   placeholder={props.itemData.itemContents}
                   defaultValue={props.itemData.itemContents}
-                  // onBlur={() => props.setIsOpenContents(false)}
                   ref={props.inputRef}
                   onChange={props.onChangeItemContents}
                 />
@@ -74,7 +72,7 @@ export default function ItemDetailUI(props: any) {
                 </ConfirmButton>
               </>
             ) : (
-              <DetailContentsDiv onClick={() => props.setIsOpenContents(true)}>
+              <DetailContentsDiv onClick={props.onClickItemContents}>
                 {props.itemData.itemContents}
               </DetailContentsDiv>
             )}
