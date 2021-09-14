@@ -7,6 +7,11 @@ export default function ItemEdit(props: any) {
   const [ItemTitle, setItemTitle] = useState("");
 
   const onClickAddItem = () => {
+    if (ItemTitle === "") {
+      alert("내용을 입력해주세요");
+
+      return;
+    }
     const itemId = firebase.firestore().collection("itme").doc().id;
     const data = {
       itemTitle: ItemTitle,
@@ -15,8 +20,10 @@ export default function ItemEdit(props: any) {
       itemContents: "상세 내용을 넣어주세요.",
       basketId: props.basketId,
     };
+
     firebase.firestore().collection("item").doc(itemId).set(data);
     setIsAdd(false);
+    setItemTitle("");
   };
 
   const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {

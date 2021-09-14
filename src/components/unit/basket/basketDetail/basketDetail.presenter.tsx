@@ -1,4 +1,4 @@
-import MenuModal from "../../../commons/modal/Menu.modal";
+import MenuModal from "../../../commons/modal/menu.Modal";
 import Item from "../../item/item";
 import {
   SubWrapper,
