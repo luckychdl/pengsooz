@@ -41,7 +41,7 @@ export default function ItemDetailUI(props: any) {
             {props.isOpenTitle ? (
               <>
                 <DetailTitleInput
-                  defaultValue={props.itemData.itemTitle}
+                  defaultValue={props.itemData?.itemTitle}
                   onChange={props.onChangeItemTitle}
                   ref={props.inputRef}
                 />
@@ -51,7 +51,7 @@ export default function ItemDetailUI(props: any) {
               </>
             ) : (
               <DetailTitleDiv onClick={props.onClickItemTitel}>
-                {props.itemData.itemTitle}
+                {props.itemData?.itemTitle}
               </DetailTitleDiv>
             )}
           </InnerDiv>
@@ -62,8 +62,8 @@ export default function ItemDetailUI(props: any) {
             {props.isOpenContents ? (
               <>
                 <DetailContentsTextArea
-                  placeholder={props.itemData.itemContents}
-                  defaultValue={props.itemData.itemContents}
+                  placeholder="상세내용을 입력바람."
+                  defaultValue={props.itemData?.itemContents}
                   ref={props.inputRef}
                   onChange={props.onChangeItemContents}
                 />
@@ -73,7 +73,9 @@ export default function ItemDetailUI(props: any) {
               </>
             ) : (
               <DetailContentsDiv onClick={props.onClickItemContents}>
-                {props.itemData.itemContents}
+                {props.itemData?.itemContents
+                  ? props.itemData?.itemContents
+                  : "상세내용을 입력해주세요"}
               </DetailContentsDiv>
             )}
           </InnerDiv>

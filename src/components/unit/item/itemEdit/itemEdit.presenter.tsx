@@ -14,6 +14,7 @@ interface Iprops {
   onClickAddItem: () => void;
   isAdd: boolean;
   setIsAdd: any;
+  inputRef: any;
 }
 
 export default function ItemEditUI(props: Iprops) {
@@ -23,7 +24,10 @@ export default function ItemEditUI(props: Iprops) {
         <div>
           <Wrapper>
             <ItemContainerEdit>
-              <ItemEditInput onChange={props.onChangeItemTitle} />
+              <ItemEditInput
+                onChange={props.onChangeItemTitle}
+                ref={props.inputRef}
+              />
               <ItemBtnDiv>
                 <MicroButton
                   buttonName="취소하기"
