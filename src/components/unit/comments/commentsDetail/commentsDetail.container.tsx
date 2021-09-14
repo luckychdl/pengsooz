@@ -1,10 +1,11 @@
 import CommentsDetailUi from "./commentsDetail.presenter";
 import { dbservice } from "../../../../commons/firebase/firebase";
-import { MouseEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function CommentsDetail(props: any) {
-  const [contents, setContents] = useState("");
+  const [contents, setContents] = useState(props.value.data().contents);
   const [isEdit, setIsEdit] = useState(false);
+
   const onClickDelete = (id: string | undefined) => async () => {
     await dbservice.collection("comments").doc(id).delete();
   };
@@ -12,8 +13,8 @@ export default function CommentsDetail(props: any) {
     setIsEdit((prev) => !prev);
   };
 
-  const onChange = (event: MouseEvent<HTMLInputElement>) => {
-    setContents((event.target as any).value);
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setContents(event.target.value);
   };
   const onClickUpdate = (id: string | undefined) => async () => {
     await dbservice.collection("comments").doc(id).update({
@@ -21,6 +22,7 @@ export default function CommentsDetail(props: any) {
     });
     setIsEdit(false);
   };
+
   return (
     <CommentsDetailUi
       value={props.value}
@@ -29,6 +31,8 @@ export default function CommentsDetail(props: any) {
       onClickSwitchEdit={onClickSwitchEdit}
       onClickUpdate={onClickUpdate}
       onChange={onChange}
+      itemId={props.itemId}
+      user={props.user}
     />
   );
 }

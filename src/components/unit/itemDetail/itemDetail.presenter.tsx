@@ -28,6 +28,7 @@ export default function ItemDetailUI(props: any) {
           onClickRight={() => props.setIsOpenModal(false)}
         />
       )}
+
       <Wrapper>
         <TopWrapper>
           <ArrowLeftOut onClick={props.onClickEnterToBoard} />
@@ -78,12 +79,9 @@ export default function ItemDetailUI(props: any) {
               </DetailContentsDiv>
             )}
           </InnerDiv>
-        </DetailContents>{" "}
+        </DetailContents>
         <Comments />
       </Wrapper>
-      {/* <div style={{ marginTop: "251px" }}> */}
-
-      {/* </div> */}
     </div>
   );
 }
