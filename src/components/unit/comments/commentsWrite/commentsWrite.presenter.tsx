@@ -1,20 +1,23 @@
 import {
   CommentTitle,
   CommentsInnerDiv,
-  CommentConTentsInput,
+  CommentContentsInput,
   CommentsWriteDiv,
   EnterOut,
 } from "./commentsWrite.styles";
 
-export default function CommentsWriteUI(props) {
+export default function CommentsWriteUI(props: any) {
   return (
     <CommentsWriteDiv>
       <CommentTitle>댓글작성</CommentTitle>
       <CommentsInnerDiv>
-        <CommentConTentsInput onChange={props.onChange} />
-        <EnterOut />
+        <CommentContentsInput
+          onChange={props.onChange}
+          value={props.contents}
+          maxLength={50}
+        />
+        <EnterOut onClick={props.onClickSubmit} />
       </CommentsInnerDiv>
-      <div onClick={props.onClickSubmit}>클릭</div>
     </CommentsWriteDiv>
   );
 }

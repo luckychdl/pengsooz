@@ -1,32 +1,34 @@
 import { useState } from "react";
-import firebase, { dbservice } from "../../../../commons/firebase/firebase";
+import { dbservice } from "../../../../commons/firebase/firebase";
 import CommentsWriteUI from "./commentsWrite.presenter";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function CommentsWrite() {
+export default function CommentsWrite(props: any) {
   const [contents, setContents] = useState("");
-  const [image, setImage] = useState("");
-  const [name, setName] = useState("");
-  const [user] = useAuthState(firebase.auth());
 
+  const onChange = (event: any) => {
+    setContents(event.target.value);
+  };
   const onClickSubmit = async () => {
-    setImage(user?.photoURL || "");
-    setName(user?.displayName || "");
     if (!contents) {
       alert("내용을 입력해주세요");
       return;
     }
     await dbservice.collection("comments").add({
-      writer: name,
+      writer: props.user?.displayName,
+      uid: props.user?.uid,
       contents: contents,
-      image: image,
-      itemId: "1",
+      image: props.user?.photoURL,
+      itemId: props.itemId,
+      createdAt: new Date(),
     });
+    setContents("");
   };
 
-  const onChange = (event: any) => {
-    setContents(event.target.value);
-  };
-
-  return <CommentsWriteUI onClickSubmit={onClickSubmit} onChange={onChange} />;
+  return (
+    <CommentsWriteUI
+      onClickSubmit={onClickSubmit}
+      onChange={onChange}
+      contents={contents}
+    />
+  );
 }

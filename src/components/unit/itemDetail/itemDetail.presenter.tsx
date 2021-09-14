@@ -16,7 +16,7 @@ import Comments from "../comments/comment.container";
 
 export default function ItemDetailUI(props) {
   return (
-    <div>
+    <div style={{ height: "640px" }}>
       <Wrapper>
         <TopWrapper>
           <ArrowLeftOut onClick={() => props.setIsOpenTitle(false)} />
@@ -68,7 +68,7 @@ export default function ItemDetailUI(props) {
           </InnerDiv>
         </DetailContents>
       </Wrapper>
-      <Comments itmeData={props.itemData} />
+      <Comments />
     </div>
   );
 }

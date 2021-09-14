@@ -4,7 +4,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 export default function LoginUI(props) {
   return (
     <Wrapper>
-      <Title>팽수뭐해</Title>
+      <Title>PENGLELLO</Title>
       <MainImg />
       <StyledFirebaseAuth
         uiConfig={props.uiConfig}

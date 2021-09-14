@@ -16,7 +16,6 @@ export const CommentTitle = styled.div`
 export const CommentsListDiv = styled.div`
   background-color: skyblue;
   width: 100%;
-
   display: flex;
   flex-direction: row;
   margin-bottom: 12px;
@@ -47,10 +46,9 @@ export const CommentsInnerDiv = styled.div`
 export const DispalayName = styled.div`
   background-color: yellow;
 `;
-export const CommentConTentsInput = styled.input`
+export const CommentContentsInput = styled.input`
   width: 100%;
   height: 32px;
-
   padding: 0 12px;
 `;
 export const CommentUpdataButton = styled(EditOutlined)`

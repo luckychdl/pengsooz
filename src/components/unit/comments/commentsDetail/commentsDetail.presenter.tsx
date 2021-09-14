@@ -12,11 +12,10 @@ import {
 } from "./commentsDetail.styles";
 
 export default function CommentsDetailUi(props: any) {
-  const itemId = "1";
   return (
     <Wrapper>
       <CommentsWrapper>
-        {props.value.data().itemId === itemId && (
+        {props.value.data().itemId === props.itemId && (
           <div key={props.value.id}>
             {props.isEdit ? (
               <CommentsListWrapper>
@@ -26,6 +25,7 @@ export default function CommentsDetailUi(props: any) {
                   <CommentEdit
                     defaultValue={props.value.data().contents}
                     onChange={props.onChange}
+                    maxLength={50}
                   />
                 </CommentsInnerWrapper>
                 <CommentUpdateButton
@@ -41,10 +41,16 @@ export default function CommentsDetailUi(props: any) {
                     {props.value.data().contents}
                   </CommentContents>
                 </CommentsInnerWrapper>
-                <CommentUpdateButton onClick={props.onClickSwitchEdit} />
-                <CommentDeleteButton
-                  onClick={props.onClickDelete(props.value.id)}
-                />
+                {props.value.data().uid === props.user.uid ? (
+                  <>
+                    <CommentUpdateButton onClick={props.onClickSwitchEdit} />
+                    <CommentDeleteButton
+                      onClick={props.onClickDelete(props.value.id)}
+                    />
+                  </>
+                ) : (
+                  <></>
+                )}
               </CommentsListWrapper>
             )}
           </div>
