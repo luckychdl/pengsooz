@@ -2,18 +2,13 @@ import styled from "@emotion/styled";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
-  /* background-color: seagreen; */
-
   width: 100%;
 `;
 export const CommentTitle = styled.div`
   width: 100%;
-  background-color: seashell;
-  margin-bottom: 12px;
 `;
 export const CommentsWrapper = styled.div`
   width: 100%;
-  overflow: auto;
   display: flex;
   flex-direction: column;
 
@@ -21,51 +16,52 @@ export const CommentsWrapper = styled.div`
   
 `;
 export const CommentsListWrapper = styled.div`
-  background-color: skyblue;
   width: 100%;
+  height: 30px;
   display: flex;
   flex-direction: row;
-
-  margin-bottom: 12px;
+  align-items: flex-end;
+  margin-bottom: 5px;
 `;
 export const Avatar = styled.img`
   background-color: slategrey;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 `;
 
 export const CommentsInnerWrapper = styled.div`
-  width: 100%;
-  height: 50px;
+  height: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  /* background-color: green; */
+  padding-left: 5px;
+  padding-right: 10px;
 `;
 
-export const CommentEdit = styled.textarea`
-  width: 100%;
-  height: 32px;
+export const CommentEdit = styled.input`
+  background-color: wheat;
+  font-size: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
 `;
 
 export const DispalayName = styled.div`
-  /* background-color: yellow; */
-  height: 18px;
+  font-size: 10px;
 `;
 
-export const CommentContentsEdit = styled.textarea`
-  width: 100%;
-  height: 32px;
-`;
 export const CommentContents = styled.div`
-  width: 100%;
-  height: 32px;
+  background-color: wheat;
+  text-align: center;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 10px;
 `;
 export const CommentUpdateButton = styled(EditOutlined)`
-  font-size: 15px;
+  font-size: 10px;
+  margin-bottom: 2px;
 `;
 export const CommentDeleteButton = styled(DeleteOutlined)`
-  font-size: 15px;
+  font-size: 10px;
+  margin-bottom: 2px;
   margin-left: 5px;
 `;

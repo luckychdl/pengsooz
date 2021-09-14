@@ -78,6 +78,7 @@ interface ICustomBoardModalProps {
   onClickColor: (event: MouseEvent<HTMLDivElement>) => void;
   buttonNameLeft: string;
   buttonNameRight: string;
+  defaultValue: string;
 }
 
 const CustomBoard = (props: ICustomBoardModalProps) => {
@@ -86,7 +87,12 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
       <InnerWrapper>
         <TitleWrapper>
           <TitleImg src="/images/default_profile.png" />
-          <TitleInput onChange={props.onChangeTitle} placeholder="New Board" />
+
+          <TitleInput
+            onChange={props.onChangeTitle}
+            placeholder="New Board"
+            defaultValue={props.defaultValue}
+          />
         </TitleWrapper>
         <MiddleWrapper>
           <MiddleInnerDiv>

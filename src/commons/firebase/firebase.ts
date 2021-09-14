@@ -4,22 +4,13 @@ import "firebase/firestore";
 
 // 프로젝트 공용
 const clientCredentials = {
-  apiKey: "AIzaSyDnIUm_X60oLLTOnRHSdwiFIjvi2btG7zc",
-  authDomain: "codecamp-446bd.firebaseapp.com",
-  projectId: "codecamp-446bd",
-  storageBucket: "codecamp-446bd.appspot.com",
-  messagingSenderId: "910012870523",
-  appId: "1:910012870523:web:7dafe14a72550b92e657de",
-  measurementId: "G-LMFVJRMQWN",
+  apiKey: "AIzaSyDUode-3Ahyy5698hB0usCiM23KRpW2gNo",
+  authDomain: "pensooz-fire.firebaseapp.com",
+  projectId: "pensooz-fire",
+  storageBucket: "pensooz-fire.appspot.com",
+  messagingSenderId: "1080768406589",
+  appId: "1:1080768406589:web:9c7768048dc368a4c1f654",
 };
-// const clientCredentials = {
-//   apiKey: "AIzaSyDUode-3Ahyy5698hB0usCiM23KRpW2gNo",
-//   authDomain: "pensooz-fire.firebaseapp.com",
-//   projectId: "pensooz-fire",
-//   storageBucket: "pensooz-fire.appspot.com",
-//   messagingSenderId: "1080768406589",
-//   appId: "1:1080768406589:web:9c7768048dc368a4c1f654",
-// };
 
 if (!firebase.apps.length) {
   firebase.initializeApp(clientCredentials);

@@ -26,11 +26,11 @@ export default function ItemEditUI(props: Iprops) {
               <ItemEditInput onChange={props.onChangeItemTitle} />
               <ItemBtnDiv>
                 <MicroButton
-                  buttonName="Cancle"
+                  buttonName="취소하기"
                   onClick={() => props.setIsAdd(false)}
                 />
                 <MicroButton
-                  buttonName="Adddd"
+                  buttonName="생성하기"
                   onClick={props.onClickAddItem}
                 />
               </ItemBtnDiv>

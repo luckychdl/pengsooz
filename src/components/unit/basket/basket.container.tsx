@@ -1,17 +1,14 @@
 import BasketUI from "./basket.presenter";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { useRef } from "react";
-import { dbservice } from "../../../commons/firebase/firebase";
+import firebase from "../../../commons/firebase/firebase";
 
-export default function Basket() {
-  const basketDetail = useRef<HTMLDivElement>(null);
-
+export default function Basket(props: any) {
   const [value] = useCollection(
-    dbservice.collection("basket").orderBy("createdAt", "asc"),
+    firebase.firestore().collection("basket").orderBy("createdAt", "asc"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
 
-  return <BasketUI value={value} basketDetail={basketDetail} />;
+  return <BasketUI value={value} boardId={props.boardId} />;
 }

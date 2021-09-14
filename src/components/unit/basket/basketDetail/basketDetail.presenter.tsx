@@ -20,7 +20,9 @@ interface IBasketDetailPageUI {
   isModal: boolean;
   isUpdate: boolean;
   doc: any;
-  isMenu: boolean;
+  isMenu: any;
+  updateTitle: string;
+  setIsMenu: any;
   onClickLeft: () => void;
   onClickRight: () => void;
   onClickCancel: () => void;
@@ -45,53 +47,61 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
           content="정말로 삭제 하시겠습니까?"
         />
       )}
-      <SubWrapper>
-        <Wrapper>
-          {props.isUpdate ? (
-            <SubWrapper>
-              <AddWrapper>
-                <BasketContainerEdit>
-                  <BasketEditInput onChange={props.onChangeUpdateTitle} />
-                  <BasketBtnDiv>
-                    <MicroButton
-                      buttonName="취소하기"
-                      onClick={props.onClickCancel}
+      {props.boardId === props.doc.data().boardId && (
+        <SubWrapper>
+          <Wrapper>
+            {props.isUpdate ? (
+              <SubWrapper>
+                <AddWrapper>
+                  <BasketContainerEdit>
+                    <BasketEditInput
+                      onChange={props.onChangeUpdateTitle}
+                      defaultValue={props.doc.data().title}
                     />
-                    <MicroButton
-                      buttonName="수정하기"
-                      onClick={props.onClickUpdate}
-                    />
-                  </BasketBtnDiv>
-                </BasketContainerEdit>
-              </AddWrapper>
-            </SubWrapper>
-          ) : (
-            <DetailWrapper>
-              <AlignWrapper>
-                <BasketTitle>{props.doc.data().title}</BasketTitle>
-              </AlignWrapper>
-
-              <Dropdown
-                overlay={
-                  <MenuModal
-                    buttonNameUpdate="바스켓 수정하기"
-                    onClickUpdate={props.onClickBasketUpdate}
-                    onClickDelete={props.onClickDeleteComfirm}
-                    buttonNameDelete="바스켓 삭제하기"
-                  />
-                }
-                trigger={["click"]}
-                placement="bottomRight"
-                visible={props.isMenu}
-                arrow
-              >
+                    <BasketBtnDiv>
+                      <MicroButton
+                        buttonName="취소하기"
+                        onClick={props.onClickCancel}
+                      />
+                      <MicroButton
+                        buttonName="수정하기"
+                        onClick={props.onClickUpdate}
+                      />
+                    </BasketBtnDiv>
+                  </BasketContainerEdit>
+                </AddWrapper>
+              </SubWrapper>
+            ) : (
+              <DetailWrapper>
+                <AlignWrapper>
+                  <BasketTitle>{props.doc.data().title}</BasketTitle>
+                </AlignWrapper>
+                {props.isMenu && (
+                  <Dropdown
+                    overlayStyle={{ paddingTop: "20px" }}
+                    overlay={
+                      <MenuModal
+                        buttonNameUpdate="바스켓 수정하기"
+                        onClickUpdate={props.onClickBasketUpdate}
+                        onClickDelete={props.onClickDeleteComfirm}
+                        buttonNameDelete="바스켓 삭제하기"
+                      />
+                    }
+                    trigger={["click"]}
+                    placement="bottomRight"
+                    visible={props.isMenu}
+                    // onVisibleChange={props.onClickMenu}
+                  >
+                    <div></div>
+                  </Dropdown>
+                )}
                 <ShowDetail onClick={props.onClickMenu}>...</ShowDetail>
-              </Dropdown>
-            </DetailWrapper>
-          )}
-          <Item basketId={props.doc.data().basketId} />
-        </Wrapper>
-      </SubWrapper>
+              </DetailWrapper>
+            )}
+            <Item basketId={props.doc.data().basketId} />
+          </Wrapper>
+        </SubWrapper>
+      )}
     </>
   );
 };

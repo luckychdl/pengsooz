@@ -2,9 +2,8 @@ import styled from "@emotion/styled";
 import { ArrowLeftOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
-  background-color: plum;
+  background-color: red;
   width: 100%;
-  height: 640px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,7 +78,7 @@ export const ConfirmButton = styled.div`
 `;
 export const DetailContents = styled.div`
   width: 100%;
-  background-color: salmon;
+  background-color: green;
 `;
 export const DetailContentsTextArea = styled.textarea`
   width: 100%;

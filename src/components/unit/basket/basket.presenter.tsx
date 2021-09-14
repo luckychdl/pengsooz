@@ -8,7 +8,7 @@ export default function BasketUI(props: any) {
         <BasketDetailPage
           key={doc.id}
           doc={doc}
-          ref={props.basketDetail}
+          boardId={props.boardId}
           onClickBasketUpdate={props.onClickBasketUpdate}
         />
       ))}

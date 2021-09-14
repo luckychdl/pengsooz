@@ -22,17 +22,20 @@ const BasketWritePage = (props: any) => {
     createdAt: new Date(),
   };
   const onClickCreateBasket = async () => {
-    try {
-      await dbservice.collection("basket").doc(basketId).set(value);
-      setIsAdd(false);
-      props.basketDetail.current?.focus();
-    } catch (err) {
-      Modal.error({
-        content: err.message,
-      });
+    if (basketTitle !== "") {
+      try {
+        await dbservice.collection("basket").doc(basketId).set(value);
+        setIsAdd(false);
+        setBasketTitle("");
+      } catch (err) {
+        Modal.error({
+          content: err.message,
+        });
+      }
+    } else {
+      alert("제목을 입력해주세요 !");
     }
   };
-
   return (
     <BasketWritePageUI
       isAdd={isAdd}
