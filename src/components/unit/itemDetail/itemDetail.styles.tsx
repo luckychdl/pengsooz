@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
   background-color: plum;
   width: 100%;
-
+  height: 640px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,6 +21,10 @@ export const TopWrapper = styled.div`
 `;
 
 export const ArrowLeftOut = styled(ArrowLeftOutlined)`
+  font-size: 20px;
+`;
+
+export const DeleteOut = styled(DeleteOutlined)`
   font-size: 20px;
 `;
 

@@ -11,6 +11,9 @@ export const CommentsWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+
+  
 `;
 export const CommentsListWrapper = styled.div`
   width: 100%;

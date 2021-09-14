@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import firebase from "../../../../commons/firebase/firebase";
 
-export default function Items(props) {
+export default function Items(props: any) {
   const router = useRouter();
   const [ItemData, setItemdata] = useState([]);
 
@@ -16,15 +16,19 @@ export default function Items(props) {
   };
 
   useEffect(() => {
-    const fff = firebase.firestore().collection("item");
-    fff.where("basketId", "==", props.basketId).onSnapshot((result: any) => {
-      const newresult: any = [];
-      result.forEach((doc: any) => {
-        const docData = doc.data();
-        newresult.push(docData);
+    const getItemData = firebase.firestore().collection("item");
+
+    getItemData
+      // .orderBy("createdAt", "asc")
+      .where("basketId", "==", props.basketId)
+      .onSnapshot((result: any) => {
+        const newresult: any = [];
+        result.forEach((doc: any) => {
+          const docData = doc.data();
+          newresult.push(docData);
+        });
+        setItemdata(newresult);
       });
-      setItemdata(newresult);
-    });
   }, []);
 
   return (

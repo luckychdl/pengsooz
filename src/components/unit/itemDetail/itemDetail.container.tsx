@@ -1,6 +1,6 @@
 import ItemDetailUI from "./itemDetail.presenter";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import firebase from "../../../commons/firebase/firebase";
 
 export default function ItemDetail() {
@@ -10,50 +10,52 @@ export default function ItemDetail() {
   const [isOpenContents, setIsOpenContents] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
   const [ItemContents, setItemContents] = useState("");
-  const onClickEnterToBoard = () => {
-    router.push(`/workspace/board`);
-  };
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const itemId: any = router.query.itemDetail;
+
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
   });
 
-  const itemId = router.query.itemDetail;
-
   useEffect(() => {
     async function getItemData() {
-      const itemData = await firebase
+      await firebase
         .firestore()
         .collection("item")
         .doc(String(itemId))
-        .onSnapshot((result) => {
+        .onSnapshot((result: any) => {
           setItemData(result.data());
         });
     }
     getItemData();
   }, []);
 
-  console.log(itemData, "<<<<::");
+  const onClickEnterToBoard = () => {
+    router.push(`/workspace/boardId`);
+  };
+
+  const onClickDeleteItem = () => {
+    firebase.firestore().collection("item").doc(itemId).delete();
+    router.push(`/workspace/boardId`);
+  };
 
   const updateItemTitle = () => {
-    const itemId = router.query.itemDetail;
-
     const data = {
       itemTitle: ItemTitle,
       createdAt: new Date(),
     };
     firebase.firestore().collection("item").doc(itemId).update(data);
 
-    console.log(itemId, "((((((");
     setIsOpenTitle(false);
   };
 
-  const onChangeItemTitle = (event) => {
+  const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setItemTitle(event.target.value);
   };
 
   const updateItemContents = () => {
-    const itemId = router.query.itemDetail;
     const data = {
       createdAt: new Date(),
       itemContents: ItemContents,
@@ -62,7 +64,7 @@ export default function ItemDetail() {
     setIsOpenContents(false);
   };
 
-  const onChangeItemContents = (event) => {
+  const onChangeItemContents = (event: ChangeEvent<HTMLInputElement>) => {
     setItemContents(event.target.value);
   };
 
@@ -70,6 +72,7 @@ export default function ItemDetail() {
     <div>
       <ItemDetailUI
         onClickEnterToBoard={onClickEnterToBoard}
+        onClickDeleteItem={onClickDeleteItem}
         isOpenTitle={isOpenTitle}
         isOpenContents={isOpenContents}
         setIsOpenContents={setIsOpenContents}
@@ -80,6 +83,8 @@ export default function ItemDetail() {
         onChangeItemTitle={onChangeItemTitle}
         updateItemContents={updateItemContents}
         onChangeItemContents={onChangeItemContents}
+        isOpenModal={isOpenModal}
+        setIsOpenModal={setIsOpenModal}
       />
     </div>
   );

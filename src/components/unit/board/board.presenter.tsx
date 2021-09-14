@@ -2,7 +2,7 @@ import Basket from "../basket/basket.container";
 // import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import SmallButton from "../../commons/button/small.Button";
 import CreateBoard from "../../commons/modal/CustomBoard.modal";
-import MenuModal from "../../commons/modal/menu.Modal";
+import MenuModal from "../../commons/modal/Menu.modal";
 import { Dropdown } from "antd";
 
 import {

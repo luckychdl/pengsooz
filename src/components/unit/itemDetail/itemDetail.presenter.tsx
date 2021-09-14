@@ -11,15 +11,28 @@ import {
   DetailContents,
   DetailContentsTextArea,
   DetailContentsDiv,
+  DeleteOut,
 } from "./itemDetail.styles";
 import Comments from "../comments/comment.container";
+import Select from "../../commons/modal/Select.modal";
 
-export default function ItemDetailUI(props) {
+export default function ItemDetailUI(props: any) {
   return (
-    <div style={{ height: "640px" }}>
+    <div>
+      {props.isOpenModal && (
+        <Select
+          content="아이템을 삭제하시겠습니까?"
+          buttonNameLeft="예!"
+          buttonNameRight="아니요?"
+          onClickLeft={props.onClickDeleteItem}
+          onClickRight={() => props.setIsOpenModal(false)}
+        />
+      )}
+
       <Wrapper>
         <TopWrapper>
-          <ArrowLeftOut onClick={() => props.setIsOpenTitle(false)} />
+          <ArrowLeftOut onClick={props.onClickEnterToBoard} />
+          <DeleteOut onClick={() => props.setIsOpenModal(true)} />
         </TopWrapper>
         <DetailTitle>
           <Text>제목</Text>
@@ -28,7 +41,7 @@ export default function ItemDetailUI(props) {
             {props.isOpenTitle ? (
               <>
                 <DetailTitleInput
-                  defaultValue="ddd"
+                  defaultValue={props.itemData.itemTitle}
                   // onBlur={() => props.setIsOpenTitle(false)}
                   onChange={props.onChangeItemTitle}
                   ref={props.inputRef}
@@ -67,8 +80,8 @@ export default function ItemDetailUI(props) {
             )}
           </InnerDiv>
         </DetailContents>
+        <Comments />
       </Wrapper>
-      <Comments />
     </div>
   );
 }
