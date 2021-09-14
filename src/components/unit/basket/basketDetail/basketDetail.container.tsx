@@ -7,7 +7,7 @@ const BasketDetailPage = (props: any) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const [isModal, setIsModal] = useState(false);
-  const [updateTitle, setUpdateTitle] = useState();
+  const [updateTitle, setUpdateTitle] = useState(props.doc.data().title);
 
   const onClickMenu = () => {
     setIsMenu((prev) => !prev);
@@ -17,17 +17,20 @@ const BasketDetailPage = (props: any) => {
     setIsMenu(false);
   };
   const onClickUpdate = async () => {
- 
-    try {
-      await dbservice.collection("basket").doc(props.doc.id).update({
-        title: updateTitle,
-      });
-      setIsUpdate(false);
-      setIsMenu(false);
-    } catch (err) {
-      Modal.error({
-        content: err.message,
-      });
+    if (updateTitle !== "") {
+      try {
+        await dbservice.collection("basket").doc(props.doc.id).update({
+          title: updateTitle,
+        });
+        setIsUpdate(false);
+        setIsMenu(false);
+      } catch (err) {
+        Modal.error({
+          content: err.message,
+        });
+      }
+    } else {
+      alert("제목을 입력해주세요 !");
     }
   };
   const onClickLeft = async () => {
@@ -57,7 +60,10 @@ const BasketDetailPage = (props: any) => {
       isMenu={isMenu}
       isUpdate={isUpdate}
       isModal={isModal}
+      updateTitle={updateTitle}
       doc={props.doc}
+      boardId={props.boardId}
+      setIsMenu={setIsMenu}
       onClickLeft={onClickLeft}
       onClickRight={onClickRight}
       onClickDeleteComfirm={onClickDeleteComfirm}
