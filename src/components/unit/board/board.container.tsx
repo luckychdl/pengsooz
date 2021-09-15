@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, MouseEvent, useEffect } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import BoardUI from "./board.presenter";
 import { useRouter } from "next/router";
 import firebase, { dbservice } from "../../../commons/firebase/firebase";
@@ -18,11 +18,11 @@ export default function Board(props: any) {
   const [isModal, setIsModal] = useState(false);
 
   const [updateTitle, setUpdateTitle] = useState("");
-  const [updateColor, setUpdateColor] = useState("");
+  const [colorCode, setColorCode] = useState("");
   const [confirmAlive, setConfirmAlive] = useState();
   useEffect(() => {
     setUpdateTitle(value?.data()?.title);
-    setUpdateColor(value?.data()?.colorCode);
+    setColorCode(value?.data()?.colorCode);
   }, [value]);
 
   const onClickCreateBoardModal = () => {
@@ -44,7 +44,7 @@ export default function Board(props: any) {
       try {
         await dbservice.collection("boards").doc(boardId).update({
           title: updateTitle,
-          colorCode: updateColor,
+          colorCode: colorCode,
         });
         setIsOpen(false);
       } catch (err) {
@@ -71,9 +71,7 @@ export default function Board(props: any) {
       });
     }
   };
-  const onClickColor = (event: MouseEvent<HTMLDivElement>) => {
-    setUpdateColor((event.target as any).id);
-  };
+
   const onClickDeleteConfirm = () => {
     setIsMenu(false);
     setIsModal((prev) => !prev);
@@ -102,7 +100,7 @@ export default function Board(props: any) {
         isModal={isModal}
         value={value}
         user={user}
-        onClickColor={onClickColor}
+        setColorCode={setColorCode}
         onClickMenu={onClickMenu}
         onClickDelete={onClickDelete}
         onChangeTitle={onChangeTitle}
