@@ -5,10 +5,12 @@ import { useEffect, useRef } from "react";
 export default function BasketUI(props: any) {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    props.setIsSwitch(false);
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
-  useEffect(scrollToBottom, [props.isSwitch]);
+  useEffect(scrollToBottom, [props.value]);
+
   const resultsRef = useRef<HTMLDivElement | null>(null);
   const scrollToLeft = () => {
     resultsRef.current?.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -18,20 +20,18 @@ export default function BasketUI(props: any) {
     <MainWrapper>
       <div ref={resultsRef} />
       {props.value?.docs.map((doc: any) => (
-        <BasketDetailPage
-          key={doc.id}
-          doc={doc}
-          messagesEndRef={messagesEndRef}
-          isSwitch={props.isSwitch}
-          setIsSwitch={props.setIsSwitch}
-          boardId={props.boardId}
-          onClickBasketUpdate={props.onClickBasketUpdate}
-        />
+        <>
+          <BasketDetailPage
+            key={doc.id}
+            doc={doc}
+            messagesEndRef={messagesEndRef}
+            boardId={props.boardId}
+            onClickBasketUpdate={props.onClickBasketUpdate}
+            scrollToBottom={scrollToBottom}
+          />
+        </>
       ))}
-      <BasketWritePage
-        isSwitch={props.isSwitch}
-        setIsSwitch={props.setIsSwitch}
-      />
+      <BasketWritePage messagesEndRef={messagesEndRef} />
     </MainWrapper>
   );
 }
