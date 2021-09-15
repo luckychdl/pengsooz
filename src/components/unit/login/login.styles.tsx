@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.div`
-  background-color: aqua;
+  background-color: #fcf9ee;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -11,10 +11,12 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   font-size: 20px;
   font-weight: 700;
+  margin-top: 20px;
+  color: grey;
 `;
-export const GoogleLoginButton = styled.button``;
+
 export const MainImg = styled.img`
-  width: 200px;
-  height: 200px;
-  background-color: bisque;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
 `;
