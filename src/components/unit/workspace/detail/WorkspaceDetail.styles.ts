@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 96px;
   height: 96px;
+  padding: 12px;
   background: ${(props: IProps) =>
     `linear-gradient(${props.colorCode}, #f5f6fa, ${props.colorCode})`};
   border-radius: 10%;
@@ -18,9 +19,11 @@ export const PlusIcon = styled(PlusCircleOutlined)`
   font-size: 30px;
 `;
 export const Text = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 32px;
+  line-height: 32px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;

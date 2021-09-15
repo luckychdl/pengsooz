@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import firebase from "../../../commons/firebase/firebase";
 
 export interface IWorkspaceUIProps {
@@ -9,6 +9,7 @@ export interface IWorkspaceUIProps {
   boardsError?: firebase.FirebaseError;
   isSelectOpen: boolean;
   isCustomBoardOpen: boolean;
+  setColorCode: Dispatch<SetStateAction<string>>;
   setIsCustomBoardOpen: Dispatch<SetStateAction<boolean>>;
   onClickOpenLogoutModal: () => void;
   onClickCloseLogoutModal: () => void;
@@ -16,5 +17,4 @@ export interface IWorkspaceUIProps {
   onClickCreateBoard: () => void;
   onClickCloseBoardModal: () => void;
   onChangeBoardTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClickBoardColor: (event: MouseEvent<HTMLDivElement>) => void;
 }

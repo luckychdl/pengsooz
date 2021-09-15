@@ -31,12 +31,13 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
       )}
       {props.isCustomBoardOpen && (
         <CustomBoard
+          setColorCode={props.setColorCode}
           onClickLeft={props.onClickCreateBoard}
           onClickRight={props.onClickCloseBoardModal}
           onChangeTitle={props.onChangeBoardTitle}
-          onClickColor={props.onClickBoardColor}
           buttonNameLeft="생성하기"
           buttonNameRight="취소하기"
+          defaultValue=""
         />
       )}
       <Wrapper>
