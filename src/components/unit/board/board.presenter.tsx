@@ -29,8 +29,8 @@ export default function BoardUI(props: any) {
           onClickRight={props.onClickCancel}
           onClickLeft={props.onClickUpdate}
           onChangeTitle={props.onChangeTitle}
-          onClickColor={props.onClickColor}
           defaultValue={props.value.data().title}
+          setColorCode={props.setColorCode}
         />
       )}
       {props.isModal && (
