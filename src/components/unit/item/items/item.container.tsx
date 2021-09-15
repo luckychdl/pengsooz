@@ -9,27 +9,25 @@ export default function Items(props: any) {
 
   const [isAdd, setIsAdd] = useState(false);
 
+  const boardId = router.query.boardId;
+
   const onClickEnterToItemDetail = (event: any) => () => {
-    // alert("dd");
     const itemId = event.itemId;
-    const boardId = router.query.boardId;
     router.push(`/workspace/${boardId}/${itemId}`);
   };
 
   useEffect(() => {
     const getItemData = firebase.firestore().collection("item");
 
-    getItemData
-      // .orderBy("createdAt", "asc")
-      .where("basketId", "==", props.basketId)
-      .onSnapshot((result: any) => {
-        const newresult: any = [];
-        result.forEach((doc: any) => {
-          const docData = doc.data();
-          newresult.push(docData);
-        });
-        setItemdata(newresult);
+    getItemData.orderBy("createdAt", "asc").onSnapshot((result: any) => {
+      const newresult: any = [];
+      result.forEach((doc: any) => {
+        const docData = doc.data();
+        newresult.push(docData);
       });
+
+      setItemdata(newresult);
+    });
   }, []);
 
   return (
@@ -39,6 +37,7 @@ export default function Items(props: any) {
         isAdd={isAdd}
         setIsAdd={setIsAdd}
         ItemData={ItemData}
+        basketId={props.basketId}
       />
     </div>
   );
