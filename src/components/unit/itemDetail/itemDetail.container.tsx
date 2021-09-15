@@ -102,12 +102,7 @@ export default function ItemDetail() {
     setIsOpenTitle(false);
   };
 
-  // useEffect(() => {
-  //   if (itemData.itemId !== router.query.itemDetail) {
-  //     router.push(`/workspace/[boardId]`);
-  //   }
-  // }, [itemData]);
-  // console.log(itemData.itemId);
+
   return (
     <div>
       <ItemDetailUI
