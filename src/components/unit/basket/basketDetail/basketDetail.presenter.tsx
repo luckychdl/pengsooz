@@ -24,7 +24,7 @@ interface IBasketDetailPageUI {
   updateTitle: string;
   setIsMenu: any;
   boardId: string;
-  messagesEndRef: any;
+  messagesRef: any;
   onClickLeft: () => void;
   onClickRight: () => void;
   onClickCancel: () => void;
@@ -50,7 +50,7 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
         />
       )}
       {props.boardId === props.doc.data().boardId && (
-        <SubWrapper ref={props.messagesEndRef}>
+        <SubWrapper ref={props.messagesRef}>
           <Wrapper>
             {props.isUpdate ? (
               <SubWrapper>
