@@ -27,7 +27,6 @@ const BasketWritePage = (props: any) => {
         await dbservice.collection("basket").doc(basketId).set(value);
         setIsAdd(false);
         setBasketTitle("");
-        props.setIsSwitch(true);
       } catch (err) {
         Modal.error({
           content: err.message,

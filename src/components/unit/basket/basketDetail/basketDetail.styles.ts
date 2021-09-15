@@ -12,10 +12,8 @@ export const Wrapper = styled.div`
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 20px; */
   border-radius: 8px;
   margin-bottom: 30px;
-  /* border-radius: 8px; */
 `;
 export const BasketTitle = styled.div`
   font-size: 20px;
@@ -36,14 +34,11 @@ export const AddWrapper = styled.div`
 export const BasketContainerEdit = styled.div`
   background-color: orange;
   width: 330px;
-  /* height: 36px; */
   padding: 12px;
   margin-bottom: 12px;
-
   line-height: 36px;
   border-radius: 4px;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,22 +52,20 @@ export const BasketEditInput = styled.input`
 export const BasketBtnDiv = styled.div`
   background-color: orchid;
   width: 100%;
-
   margin-top: 12px;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 export const DetailWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 export const ShowDetail = styled.div`
   height: 15px;
 `;
 export const AlignWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 165px;
+  justify-content: center;
+  width: 100%;
 `;

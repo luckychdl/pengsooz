@@ -23,7 +23,10 @@ const BasketWritePageUI = (props: IBasketWritePageUIProps) => {
         <SubWrapper>
           <AddWrapper>
             <BasketContainerEdit>
-              <BasketEditInput onChange={props.onChangeAddBasket} />
+              <BasketEditInput
+                onChange={props.onChangeAddBasket}
+                maxLength={10}
+              />
               <BasketBtnDiv>
                 <MicroButton
                   buttonName="취소하기"
