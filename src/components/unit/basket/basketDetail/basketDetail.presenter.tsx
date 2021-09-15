@@ -23,6 +23,8 @@ interface IBasketDetailPageUI {
   isMenu: any;
   updateTitle: string;
   setIsMenu: any;
+  boardId: string;
+  messagesEndRef: any;
   onClickLeft: () => void;
   onClickRight: () => void;
   onClickCancel: () => void;
@@ -49,7 +51,7 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
       )}
       {props.boardId === props.doc.data().boardId && (
         <SubWrapper>
-          <Wrapper>
+          <Wrapper ref={props.messagesEndRef}>
             {props.isUpdate ? (
               <SubWrapper>
                 <AddWrapper>
@@ -90,7 +92,6 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                     trigger={["click"]}
                     placement="bottomRight"
                     visible={props.isMenu}
-                    // onVisibleChange={props.onClickMenu}
                   >
                     <div></div>
                   </Dropdown>

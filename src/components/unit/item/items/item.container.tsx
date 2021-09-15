@@ -10,7 +10,6 @@ export default function Items(props: any) {
   const [isAdd, setIsAdd] = useState(false);
 
   const onClickEnterToItemDetail = (event: any) => () => {
-    // alert("dd");
     const itemId = event.itemId;
     const boardId = router.query.boardId;
     router.push(`/workspace/${boardId}/${itemId}`);
@@ -20,7 +19,7 @@ export default function Items(props: any) {
     const getItemData = firebase.firestore().collection("item");
 
     getItemData
-      // .orderBy("createdAt", "asc")
+
       .where("basketId", "==", props.basketId)
       .onSnapshot((result: any) => {
         const newresult: any = [];

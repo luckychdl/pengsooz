@@ -5,8 +5,6 @@ export const HeadWrapper = styled.div`
   background-color: royalblue;
   width: 100%;
   padding: 12px;
-
-  /* position: fixed; */
 `;
 
 export const TopWrapper = styled.div`
@@ -37,8 +35,6 @@ export const BoardBoxImg = styled.img`
   background-color: springgreen;
   width: 80px;
   height: 80px;
-
-  /* margin-top: 12px; */
 `;
 
 export const RightWrapper = styled.div`
@@ -50,6 +46,7 @@ export const RightWrapper = styled.div`
 `;
 
 export const BoardTitle = styled.div`
+  margin-left: 20px;
   font-size: 16px;
 `;
 

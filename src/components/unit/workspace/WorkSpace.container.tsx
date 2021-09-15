@@ -41,6 +41,7 @@ const Workspace = () => {
         colorCode: colorCode,
         createdAt: new Date(),
         updatedAt: new Date(),
+        isAlive: true,
       };
       await dbservice.collection("boards").doc(boardId).set(value);
     } catch (error) {

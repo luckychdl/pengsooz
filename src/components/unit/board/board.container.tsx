@@ -1,13 +1,14 @@
 import { ChangeEvent, useState, MouseEvent, useEffect } from "react";
 import BoardUI from "./board.presenter";
 import { useRouter } from "next/router";
-import { dbservice } from "../../../commons/firebase/firebase";
+import firebase, { dbservice } from "../../../commons/firebase/firebase";
 import { Modal } from "antd";
 import { useDocument } from "react-firebase-hooks/firestore";
-
+import { useAuthState } from "react-firebase-hooks/auth";
 export default function Board(props: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+  const [user] = useAuthState(firebase.auth());
   const router = useRouter();
   const boardId: any = router.query.boardId;
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
@@ -18,8 +19,7 @@ export default function Board(props: any) {
 
   const [updateTitle, setUpdateTitle] = useState("");
   const [updateColor, setUpdateColor] = useState("");
-  console.log(props.value?.data().title);
-
+  const [confirmAlive, setConfirmAlive] = useState();
   useEffect(() => {
     setUpdateTitle(value?.data()?.title);
     setUpdateColor(value?.data()?.colorCode);
@@ -61,8 +61,10 @@ export default function Board(props: any) {
   };
   const onClickDelete = async () => {
     try {
+      await dbservice.collection("boards").doc(boardId).update({
+        isAlive: false,
+      });
       await dbservice.collection("boards").doc(boardId).delete();
-      router.push("/workspace");
     } catch (err) {
       Modal.error({
         content: err.message,
@@ -76,6 +78,21 @@ export default function Board(props: any) {
     setIsMenu(false);
     setIsModal((prev) => !prev);
   };
+  useEffect(() => {
+    const isAliveCondition = async () => {
+      dbservice
+        .collection("boards")
+        .doc(boardId)
+        .onSnapshot((result) => setConfirmAlive(result.data()?.isAlive));
+    };
+    isAliveCondition();
+  }, [boardId]);
+  useEffect(() => {
+    if (confirmAlive === false) {
+      router.push("/workspace");
+    }
+  }, [confirmAlive]);
+
   return (
     <div>
       <BoardUI
@@ -84,6 +101,7 @@ export default function Board(props: any) {
         isMenu={isMenu}
         isModal={isModal}
         value={value}
+        user={user}
         onClickColor={onClickColor}
         onClickMenu={onClickMenu}
         onClickDelete={onClickDelete}
