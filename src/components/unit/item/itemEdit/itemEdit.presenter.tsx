@@ -34,7 +34,7 @@ export default function ItemEditUI(props: Iprops) {
                   onClick={() => props.setIsAdd(false)}
                 />
                 <MicroButton
-                  buttonName="생성하기"
+                  buttonName="생성하기!"
                   onClick={props.onClickAddItem}
                 />
               </ItemBtnDiv>
