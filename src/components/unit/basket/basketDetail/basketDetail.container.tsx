@@ -62,6 +62,7 @@ const BasketDetailPage = (props: any) => {
       isModal={isModal}
       updateTitle={updateTitle}
       doc={props.doc}
+      messagesEndRef={props.messagesEndRef}
       boardId={props.boardId}
       setIsMenu={setIsMenu}
       onClickLeft={onClickLeft}

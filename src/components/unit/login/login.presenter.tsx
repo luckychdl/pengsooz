@@ -1,7 +1,7 @@
 import { Wrapper, Title, MainImg } from "./login.styles";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-export default function LoginUI(props) {
+export default function LoginUI(props: any) {
   return (
     <Wrapper>
       <Title>PENGLELLO</Title>

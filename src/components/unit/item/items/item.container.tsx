@@ -18,7 +18,6 @@ export default function Items(props: any) {
 
   useEffect(() => {
     const getItemData = firebase.firestore().collection("item");
-
     getItemData.orderBy("createdAt", "asc").onSnapshot((result: any) => {
       const newresult: any = [];
       result.forEach((doc: any) => {

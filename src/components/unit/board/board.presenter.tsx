@@ -1,5 +1,4 @@
 import Basket from "../basket/basket.container";
-import SmallButton from "../../commons/button/small.Button";
 import CreateBoard from "../../commons/modal/CustomBoard.modal";
 import MenuModal from "../../commons/modal/Menu.modal";
 import { Dropdown } from "antd";
@@ -10,7 +9,6 @@ import {
   ArrowLeftOut,
   MenuOut,
   BodyWrapper,
-  BoardBoxImg,
   RightWrapper,
   BoardTitle,
   BasketWrapper,
@@ -67,14 +65,8 @@ export default function BoardUI(props: any) {
               </Dropdown>
             </TopWrapper>
             <BodyWrapper>
-              <BoardBoxImg></BoardBoxImg>
               <RightWrapper>
                 <BoardTitle>{props.value.data().title}</BoardTitle>
-
-                <SmallButton
-                  buttonName="보드 정보 수정"
-                  onClick={props.onClickCreateBoardModal}
-                />
               </RightWrapper>
             </BodyWrapper>
           </HeadWrapper>
