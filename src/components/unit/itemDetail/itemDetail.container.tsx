@@ -2,10 +2,11 @@ import ItemDetailUI from "./itemDetail.presenter";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import firebase from "../../../commons/firebase/firebase";
+import { Modal } from "antd";
 
 export default function ItemDetail() {
   const router = useRouter();
-  const [itemData, setItemData] = useState([]);
+  const [itemData, setItemData] = useState({ isAlive: true });
   const [isOpenTitle, setIsOpenTitle] = useState(false);
   const [isOpenContents, setIsOpenContents] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
@@ -13,15 +14,20 @@ export default function ItemDetail() {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const itemId: any = router.query.itemDetail;
+  const boardId = router.query.boardId;
 
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
   });
 
+  if (itemData?.isAlive === false) {
+    router.push(`/workspace/${boardId}`);
+  }
+
   useEffect(() => {
     async function getItemData() {
-      await firebase
+      firebase
         .firestore()
         .collection("item")
         .doc(String(itemId))
@@ -30,18 +36,31 @@ export default function ItemDetail() {
         });
     }
     getItemData();
-  }, []);
+  }, [itemId]);
 
   const onClickEnterToBoard = () => {
-    router.push(`/workspace/boardId`);
+    router.push(`/workspace/${boardId}`);
   };
 
   const onClickDeleteItem = () => {
+    const data = {
+      itemTitle: ItemTitle,
+      createdAt: new Date(),
+      isAlive: false,
+    };
+    firebase.firestore().collection("item").doc(itemId).update(data);
+
     firebase.firestore().collection("item").doc(itemId).delete();
-    router.push(`/workspace/boardId`);
+    router.push(`/workspace/${boardId}`);
   };
 
   const updateItemTitle = () => {
+    if (ItemTitle === "") {
+      Modal.error({ content: "내용을 입력해주세요." });
+
+      return;
+    }
+
     const data = {
       itemTitle: ItemTitle,
       createdAt: new Date(),
@@ -52,6 +71,12 @@ export default function ItemDetail() {
   };
 
   const updateItemContents = () => {
+    if (ItemContents === "") {
+      Modal.error({ content: "내용을 입력해주세요." });
+
+      return;
+    }
+
     const data = {
       createdAt: new Date(),
       itemContents: ItemContents,
@@ -76,6 +101,7 @@ export default function ItemDetail() {
     setIsOpenContents(true);
     setIsOpenTitle(false);
   };
+
 
   return (
     <div>
