@@ -44,7 +44,9 @@ export default function ItemDetailUI(props: any) {
                   defaultValue={props.itemData?.itemTitle}
                   onChange={props.onChangeItemTitle}
                   ref={props.inputRef}
+                  maxLength={30}
                 />
+
                 <ConfirmButton onClick={props.updateItemTitle}>
                   Okay
                 </ConfirmButton>
@@ -72,11 +74,10 @@ export default function ItemDetailUI(props: any) {
                 </ConfirmButton>
               </>
             ) : (
-              <DetailContentsDiv onClick={props.onClickItemContents}>
-                {props.itemData?.itemContents
-                  ? props.itemData?.itemContents
-                  : "상세내용을 입력해주세요"}
-              </DetailContentsDiv>
+              <DetailContentsDiv
+                onClick={props.onClickItemContents}
+                defaultValue={props.ItemContents}
+              />
             )}
           </InnerDiv>
         </DetailContents>

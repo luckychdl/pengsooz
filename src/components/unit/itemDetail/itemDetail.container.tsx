@@ -9,10 +9,9 @@ export default function ItemDetail() {
   const [itemData, setItemData] = useState({ isAlive: true });
   const [isOpenTitle, setIsOpenTitle] = useState(false);
   const [isOpenContents, setIsOpenContents] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
   const [ItemContents, setItemContents] = useState("");
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
   const itemId: any = router.query.itemDetail;
   const boardId = router.query.boardId;
 
@@ -21,9 +20,11 @@ export default function ItemDetail() {
     inputRef.current?.focus();
   });
 
-  if (itemData?.isAlive === false) {
-    router.push(`/workspace/${boardId}`);
-  }
+  useEffect(() => {
+    if (itemData?.isAlive === false) {
+      router.push(`/workspace/${boardId}`);
+    }
+  }, [itemData?.isAlive]);
 
   useEffect(() => {
     async function getItemData() {
@@ -33,10 +34,12 @@ export default function ItemDetail() {
         .doc(String(itemId))
         .onSnapshot((result: any) => {
           setItemData(result.data());
+          setItemTitle(result.data()?.itemTitle);
+          setItemContents(result.data()?.itemContents);
         });
     }
     getItemData();
-  }, [itemId]);
+  }, [boardId]);
 
   const onClickEnterToBoard = () => {
     router.push(`/workspace/${boardId}`);
@@ -49,15 +52,13 @@ export default function ItemDetail() {
       isAlive: false,
     };
     firebase.firestore().collection("item").doc(itemId).update(data);
-
     firebase.firestore().collection("item").doc(itemId).delete();
-    router.push(`/workspace/${boardId}`);
   };
 
-  const updateItemTitle = () => {
+  console.log(itemData, "ddd");
+  const updateItemTitle = async () => {
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
-
       return;
     }
 
@@ -65,18 +66,15 @@ export default function ItemDetail() {
       itemTitle: ItemTitle,
       createdAt: new Date(),
     };
-    firebase.firestore().collection("item").doc(itemId).update(data);
-
+    await firebase.firestore().collection("item").doc(itemId).update(data);
     setIsOpenTitle(false);
   };
 
   const updateItemContents = () => {
     if (ItemContents === "") {
       Modal.error({ content: "내용을 입력해주세요." });
-
       return;
     }
-
     const data = {
       createdAt: new Date(),
       itemContents: ItemContents,
@@ -102,7 +100,6 @@ export default function ItemDetail() {
     setIsOpenTitle(false);
   };
 
-
   return (
     <div>
       <ItemDetailUI
@@ -122,6 +119,7 @@ export default function ItemDetail() {
         setIsOpenModal={setIsOpenModal}
         onClickItemTitel={onClickItemTitel}
         onClickItemContents={onClickItemContents}
+        ItemContents={ItemContents}
       />
     </div>
   );
