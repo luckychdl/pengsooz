@@ -92,10 +92,13 @@ export const DetailContentsTextArea = styled.textarea`
   }
 `;
 
-export const DetailContentsDiv = styled.div`
+export const DetailContentsDiv = styled.textarea`
   width: 100%;
-  height: 120px;
+  height: 140px;
   padding: 4px 12px;
+  background-color: rebeccapurple;
+  min-height: 140px;
+  /* overflow: auto; */
 
-  overflow: auto;
+  word-break: break-all;
 `;

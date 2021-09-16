@@ -8,7 +8,9 @@ export default function ItemUI(props: any) {
           <div key={data.id}>
             {data.basketId === props.basketId && (
               <ItemContainer onClick={props.onClickEnterToItemDetail(data)}>
+                {/* <div style={{ backgroundColor: "green", width: "200px" }}> */}
                 {data.itemTitle}
+                {/* </div> */}
               </ItemContainer>
             )}
           </div>

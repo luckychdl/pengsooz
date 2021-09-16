@@ -26,6 +26,8 @@ export default function ItemEditUI(props: Iprops) {
             <ItemContainerEdit>
               <ItemEditInput
                 onChange={props.onChangeItemTitle}
+                maxLength={30}
+                // onBlur={() => props.setIsAdd(false)}
                 ref={props.inputRef}
               />
               <ItemBtnDiv>
