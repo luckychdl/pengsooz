@@ -13,7 +13,6 @@ interface ICustomBoardModalProps {
   defaultValue: string;
   setColorCode: Dispatch<SetStateAction<string>>;
 }
-
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -72,18 +71,7 @@ const BottomWrapper = styled.div`
   padding-top: 12px;
 `;
 
-const colorList = {
-  paleturquoise: "#B2EBF2",
-  navajowhite: "#FFE0B2",
-  lightgray: "#C8E6C9",
-  hotpink: "#F48FB1",
-  lavender: "#F3E5F5",
-  lemonchiffon: "#FFF9C4",
-  gainsboro: "#E0E0E0",
-  cornflowerblue: "#42A5F5",
-};
-
-const colorStateInit = {
+export const colorStateInit = {
   "#B2EBF2": false,
   "#FFE0B2": false,
   "#C8E6C9": false,
@@ -94,12 +82,25 @@ const colorStateInit = {
   "#42A5F5": false,
 };
 
+interface IColorList {
+  [key: string]: keyof typeof colorStateInit;
+}
+const colorList: IColorList = {
+  paleturquoise: "#B2EBF2",
+  navajowhite: "#FFE0B2",
+  lightgray: "#C8E6C9",
+  hotpink: "#F48FB1",
+  lavender: "#F3E5F5",
+  lemonchiffon: "#FFF9C4",
+  gainsboro: "#E0E0E0",
+  cornflowerblue: "#42A5F5",
+};
+
 const CustomBoard = (props: ICustomBoardModalProps) => {
   const [colorState, setColorState] = useState(colorStateInit);
 
-  const onClickChangeColorState = (color: string) => {
+  const onClickChangeColorState = (color: keyof typeof colorStateInit) => {
     const newColorState = { ...colorStateInit };
-    // @ts-ignore
     newColorState[color] = true;
     setColorState(newColorState);
   };
@@ -123,7 +124,6 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
                 color={data}
                 setColorCode={props.setColorCode}
                 onClickChangeColorState={onClickChangeColorState}
-                // @ts-ignore
                 isChecked={colorState[data]}
               />
             ))}

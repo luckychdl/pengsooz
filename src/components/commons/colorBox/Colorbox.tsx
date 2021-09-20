@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { CheckOutlined } from "@ant-design/icons";
 import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { colorStateInit } from "../modal/CustomBoard.modal";
 
 interface IColorBoxProps {
-  color: string;
   isChecked: boolean;
+  color: keyof typeof colorStateInit;
   setColorCode: Dispatch<SetStateAction<string>>;
-  onClickChangeColorState: (color: string) => void;
+  onClickChangeColorState: (color: keyof typeof colorStateInit) => void;
 }
 
 interface IProps {
