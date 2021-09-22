@@ -2,8 +2,8 @@ import {
   Wrapper,
   AddItem,
   ItemContainerEdit,
-  ItemEditInput,
-  ItemBtnDiv,
+  ItemCreateInput,
+  ItemCreateBtn,
 } from "./itemEdit.styles";
 
 import MicroButton from "../../../commons/button/micro.Button";
@@ -15,6 +15,7 @@ interface Iprops {
   isAdd: boolean;
   setIsAdd: any;
   inputRef: any;
+  colorCode: string;
 }
 
 export default function ItemEditUI(props: Iprops) {
@@ -23,23 +24,22 @@ export default function ItemEditUI(props: Iprops) {
       {props.isAdd ? (
         <div>
           <Wrapper>
-            <ItemContainerEdit>
-              <ItemEditInput
+            <ItemContainerEdit color={props.colorCode}>
+              <ItemCreateInput
                 onChange={props.onChangeItemTitle}
                 maxLength={30}
-                // onBlur={() => props.setIsAdd(false)}
                 ref={props.inputRef}
               />
-              <ItemBtnDiv>
+              <ItemCreateBtn>
+                <MicroButton
+                  buttonName="생성하기"
+                  onClick={props.onClickAddItem}
+                />
                 <MicroButton
                   buttonName="취소하기"
                   onClick={() => props.setIsAdd(false)}
                 />
-                <MicroButton
-                  buttonName="생성하기!"
-                  onClick={props.onClickAddItem}
-                />
-              </ItemBtnDiv>
+              </ItemCreateBtn>
             </ItemContainerEdit>
           </Wrapper>
         </div>

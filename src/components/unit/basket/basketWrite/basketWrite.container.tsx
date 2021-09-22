@@ -3,10 +3,16 @@ import { ChangeEvent, useState } from "react";
 import { Modal } from "antd";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import { useRouter } from "next/router";
+import { useDocument } from "react-firebase-hooks/firestore";
+
 const BasketWritePage = (props: any) => {
   const [isAdd, setIsAdd] = useState(false);
   const [basketTitle, setBasketTitle] = useState("");
   const router = useRouter();
+  const boardId = router.query.boardId;
+  const [boardValue] = useDocument(dbservice.doc(`boards/${boardId}`), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
   const onClickAddBasket = () => {
     setIsAdd((prev) => !prev);
   };
@@ -14,7 +20,6 @@ const BasketWritePage = (props: any) => {
     setBasketTitle(event.target.value);
   };
   const basketId = dbservice.collection("basket").doc().id;
-  const boardId = router.query.boardId;
   const value = {
     basketId: basketId,
     boardId: boardId,
@@ -39,6 +44,7 @@ const BasketWritePage = (props: any) => {
   return (
     <BasketWritePageUI
       isAdd={isAdd}
+      colorCode={boardValue?.data()?.colorCode}
       onClickAddBasket={onClickAddBasket}
       onClickCreateBasket={onClickCreateBasket}
       onChangeAddBasket={onChangeAddBasket}

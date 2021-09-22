@@ -5,20 +5,19 @@ import Select from "../../commons/modal/Select.modal";
 import Blur from "../../commons/blur/Blur";
 import { Dropdown } from "antd";
 import {
+  Wrapper,
   HeadWrapper,
   TopWrapper,
   ArrowLeftIcon,
   MenuIcon,
   BoardTitle,
   BasketWrapper,
-  // BeforeBasket,
-  // CurrentPage,
-  // AfterBasket,
   BasketPageWrapper,
-  Pages,
+  BasketPage,
 } from "./board.styles";
 
 export default function BoardUI(props: any) {
+  const colorCode = props.value?.data()?.colorCode;
   return (
     <div>
       {props.isOpen && (
@@ -42,8 +41,8 @@ export default function BoardUI(props: any) {
         />
       )}
       {props.value?.data()?.title ? (
-        <>
-          <HeadWrapper color={props.value?.data()?.colorCode}>
+        <Wrapper color={`/images/${colorCode.slice(1).concat(".jpeg")}`}>
+          <HeadWrapper color={colorCode}>
             <TopWrapper>
               <ArrowLeftIcon onClick={props.onClickEnterToWS} />
               <Dropdown
@@ -67,19 +66,15 @@ export default function BoardUI(props: any) {
           </HeadWrapper>
           <BasketWrapper>
             {props.isMenu && <Blur />}
-            {/* <BeforeBasket /> */}
-            {/* <CurrentPage> */}
             <Basket boardId={props.boardId} />
-            {/* </CurrentPage> */}
-            {/* <AfterBasket /> */}
           </BasketWrapper>
-          <BasketPageWrapper color={props.value?.data()?.colorCode}>
-            <Pages src="/images/default_profile.png" />
-            <Pages src="/images/default_profile.png" />
-            <Pages src="/images/default_profile.png" />
-            <Pages src="/images/default_profile.png" />
+          <BasketPageWrapper color={colorCode}>
+            <BasketPage src="/images/default_profile.png" />
+            <BasketPage src="/images/default_profile.png" />
+            <BasketPage src="/images/default_profile.png" />
+            <BasketPage src="/images/default_profile.png" />
           </BasketPageWrapper>
-        </>
+        </Wrapper>
       ) : (
         <></>
       )}

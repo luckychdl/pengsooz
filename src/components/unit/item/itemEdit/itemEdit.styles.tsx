@@ -5,45 +5,38 @@ export const Wrapper = styled.div`
 `;
 
 export const ItemContainerEdit = styled.div`
-  background-color: green;
-  width: 100%;
-  /* height: 36px; */
-  padding: 12px;
-  margin-bottom: 12px;
-
-  line-height: 36px;
-  border-radius: 4px;
-  overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  line-height: 36px;
+  border-radius: 4px;
+  background: ${(props) => props.color};
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 `;
 
-export const ItemEditInput = styled.input`
+export const ItemCreateInput = styled.input`
   width: 100%;
   height: 36px;
+  padding-left: 8px;
+  outline: none;
+  border-color: whitesmoke;
 `;
 
-export const ItemBtnDiv = styled.div`
-  background-color: orchid;
-  width: 100%;
-
-  margin-top: 12px;
-
+export const ItemCreateBtn = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 12px;
 `;
 
 export const AddItem = styled.div`
-  /* background-color: greenyellow; */
   width: 100%;
   height: 96px;
   line-height: 82px;
   padding-top: 12px;
   font-size: 24px;
   text-align: center;
-
-  margin-bottom: 12px;
 `;

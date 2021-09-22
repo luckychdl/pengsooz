@@ -1,15 +1,17 @@
 import ItemUI from "./item.presenter";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import firebase from "../../../../commons/firebase/firebase";
+import firebase, { dbservice } from "../../../../commons/firebase/firebase";
+import { useDocument } from "react-firebase-hooks/firestore";
 
 export default function Items(props: any) {
   const router = useRouter();
   const [ItemData, setItemdata] = useState([]);
-
   const [isAdd, setIsAdd] = useState(false);
-
   const boardId = router.query.boardId;
+  const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   const onClickEnterToItemDetail = (event: any) => () => {
     const itemId = event.itemId;
@@ -37,6 +39,7 @@ export default function Items(props: any) {
         setIsAdd={setIsAdd}
         ItemData={ItemData}
         basketId={props.basketId}
+        colorCode={value?.data()?.colorCode}
       />
     </div>
   );

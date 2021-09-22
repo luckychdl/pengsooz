@@ -1,10 +1,31 @@
 import styled from "@emotion/styled";
 import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  ::before {
+    content: "";
+    background-image: url(${(props) => props.color});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 43%;
+    opacity: 0.6;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+`;
 export const HeadWrapper = styled.div`
-  background: ${(props) => props.color};
+  position: relative;
   width: 100%;
   padding: 12px;
+  background: ${(props) => props.color};
 `;
 export const TopWrapper = styled.div`
   display: flex;
@@ -29,26 +50,11 @@ export const BoardTitle = styled.div`
 export const BasketWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  position: relative;
   width: 100%;
-  margin-bottom: 50px;
-  background-color: violet;
+  height: 526px;
+  padding: 20px 0;
 `;
-// export const BeforeBasket = styled.div`
-//   width: 5%;
-//   border-top-right-radius: 8px;
-//   border-bottom-right-radius: 8px;
-//   background-color: red;
-// `;
-// export const CurrentPage = styled.div`
-//   width: 100%;
-//   background-color: green;
-// `;
-// export const AfterBasket = styled.div`
-//   width: 5%;
-//   border-top-left-radius: 8px;
-//   border-bottom-left-radius: 8px;
-//   background-color: royalblue;
-// `;
 export const BasketPageWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -60,7 +66,7 @@ export const BasketPageWrapper = styled.div`
   height: 40px;
   background: ${(props) => props.color};
 `;
-export const Pages = styled.img`
+export const BasketPage = styled.img`
   width: 16px;
   height: 16px;
   margin: 2px;

@@ -1,21 +1,20 @@
-import MenuModal from "../../../commons/modal/Menu.modal";
-import Item from "../../item/item";
 import {
-  SubWrapper,
-  BasketTitle,
+  ScrollSnapWrapper,
   Wrapper,
-  DetailWrapper,
+  BasketInfo,
+  BasketTitle,
   BasketMenu,
-  AlignWrapper,
-  AddWrapper,
-  BasketContainerEdit,
+  BasketEdit,
   BasketEditInput,
-  BasketBtnDiv,
+  BasketEditBtn,
 } from "./basketDetail.styles";
+import Item from "../../item/item";
 import MicroButton from "../../../commons/button/micro.Button";
-import { Dropdown } from "antd";
+import MenuModal from "../../../commons/modal/Menu.modal";
 import SelectModal from "../../../commons/modal/Select.modal";
+import { Dropdown } from "antd";
 import { ChangeEvent } from "react";
+
 interface IBasketDetailPageUI {
   isModal: boolean;
   isUpdate: boolean;
@@ -24,6 +23,7 @@ interface IBasketDetailPageUI {
   updateTitle: string;
   setIsMenu: any;
   boardId: string;
+  colorCode: string;
   messagesRef: any;
   onClickLeft: () => void;
   onClickRight: () => void;
@@ -34,12 +34,10 @@ interface IBasketDetailPageUI {
   onClickDeleteComfirm: () => void;
   onChangeUpdateTitle: (event: ChangeEvent<HTMLInputElement>) => void;
 }
+
 const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
   return (
     <>
-      <div style={{ width: "60px", backgroundColor: "aqua", color: "aqua" }}>
-        asd
-      </div>
       {props.isModal && (
         <SelectModal
           buttonNameLeft="예"
@@ -50,35 +48,29 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
         />
       )}
       {props.boardId === props.doc.data().boardId && (
-        <SubWrapper ref={props.messagesRef}>
+        <ScrollSnapWrapper ref={props.messagesRef}>
           <Wrapper>
             {props.isUpdate ? (
-              <SubWrapper>
-                <AddWrapper>
-                  <BasketContainerEdit>
-                    <BasketEditInput
-                      onChange={props.onChangeUpdateTitle}
-                      defaultValue={props.doc.data().title}
-                      maxLength={10}
-                    />
-                    <BasketBtnDiv>
-                      <MicroButton
-                        buttonName="취소하기"
-                        onClick={props.onClickCancel}
-                      />
-                      <MicroButton
-                        buttonName="수정하기"
-                        onClick={props.onClickUpdate}
-                      />
-                    </BasketBtnDiv>
-                  </BasketContainerEdit>
-                </AddWrapper>
-              </SubWrapper>
+              <BasketEdit color={props.colorCode}>
+                <BasketEditInput
+                  onChange={props.onChangeUpdateTitle}
+                  defaultValue={props.doc.data().title}
+                  maxLength={10}
+                />
+                <BasketEditBtn>
+                  <MicroButton
+                    buttonName="수정하기"
+                    onClick={props.onClickUpdate}
+                  />
+                  <MicroButton
+                    buttonName="취소하기"
+                    onClick={props.onClickCancel}
+                  />
+                </BasketEditBtn>
+              </BasketEdit>
             ) : (
-              <DetailWrapper>
-                <AlignWrapper>
-                  <BasketTitle>{props.doc.data().title}</BasketTitle>
-                </AlignWrapper>
+              <BasketInfo>
+                <BasketTitle>{props.doc.data().title}</BasketTitle>
                 <Dropdown
                   overlayStyle={{ paddingTop: "10px" }}
                   overlay={
@@ -95,11 +87,11 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                 >
                   <BasketMenu onClick={props.onClickMenu}>...</BasketMenu>
                 </Dropdown>
-              </DetailWrapper>
+              </BasketInfo>
             )}
             <Item basketId={props.doc.data().basketId} />
           </Wrapper>
-        </SubWrapper>
+        </ScrollSnapWrapper>
       )}
     </>
   );
