@@ -11,9 +11,9 @@ import {
   MenuIcon,
   BoardTitle,
   BasketWrapper,
-  BeforeBasket,
-  CurrentPage,
-  AfterBasket,
+  // BeforeBasket,
+  // CurrentPage,
+  // AfterBasket,
   BasketPageWrapper,
   Pages,
 } from "./board.styles";
@@ -67,14 +67,17 @@ export default function BoardUI(props: any) {
           </HeadWrapper>
           <BasketWrapper>
             {props.isMenu && <Blur />}
-            <BeforeBasket />
-            <CurrentPage>
-              <Basket boardId={props.boardId} />
-            </CurrentPage>
-            <AfterBasket />
+            {/* <BeforeBasket /> */}
+            {/* <CurrentPage> */}
+            <Basket boardId={props.boardId} />
+            {/* </CurrentPage> */}
+            {/* <AfterBasket /> */}
           </BasketWrapper>
-          <BasketPageWrapper>
-            <Pages /> <Pages /> <Pages /> <Pages />
+          <BasketPageWrapper color={props.value?.data()?.colorCode}>
+            <Pages src="/images/default_profile.png" />
+            <Pages src="/images/default_profile.png" />
+            <Pages src="/images/default_profile.png" />
+            <Pages src="/images/default_profile.png" />
           </BasketPageWrapper>
         </>
       ) : (

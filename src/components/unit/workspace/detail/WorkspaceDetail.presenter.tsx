@@ -5,7 +5,7 @@ const WorkspaceDetailUI = (props: IWorkspaceDetailUIProps) => {
   const colorCode = props.boards?.data().colorCode;
   return (
     <Wrapper onClick={props.onClickMoveToBoard}>
-      <Image src={`/images/${colorCode.slice(1).concat(".jpeg")}`} />
+      <Image color={`/images/${colorCode.slice(1).concat(".jpeg")}`} />
       <Text>{props.boards?.data().title}</Text>
     </Wrapper>
   );

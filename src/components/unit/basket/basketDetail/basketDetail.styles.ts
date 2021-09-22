@@ -16,11 +16,11 @@ export const Wrapper = styled.div`
   margin-bottom: 30px;
 `;
 export const BasketTitle = styled.div`
+  width: 100%;
   font-size: 20px;
   font-weight: 400;
   text-align: center;
 `;
-
 export const AddBasket = styled.div`
   font-size: 20px;
   font-weight: 400;
@@ -30,7 +30,6 @@ export const AddBasket = styled.div`
 export const AddWrapper = styled.div`
   width: 100%;
 `;
-
 export const BasketContainerEdit = styled.div`
   background-color: orange;
   width: 330px;
@@ -43,12 +42,10 @@ export const BasketContainerEdit = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
-
 export const BasketEditInput = styled.input`
   width: 100%;
   height: 36px;
 `;
-
 export const BasketBtnDiv = styled.div`
   background-color: orchid;
   width: 100%;
@@ -61,7 +58,7 @@ export const DetailWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const ShowDetail = styled.div`
+export const BasketMenu = styled.div`
   height: 15px;
 `;
 export const AlignWrapper = styled.div`
