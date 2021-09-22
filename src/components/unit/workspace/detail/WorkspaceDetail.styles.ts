@@ -10,12 +10,16 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 25px -25px;
 `;
-export const Image = styled.img`
+export const Image = styled.div`
   width: 100%;
   height: 64px;
-  border-bottom: none;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  background-image: url(${(props) => props.color});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: 43%;
 `;
 export const Text = styled.div`
   width: 100%;

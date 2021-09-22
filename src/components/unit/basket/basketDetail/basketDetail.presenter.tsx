@@ -5,7 +5,7 @@ import {
   BasketTitle,
   Wrapper,
   DetailWrapper,
-  ShowDetail,
+  BasketMenu,
   AlignWrapper,
   AddWrapper,
   BasketContainerEdit,
@@ -79,25 +79,22 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                 <AlignWrapper>
                   <BasketTitle>{props.doc.data().title}</BasketTitle>
                 </AlignWrapper>
-                {props.isMenu && (
-                  <Dropdown
-                    overlayStyle={{ paddingTop: "20px" }}
-                    overlay={
-                      <MenuModal
-                        buttonNameUpdate="바스켓 수정하기"
-                        onClickUpdate={props.onClickBasketUpdate}
-                        onClickDelete={props.onClickDeleteComfirm}
-                        buttonNameDelete="바스켓 삭제하기"
-                      />
-                    }
-                    trigger={["click"]}
-                    placement="bottomRight"
-                    visible={props.isMenu}
-                  >
-                    <div></div>
-                  </Dropdown>
-                )}
-                <ShowDetail onClick={props.onClickMenu}>...</ShowDetail>
+                <Dropdown
+                  overlayStyle={{ paddingTop: "10px" }}
+                  overlay={
+                    <MenuModal
+                      buttonNameTop="바스켓 수정하기"
+                      buttonNameBottom="바스켓 삭제하기"
+                      onClickTop={props.onClickBasketUpdate}
+                      onClickBottom={props.onClickDeleteComfirm}
+                    />
+                  }
+                  trigger={["click"]}
+                  placement="bottomRight"
+                  visible={props.isMenu}
+                >
+                  <BasketMenu onClick={props.onClickMenu}>...</BasketMenu>
+                </Dropdown>
               </DetailWrapper>
             )}
             <Item basketId={props.doc.data().basketId} />
