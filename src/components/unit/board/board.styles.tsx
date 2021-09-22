@@ -2,52 +2,33 @@ import styled from "@emotion/styled";
 import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 
 export const HeadWrapper = styled.div`
-  background-color: royalblue;
+  background: ${(props) => props.color};
   width: 100%;
   padding: 12px;
 `;
 
 export const TopWrapper = styled.div`
-  background-color: salmon;
-  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  padding-bottom: 12px;
 `;
 
-export const ArrowLeftOut = styled(ArrowLeftOutlined)`
+export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
   font-size: 20px;
 `;
 
-export const MenuOut = styled(MenuOutlined)`
+export const MenuIcon = styled(MenuOutlined)`
   font-size: 20px;
-`;
-
-export const BodyWrapper = styled.div`
-  background-color: skyblue;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const BoardBoxImg = styled.img`
-  background-color: springgreen;
-  width: 80px;
-  height: 80px;
-`;
-
-export const RightWrapper = styled.div`
-  background-color: slategray;
-  width: 244px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 `;
 
 export const BoardTitle = styled.div`
-  margin-left: 20px;
-  font-size: 16px;
+  width: 100%;
+  height: 18px;
+  font-family: "Oboksanghoe_B";
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
 `;
 
 export const BasketWrapper = styled.div`

@@ -5,12 +5,12 @@ import { EditOutlined } from "@ant-design/icons";
 import ColorBox from "../colorBox/Colorbox";
 
 interface ICustomBoardModalProps {
+  defaultValue: string;
+  buttonNameLeft: string;
+  buttonNameRight: string;
   onClickLeft: () => void;
   onClickRight: () => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  buttonNameLeft: string;
-  buttonNameRight: string;
-  defaultValue: string;
   setColorCode: Dispatch<SetStateAction<string>>;
 }
 const Wrapper = styled.div`
@@ -22,7 +22,6 @@ const Wrapper = styled.div`
   backdrop-filter: blur(2px);
 `;
 const InnerWrapper = styled.div`
-  background-color: #fcf9ee;
   width: 280px;
   padding: 12px;
   border-radius: 4%;
@@ -30,13 +29,13 @@ const InnerWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  background-color: #ffffff;
 `;
 const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 38px;
-  background-color: #ffffff;
   margin-bottom: 12px;
 `;
 const TitleIcon = styled(EditOutlined)`
@@ -48,7 +47,7 @@ const TitleInput = styled.input`
   border: none;
   font-size: 16px;
   ::placeholder {
-    color: #e2e1d7;
+    /* color: #000000; */
   }
 `;
 const MiddleWrapper = styled.div`
@@ -72,28 +71,28 @@ const BottomWrapper = styled.div`
 `;
 
 export const colorStateInit = {
-  "#B2EBF2": false,
-  "#FFE0B2": false,
-  "#C8E6C9": false,
-  "#F48FB1": false,
-  "#F3E5F5": false,
-  "#FFF9C4": false,
-  "#E0E0E0": false,
-  "#42A5F5": false,
+  "#e7ff9a": false,
+  "#ffdb61": false,
+  "#abff9d": false,
+  "#ff844b": false,
+  "#c3f2ff": false,
+  "#ffc3df": false,
+  "#83c8f7": false,
+  "#9674e0": false,
 };
 
 interface IColorList {
   [key: string]: keyof typeof colorStateInit;
 }
 const colorList: IColorList = {
-  paleturquoise: "#B2EBF2",
-  navajowhite: "#FFE0B2",
-  lightgray: "#C8E6C9",
-  hotpink: "#F48FB1",
-  lavender: "#F3E5F5",
-  lemonchiffon: "#FFF9C4",
-  gainsboro: "#E0E0E0",
-  cornflowerblue: "#42A5F5",
+  palegoldenrod: "#e7ff9a",
+  sandybrown: "#ffdb61",
+  palegreen: "#abff9d",
+  salmon: "#ff844b",
+  paleturquoise: "#c3f2ff",
+  pink: "#ffc3df",
+  lightskyblue: "#83c8f7",
+  mediumpurple: "#9674e0",
 };
 
 const CustomBoard = (props: ICustomBoardModalProps) => {
@@ -112,7 +111,7 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
           <TitleInput
             maxLength={18}
             onChange={props.onChangeTitle}
-            placeholder="New Board"
+            placeholder="이름을 입력하세요"
             defaultValue={props.defaultValue}
           />
         </TitleWrapper>

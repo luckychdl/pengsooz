@@ -1,28 +1,34 @@
 import styled from "@emotion/styled";
 import LargeButton from "../button/large.Button";
 
-const Wrapper = styled.div`
-  background-color: gold;
-  width: 184px;
-  height: 108px;
-  padding: 12px;
+interface IMenuModalProps {
+  buttonNameTop: string;
+  buttonNameBottom: string;
+  onClickTop: () => void;
+  onClickBottom: () => void;
+}
 
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 184px;
+  height: 108px;
+  padding: 12px;
+  background-color: #ffffff;
 `;
 
-export default function MenuModal(props: any) {
+export default function MenuModal(props: IMenuModalProps) {
   return (
     <Wrapper>
       <LargeButton
-        buttonName={props.buttonNameUpdate}
-        onClick={props.onClickUpdate}
+        buttonName={props.buttonNameTop}
+        onClick={props.onClickTop}
       />
 
       <LargeButton
-        buttonName={props.buttonNameDelete}
-        onClick={props.onClickDelete}
+        buttonName={props.buttonNameBottom}
+        onClick={props.onClickBottom}
       />
     </Wrapper>
   );

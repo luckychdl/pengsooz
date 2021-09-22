@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   backdrop-filter: blur(2px);
 `;
 const InnerWrapper = styled.div`
-  background-color: #fcf9ee;
+  background-color: #ffffff;
   width: 280px;
   height: 120px;
   padding: 12px;
@@ -26,7 +26,6 @@ export const Content = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-
   margin-top: 16px;
 `;
 

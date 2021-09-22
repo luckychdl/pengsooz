@@ -62,12 +62,11 @@ export const MiddleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 20px;
 `;
 
 export const Title = styled.div`
   font-size: 16px;
-  padding-bottom: 18px;
+  padding-bottom: 10px;
 `;
 
 export const BoardsWrapper = styled.div`
@@ -76,5 +75,5 @@ export const BoardsWrapper = styled.div`
   flex-wrap: wrap;
   grid-gap: 18px;
   overflow: scroll;
-  height: 350px;
+  height: 392px;
 `;

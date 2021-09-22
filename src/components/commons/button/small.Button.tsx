@@ -7,6 +7,7 @@ export const Button = styled.div`
   text-align: center;
   color: #1c1c1c;
   background-color: #e2e1d7;
+  border-radius: 5px;
 `;
 
 interface ISmallButtonProps {
@@ -14,6 +15,8 @@ interface ISmallButtonProps {
   buttonName: string;
 }
 
-export default function SmallButton(props: ISmallButtonProps) {
+const SmallButton = (props: ISmallButtonProps) => {
   return <Button onClick={props.onClick}>{props.buttonName}</Button>;
-}
+};
+
+export default SmallButton;

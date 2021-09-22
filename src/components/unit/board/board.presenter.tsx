@@ -1,15 +1,14 @@
 import Basket from "../basket/basket.container";
-import CreateBoard from "../../commons/modal/CustomBoard.modal";
-import MenuModal from "../../commons/modal/Menu.modal";
+import CustomBoard from "../../commons/modal/CustomBoard.modal";
+import Menu from "../../commons/modal/Menu.modal";
+import Select from "../../commons/modal/Select.modal";
+import Blur from "../../commons/blur/Blur";
 import { Dropdown } from "antd";
-import SelectModal from "../../commons/modal/Select.modal";
 import {
   HeadWrapper,
   TopWrapper,
-  ArrowLeftOut,
-  MenuOut,
-  BodyWrapper,
-  RightWrapper,
+  ArrowLeftIcon,
+  MenuIcon,
   BoardTitle,
   BasketWrapper,
   BeforeBasket,
@@ -23,8 +22,8 @@ export default function BoardUI(props: any) {
   return (
     <div>
       {props.isOpen && (
-        <CreateBoard
-          buttonNameLeft="보드 수정하기"
+        <CustomBoard
+          buttonNameLeft="수정하기"
           buttonNameRight="취소하기"
           onClickRight={props.onClickCancel}
           onClickLeft={props.onClickUpdate}
@@ -34,7 +33,7 @@ export default function BoardUI(props: any) {
         />
       )}
       {props.isModal && (
-        <SelectModal
+        <Select
           buttonNameLeft="예"
           buttonNameRight="아니요"
           onClickLeft={props.onClickDelete}
@@ -44,33 +43,30 @@ export default function BoardUI(props: any) {
       )}
       {props.value?.data()?.title ? (
         <>
-          <HeadWrapper>
+          <HeadWrapper color={props.value?.data()?.colorCode}>
             <TopWrapper>
-              <ArrowLeftOut onClick={props.onClickEnterToWS} />
+              <ArrowLeftIcon onClick={props.onClickEnterToWS} />
               <Dropdown
                 overlay={
-                  <MenuModal
-                    buttonNameUpdate="보드 수정하기"
-                    buttonNameDelete="보드 삭제하기"
-                    onClickDelete={props.onClickDeleteConfirm}
-                    onClickUpdate={props.onClickCreateBoardModal}
+                  <Menu
+                    buttonNameTop="보드 수정하기"
+                    buttonNameBottom="보드 삭제하기"
+                    onClickTop={props.onClickCreateBoardModal}
+                    onClickBottom={props.onClickDeleteConfirm}
                   />
                 }
                 trigger={["click"]}
                 placement="bottomRight"
                 visible={props.isMenu}
-                arrow
+                arrow={false}
               >
-                <MenuOut onClick={props.onClickMenu} />
+                <MenuIcon onClick={props.onClickMenu} />
               </Dropdown>
             </TopWrapper>
-            <BodyWrapper>
-              <RightWrapper>
-                <BoardTitle>{props.value.data().title}</BoardTitle>
-              </RightWrapper>
-            </BodyWrapper>
+            <BoardTitle>{props.value.data().title}</BoardTitle>
           </HeadWrapper>
           <BasketWrapper>
+            {props.isMenu && <Blur />}
             <BeforeBasket />
             <CurrentPage>
               <Basket boardId={props.boardId} />

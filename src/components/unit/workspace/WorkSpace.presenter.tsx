@@ -60,7 +60,7 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
           </ProfileWrapper>
         </TopWrapper>
         <MiddleWrapper>
-          <Title>My Boards List</Title>
+          <Title>Boards List</Title>
           <BoardsWrapper>
             {!props.boardsLoading &&
               props.boards &&
