@@ -5,17 +5,17 @@ import firebase, { dbservice } from "../../../commons/firebase/firebase";
 import { Modal } from "antd";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+
 export default function Board(props: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const [user] = useAuthState(firebase.auth());
   const router = useRouter();
   const boardId: any = router.query.boardId;
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-
-  const [isModal, setIsModal] = useState(false);
 
   const [updateTitle, setUpdateTitle] = useState("");
   const [colorCode, setColorCode] = useState("");

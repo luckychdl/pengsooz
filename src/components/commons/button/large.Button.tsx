@@ -1,14 +1,22 @@
 import styled from "@emotion/styled";
 
-export default function LargeButton(props) {
-  const Button = styled.div`
-    background-color: red;
-    width: 160px;
-    height: 36px;
+const Button = styled.div`
+  width: 160px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #1c1c1c;
+  background-color: #e2e1d7;
+  border-radius: 5px;
+`;
 
-    line-height: 36px;
-    text-align: center;
-  `;
-
-  return <Button onClick={props.onClick}>{props.buttonName}</Button>;
+interface ILargeButtonProps {
+  onClick: () => void;
+  buttonName: string;
 }
+
+const LargeButton = (props: ILargeButtonProps) => {
+  return <Button onClick={props.onClick}>{props.buttonName}</Button>;
+};
+
+export default LargeButton;

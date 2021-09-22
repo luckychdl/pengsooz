@@ -9,10 +9,6 @@ export const globalStyles = css`
       sans-serif;
   }
 
-  body {
-    background-color: #fcf9ee;
-  }
-
   @font-face {
     font-family: "Oboksanghoe_B";
     src: url("/fonts/Oboksanghoe_B.otf");
@@ -26,6 +22,10 @@ export const globalStyles = css`
   @font-face {
     font-family: "Oboksanghoe_R";
     src: url("/fonts/Oboksanghoe_R.otf");
+  }
+
+  body {
+    background-color: #fcf9ee;
   }
 
   button {
