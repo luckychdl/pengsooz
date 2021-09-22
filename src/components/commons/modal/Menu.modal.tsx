@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   width: 184px;
   height: 108px;
   padding: 12px;
-  background-color: #ffffff;
+  background-color: #fcf9ee;
 `;
 
 export default function MenuModal(props: IMenuModalProps) {

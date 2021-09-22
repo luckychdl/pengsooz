@@ -1,13 +1,20 @@
 import BasketDetailPageUI from "./basketDetail.presenter";
+import { useDocument } from "react-firebase-hooks/firestore";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import { ChangeEvent, useState } from "react";
 import { Modal } from "antd";
+import { useRouter } from "next/router";
 
 const BasketDetailPage = (props: any) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [updateTitle, setUpdateTitle] = useState(props.doc.data().title);
+  const router = useRouter();
+  const boardId = router.query.boardId;
+  const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   const onClickMenu = () => {
     setIsMenu((prev) => !prev);
@@ -64,6 +71,7 @@ const BasketDetailPage = (props: any) => {
       doc={props.doc}
       messagesRef={props.messagesRef}
       boardId={props.boardId}
+      colorCode={value?.data()?.colorCode}
       setIsMenu={setIsMenu}
       onClickLeft={onClickLeft}
       onClickRight={onClickRight}

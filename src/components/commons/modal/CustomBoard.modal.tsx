@@ -29,7 +29,7 @@ const InnerWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff;
+  background-color: #fcf9ee;
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -37,6 +37,7 @@ const TitleWrapper = styled.div`
   width: 100%;
   height: 38px;
   margin-bottom: 12px;
+  background-color: #ffffff;
 `;
 const TitleIcon = styled(EditOutlined)`
   font-size: 18px;
@@ -46,9 +47,6 @@ const TitleInput = styled.input`
   width: 85%;
   border: none;
   font-size: 16px;
-  ::placeholder {
-    /* color: #000000; */
-  }
 `;
 const MiddleWrapper = styled.div`
   width: 100%;
@@ -78,7 +76,7 @@ export const colorStateInit = {
   "#c3f2ff": false,
   "#ffc3df": false,
   "#83c8f7": false,
-  "#9674e0": false,
+  "#8a66dd": false,
 };
 
 interface IColorList {
@@ -92,7 +90,7 @@ const colorList: IColorList = {
   paleturquoise: "#c3f2ff",
   pink: "#ffc3df",
   lightskyblue: "#83c8f7",
-  mediumpurple: "#9674e0",
+  mediumpurple: "#8a66dd",
 };
 
 const CustomBoard = (props: ICustomBoardModalProps) => {
@@ -111,7 +109,7 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
           <TitleInput
             maxLength={18}
             onChange={props.onChangeTitle}
-            placeholder="이름을 입력하세요"
+            placeholder="보드 이름을 입력하세요 :)"
             defaultValue={props.defaultValue}
           />
         </TitleWrapper>

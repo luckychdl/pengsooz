@@ -1,11 +1,18 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ItemEditUI from "./itemEdit.presenter";
-import firebase from "../../../../commons/firebase/firebase";
+import firebase, { dbservice } from "../../../../commons/firebase/firebase";
 import { Modal } from "antd";
+import { useRouter } from "next/router";
+import { useDocument } from "react-firebase-hooks/firestore";
 
 export default function ItemEdit(props: any) {
   const [isAdd, setIsAdd] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
+  const router = useRouter();
+  const boardId = router.query.boardId;
+  const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -41,6 +48,7 @@ export default function ItemEdit(props: any) {
   return (
     <div>
       <ItemEditUI
+        colorCode={value?.data()?.colorCode}
         onChangeItemTitle={onChangeItemTitle}
         onClickAddItem={onClickAddItem}
         isAdd={isAdd}

@@ -1,68 +1,54 @@
 import styled from "@emotion/styled";
 
-export const SubWrapper = styled.div`
+export const ScrollSnapWrapper = styled.div`
   scroll-snap-type: x mandatory;
 `;
 export const Wrapper = styled.div`
-  background-color: red;
-  width: 330px;
-  padding: 12px;
-  margin-left: 12px;
-  overflow: hidden;
-  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  margin-bottom: 30px;
-`;
-export const BasketTitle = styled.div`
-  width: 100%;
-  font-size: 20px;
-  font-weight: 400;
-  text-align: center;
-`;
-export const AddBasket = styled.div`
-  font-size: 20px;
-  font-weight: 400;
-  width: 320px;
-  text-align: center;
-`;
-export const AddWrapper = styled.div`
-  width: 100%;
-`;
-export const BasketContainerEdit = styled.div`
-  background-color: orange;
   width: 330px;
   padding: 12px;
-  margin-bottom: 12px;
-  line-height: 36px;
-  border-radius: 4px;
-  overflow: hidden;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  scroll-snap-align: center;
+`;
+export const BasketEdit = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: ${(props) => props.color};
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 `;
 export const BasketEditInput = styled.input`
   width: 100%;
   height: 36px;
+  padding-left: 8px;
+  outline: none;
+  border-color: whitesmoke;
 `;
-export const BasketBtnDiv = styled.div`
-  background-color: orchid;
+export const BasketEditBtn = styled.div`
+  display: flex;
+  justify-content: space-evenly;
   width: 100%;
-  margin-top: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  padding-top: 12px;
 `;
-export const DetailWrapper = styled.div`
+export const BasketInfo = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+`;
+export const BasketTitle = styled.div`
+  width: 100%;
+  padding-left: 8px;
+  font-size: 20px;
+  font-weight: 400;
 `;
 export const BasketMenu = styled.div`
+  width: 30px;
   height: 15px;
-`;
-export const AlignWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  text-align: center;
 `;
