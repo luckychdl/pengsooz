@@ -1,37 +1,39 @@
 import styled from "@emotion/styled";
 import { EnterOutlined } from "@ant-design/icons";
 
+export const CommentsWriteDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 export const CommentTitle = styled.div`
   width: 100%;
-  background-color: seashell;
   margin-bottom: 12px;
+  font-family: "Oboksanghoe_B";
 `;
-
 export const CommentsInnerDiv = styled.div`
-  background-color: red;
-  width: 100%;
-
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  vertical-align: center;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 `;
-
 export const CommentContentsInput = styled.input`
   width: 100%;
   height: 32px;
   padding: 0 12px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.7);
 `;
-
-export const CommentsWriteDiv = styled.div`
-  background-color: gray;
-  width: 100%;
-  padding: 0 12px 12px 12px;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const EnterOut = styled(EnterOutlined)`
+export const EnterIcon = styled(EnterOutlined)`
   height: 32px;
-  padding-top: 4px;
+  padding: 0 6px;
   font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  vertical-align: center;
+  background: ${(props) => props.color};
 `;

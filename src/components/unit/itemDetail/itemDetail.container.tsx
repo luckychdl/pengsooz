@@ -1,11 +1,16 @@
 import ItemDetailUI from "./itemDetail.presenter";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import firebase from "../../../commons/firebase/firebase";
+import firebase, { dbservice } from "../../../commons/firebase/firebase";
 import { Modal } from "antd";
+import { useDocument } from "react-firebase-hooks/firestore";
 
 export default function ItemDetail() {
   const router = useRouter();
+  const boardId = router.query.boardId;
+  const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
   const [itemData, setItemData] = useState({ isAlive: true });
   const [isOpenTitle, setIsOpenTitle] = useState(false);
   const [isOpenContents, setIsOpenContents] = useState(false);
@@ -13,7 +18,6 @@ export default function ItemDetail() {
   const [ItemTitle, setItemTitle] = useState("");
   const [ItemContents, setItemContents] = useState("");
   const itemId: any = router.query.itemDetail;
-  const boardId = router.query.boardId;
 
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -54,8 +58,6 @@ export default function ItemDetail() {
     firebase.firestore().collection("item").doc(itemId).update(data);
     firebase.firestore().collection("item").doc(itemId).delete();
   };
-
-  console.log(itemData, "ddd");
   const updateItemTitle = async () => {
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
@@ -91,7 +93,7 @@ export default function ItemDetail() {
     setItemContents(event.target.value);
   };
 
-  const onClickItemTitel = () => {
+  const onClickItemTitle = () => {
     setIsOpenTitle(true);
     setIsOpenContents(false);
   };
@@ -103,6 +105,7 @@ export default function ItemDetail() {
   return (
     <div>
       <ItemDetailUI
+        value={value}
         onClickEnterToBoard={onClickEnterToBoard}
         onClickDeleteItem={onClickDeleteItem}
         isOpenTitle={isOpenTitle}
@@ -117,7 +120,7 @@ export default function ItemDetail() {
         onChangeItemContents={onChangeItemContents}
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
-        onClickItemTitel={onClickItemTitel}
+        onClickItemTitle={onClickItemTitle}
         onClickItemContents={onClickItemContents}
         ItemContents={ItemContents}
       />
