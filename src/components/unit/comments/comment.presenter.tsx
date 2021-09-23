@@ -1,6 +1,6 @@
 import CommentsDetail from "./commentsDetail/commentsDetail.container";
 import CommentsWrite from "./commentsWrite/commentsWrite.container";
-import { Wrapper, CommentTitle } from "./comment.styles";
+import { Wrapper, SubWrapper, CommentTitle } from "./comment.styles";
 import { useEffect, useRef } from "react";
 
 export default function CommentUI(props: any) {
@@ -11,9 +11,9 @@ export default function CommentUI(props: any) {
   useEffect(scrollToBottom, [props.value?.docs]);
 
   return (
-    <>
+    <Wrapper>
       <CommentTitle>댓글</CommentTitle>
-      <Wrapper>
+      <SubWrapper>
         {props.error && <strong>Error: {JSON.stringify(props.error)}</strong>}
         {props.loading && <span>Collection: Loading...</span>}
         {props.value &&
@@ -29,8 +29,8 @@ export default function CommentUI(props: any) {
               <div ref={messagesEndRef} />
             </>
           ))}
-      </Wrapper>
+      </SubWrapper>
       <CommentsWrite itemId={props.itemId} user={props.user} />
-    </>
+    </Wrapper>
   );
 }

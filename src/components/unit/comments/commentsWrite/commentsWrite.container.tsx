@@ -1,9 +1,16 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDocument } from "react-firebase-hooks/firestore";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import CommentsWriteUI from "./commentsWrite.presenter";
 
 export default function CommentsWrite(props: any) {
   const [contents, setContents] = useState("");
+  const router = useRouter();
+  const boardId: any = router.query.boardId;
+  const [boardValue] = useDocument(dbservice.doc(`boards/${boardId}`), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   const onChange = (event: any) => {
     setContents(event.target.value);
@@ -26,6 +33,7 @@ export default function CommentsWrite(props: any) {
 
   return (
     <CommentsWriteUI
+      colorCode={boardValue?.data()?.colorCode}
       onClickSubmit={onClickSubmit}
       onChange={onChange}
       contents={contents}

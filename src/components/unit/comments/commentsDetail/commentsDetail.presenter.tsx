@@ -26,6 +26,7 @@ export default function CommentsDetailUi(props: any) {
                     defaultValue={props.value.data().contents}
                     onChange={props.onChange}
                     maxLength={50}
+                    color={props.colorCode}
                   />
                 </CommentsInnerWrapper>
                 <CommentUpdateButton
@@ -37,7 +38,7 @@ export default function CommentsDetailUi(props: any) {
                 <Avatar src={props.value.data().image} />
                 <CommentsInnerWrapper>
                   <DispalayName> {props.value.data().writer}</DispalayName>
-                  <CommentContents>
+                  <CommentContents color={props.colorCode}>
                     {props.value.data().contents}
                   </CommentContents>
                 </CommentsInnerWrapper>

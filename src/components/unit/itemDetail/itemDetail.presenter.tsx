@@ -1,22 +1,23 @@
 import {
   Wrapper,
-  TopWrapper,
-  ArrowLeftOut,
-  DetailTitle,
+  IconWrapper,
+  ArrowLeftIcon,
+  DeleteIcon,
+  TitleWrapper,
   Text,
-  InnerDiv,
   DetailTitleInput,
   DetailTitleDiv,
-  ConfirmButton,
-  DetailContents,
+  ConfirmTitleButton,
+  ContentWrapper,
   DetailContentsTextArea,
   DetailContentsDiv,
-  DeleteOut,
+  ConfirmContentButton,
 } from "./itemDetail.styles";
 import Comments from "../comments/comment.container";
 import Select from "../../commons/modal/Select.modal";
 
 export default function ItemDetailUI(props: any) {
+  const colorCode = props.value?.data()?.colorCode;
   return (
     <div>
       {props.isOpenModal && (
@@ -28,59 +29,53 @@ export default function ItemDetailUI(props: any) {
           onClickRight={() => props.setIsOpenModal(false)}
         />
       )}
-
-      <Wrapper>
-        <TopWrapper>
-          <ArrowLeftOut onClick={props.onClickEnterToBoard} />
-          <DeleteOut onClick={() => props.setIsOpenModal(true)} />
-        </TopWrapper>
-        <DetailTitle>
+      <Wrapper color={`/images/${colorCode?.slice(1).concat(".jpeg")}`}>
+        <IconWrapper>
+          <ArrowLeftIcon onClick={props.onClickEnterToBoard} />
+          <DeleteIcon onClick={() => props.setIsOpenModal(true)} />
+        </IconWrapper>
+        <TitleWrapper>
           <Text>제목</Text>
-
-          <InnerDiv>
-            {props.isOpenTitle ? (
-              <>
-                <DetailTitleInput
-                  defaultValue={props.itemData?.itemTitle}
-                  onChange={props.onChangeItemTitle}
-                  ref={props.inputRef}
-                  maxLength={30}
-                />
-
-                <ConfirmButton onClick={props.updateItemTitle}>
-                  Okay
-                </ConfirmButton>
-              </>
-            ) : (
-              <DetailTitleDiv onClick={props.onClickItemTitel}>
-                {props.itemData?.itemTitle}
-              </DetailTitleDiv>
-            )}
-          </InnerDiv>
-        </DetailTitle>
-        <DetailContents>
-          <Text>내용</Text>
-          <InnerDiv>
-            {props.isOpenContents ? (
-              <>
-                <DetailContentsTextArea
-                  placeholder="상세내용을 입력바람."
-                  defaultValue={props.itemData?.itemContents}
-                  ref={props.inputRef}
-                  onChange={props.onChangeItemContents}
-                />
-                <ConfirmButton onClick={props.updateItemContents}>
-                  Okay
-                </ConfirmButton>
-              </>
-            ) : (
-              <DetailContentsDiv
-                onClick={props.onClickItemContents}
-                defaultValue={props.ItemContents}
+          {props.isOpenTitle ? (
+            <>
+              <DetailTitleInput
+                defaultValue={props.itemData?.itemTitle}
+                onChange={props.onChangeItemTitle}
+                ref={props.inputRef}
+                maxLength={30}
               />
-            )}
-          </InnerDiv>
-        </DetailContents>
+              <ConfirmTitleButton onClick={props.updateItemTitle}>
+                Okay
+              </ConfirmTitleButton>
+            </>
+          ) : (
+            <DetailTitleDiv onClick={props.onClickItemTitle}>
+              {props.itemData?.itemTitle}
+            </DetailTitleDiv>
+          )}
+        </TitleWrapper>
+        <ContentWrapper>
+          <Text>내용</Text>
+          {props.isOpenContents ? (
+            <>
+              <DetailContentsTextArea
+                placeholder="상세내용을 입력바람."
+                defaultValue={props.itemData?.itemContents}
+                ref={props.inputRef}
+                onChange={props.onChangeItemContents}
+              />
+              <ConfirmContentButton onClick={props.updateItemContents}>
+                Okay
+              </ConfirmContentButton>
+            </>
+          ) : (
+            <DetailContentsDiv
+              onClick={props.onClickItemContents}
+              defaultValue={props.ItemContents}
+              readOnly
+            />
+          )}
+        </ContentWrapper>
         <Comments />
       </Wrapper>
     </div>
