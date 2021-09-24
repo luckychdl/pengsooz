@@ -42,7 +42,7 @@ export default function ItemDetailUI(props: any) {
                 defaultValue={props.itemData?.itemTitle}
                 onChange={props.onChangeItemTitle}
                 ref={props.inputRef}
-                maxLength={30}
+                maxLength={22}
               />
               <ConfirmTitleButton onClick={props.updateItemTitle}>
                 Okay
@@ -59,7 +59,7 @@ export default function ItemDetailUI(props: any) {
           {props.isOpenContents ? (
             <>
               <DetailContentsTextArea
-                placeholder="상세내용을 입력바람."
+                placeholder="상세내용을 입력해주세요."
                 defaultValue={props.itemData?.itemContents}
                 ref={props.inputRef}
                 onChange={props.onChangeItemContents}

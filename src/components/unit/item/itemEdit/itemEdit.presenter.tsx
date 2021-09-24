@@ -27,7 +27,7 @@ export default function ItemEditUI(props: Iprops) {
             <ItemContainerEdit color={props.colorCode}>
               <ItemCreateInput
                 onChange={props.onChangeItemTitle}
-                maxLength={30}
+                maxLength={22}
                 ref={props.inputRef}
               />
               <ItemCreateBtn>

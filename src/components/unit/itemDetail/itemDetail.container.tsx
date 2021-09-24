@@ -61,24 +61,19 @@ export default function ItemDetail() {
   const updateItemTitle = async () => {
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
+      setIsOpenTitle(false);
       return;
     }
 
     const data = {
       itemTitle: ItemTitle,
-      createdAt: new Date(),
     };
     await firebase.firestore().collection("item").doc(itemId).update(data);
     setIsOpenTitle(false);
   };
 
   const updateItemContents = () => {
-    if (ItemContents === "") {
-      Modal.error({ content: "내용을 입력해주세요." });
-      return;
-    }
     const data = {
-      createdAt: new Date(),
       itemContents: ItemContents,
     };
     firebase.firestore().collection("item").doc(itemId).update(data);
