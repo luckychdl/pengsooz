@@ -34,12 +34,11 @@ export default function BasketUI(props: any) {
               messagesRef={isPrev ? messagesEndPrevRef : messagesEndRef}
               boardId={props.boardId}
               onClickBasketUpdate={props.onClickBasketUpdate}
-              scrollToBottom={scrollToBottom}
             />
           </>
         );
       })}
-      <BasketWrite messagesEndRef={messagesEndRef} />
+      <BasketWrite />
     </Wrapper>
   );
 }

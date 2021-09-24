@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 
 export default function ItemEdit(props: any) {
-  const [isAdd, setIsAdd] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
   const router = useRouter();
   const boardId = router.query.boardId;
@@ -37,7 +36,7 @@ export default function ItemEdit(props: any) {
     };
 
     firebase.firestore().collection("item").doc(itemId).set(data);
-    setIsAdd(false);
+    props.setIsAdd(false);
     setItemTitle("");
   };
 
@@ -51,8 +50,8 @@ export default function ItemEdit(props: any) {
         colorCode={value?.data()?.colorCode}
         onChangeItemTitle={onChangeItemTitle}
         onClickAddItem={onClickAddItem}
-        isAdd={isAdd}
-        setIsAdd={setIsAdd}
+        isAdd={props.isAdd}
+        setIsAdd={props.setIsAdd}
         inputRef={inputRef}
       />
     </div>
