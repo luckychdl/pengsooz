@@ -54,7 +54,7 @@ export const Text = styled.div`
 export const DetailTitleInput = styled.input`
   width: 100%;
   height: 32px;
-  padding: 0 8px;
+  padding: 0 44px 0 8px;
   overflow: auto;
   border: none;
   background-color: rgba(255, 255, 255, 0.7);
