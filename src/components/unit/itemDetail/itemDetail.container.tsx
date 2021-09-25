@@ -11,15 +11,19 @@ export default function ItemDetail() {
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-  const [itemData, setItemData] = useState({ isAlive: true });
+  const [itemData, setItemData] = useState({
+    isAlive: true,
+    itemTitle: String,
+    itemContents: String,
+  });
   const [isOpenTitle, setIsOpenTitle] = useState(false);
   const [isOpenContents, setIsOpenContents] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [ItemTitle, setItemTitle] = useState("");
-  const [ItemContents, setItemContents] = useState("");
+  const [itemTitle, setItemTitle] = useState("");
+  const [itemContents, setItemContents] = useState("");
   const itemId: any = router.query.itemDetail;
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
   });
@@ -51,7 +55,7 @@ export default function ItemDetail() {
 
   const onClickDeleteItem = () => {
     const data = {
-      itemTitle: ItemTitle,
+      itemTitle: itemTitle,
       createdAt: new Date(),
       isAlive: false,
     };
@@ -59,13 +63,13 @@ export default function ItemDetail() {
     firebase.firestore().collection("item").doc(itemId).delete();
   };
   const updateItemTitle = async () => {
-    if (ItemTitle === "") {
+    if (itemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
       return;
     }
 
     const data = {
-      itemTitle: ItemTitle,
+      itemTitle: itemTitle,
       createdAt: new Date(),
     };
     await firebase.firestore().collection("item").doc(itemId).update(data);
@@ -73,13 +77,13 @@ export default function ItemDetail() {
   };
 
   const updateItemContents = () => {
-    if (ItemContents === "") {
+    if (itemContents === "") {
       Modal.error({ content: "내용을 입력해주세요." });
       return;
     }
     const data = {
       createdAt: new Date(),
-      itemContents: ItemContents,
+      itemContents: itemContents,
     };
     firebase.firestore().collection("item").doc(itemId).update(data);
     setIsOpenContents(false);
@@ -89,7 +93,7 @@ export default function ItemDetail() {
     setItemTitle(event.target.value);
   };
 
-  const onChangeItemContents = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeItemContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setItemContents(event.target.value);
   };
 
@@ -122,7 +126,7 @@ export default function ItemDetail() {
         setIsOpenModal={setIsOpenModal}
         onClickItemTitle={onClickItemTitle}
         onClickItemContents={onClickItemContents}
-        ItemContents={ItemContents}
+        itemContents={itemContents}
       />
     </div>
   );

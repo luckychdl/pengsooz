@@ -7,14 +7,14 @@ import {
 } from "./itemEdit.styles";
 
 import MicroButton from "../../../commons/button/micro.Button";
-import { ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, RefObject, SetStateAction } from "react";
 
 interface Iprops {
   onChangeItemTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickAddItem: () => void;
   isAdd: boolean;
-  setIsAdd: any;
-  inputRef: any;
+  setIsAdd: Dispatch<SetStateAction<boolean>>;
+  inputRef: RefObject<HTMLInputElement>;
   colorCode: string;
 }
 

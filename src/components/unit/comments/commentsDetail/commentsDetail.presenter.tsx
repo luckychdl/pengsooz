@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import {
   Wrapper,
   CommentsWrapper,
@@ -11,7 +12,19 @@ import {
   CommentDeleteButton,
 } from "./commentsDetail.styles";
 
-export default function CommentsDetailUi(props: any) {
+interface ICommentsDetailUi {
+  value: any;
+  colorCode: any;
+  onClickDelete: (id: string | undefined) => () => Promise<void>;
+  isEdit: boolean;
+  onClickSwitchEdit: () => void;
+  onClickUpdate: (id: string | undefined) => () => Promise<void>;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  itemId: any;
+  user: any;
+}
+
+export default function CommentsDetailUi(props: ICommentsDetailUi) {
   return (
     <Wrapper>
       <CommentsWrapper>

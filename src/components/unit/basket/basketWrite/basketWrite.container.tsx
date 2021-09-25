@@ -5,7 +5,7 @@ import { dbservice } from "../../../../commons/firebase/firebase";
 import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 
-const BasketWritePage = (props: any) => {
+const BasketWritePage = () => {
   const [isAdd, setIsAdd] = useState(false);
   const [basketTitle, setBasketTitle] = useState("");
   const router = useRouter();

@@ -5,7 +5,11 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 
-export default function ItemEdit(props: any) {
+interface Iprops {
+  basketId: string;
+}
+
+export default function ItemEdit(props: Iprops) {
   const [isAdd, setIsAdd] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
   const router = useRouter();
