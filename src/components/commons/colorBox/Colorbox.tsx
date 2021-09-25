@@ -21,6 +21,11 @@ const Wrapper = styled.div`
   width: 55px;
   height: 55px;
   border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  :active {
+    top: 4px;
+  }
 `;
 
 const CheckOut = styled(CheckOutlined)`

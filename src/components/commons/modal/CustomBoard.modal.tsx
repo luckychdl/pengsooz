@@ -1,5 +1,12 @@
 import styled from "@emotion/styled";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  KeyboardEvent,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
 import SmallButton from "../button/small.Button";
 import { EditOutlined } from "@ant-design/icons";
 import ColorBox from "../colorBox/Colorbox";
@@ -11,6 +18,7 @@ interface ICustomBoardModalProps {
   onClickLeft: () => void;
   onClickRight: () => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
   setColorCode: Dispatch<SetStateAction<string>>;
 }
 const Wrapper = styled.div`
@@ -95,12 +103,14 @@ const colorList: IColorList = {
 
 const CustomBoard = (props: ICustomBoardModalProps) => {
   const [colorState, setColorState] = useState(colorStateInit);
-
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const onClickChangeColorState = (color: keyof typeof colorStateInit) => {
     const newColorState = { ...colorStateInit };
     newColorState[color] = true;
     setColorState(newColorState);
+    inputRef.current?.focus();
   };
+
   return (
     <Wrapper>
       <InnerWrapper>
@@ -111,6 +121,8 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
             onChange={props.onChangeTitle}
             placeholder="보드 이름을 입력하세요 :)"
             defaultValue={props.defaultValue}
+            onKeyPress={props.onKeyPress}
+            ref={inputRef}
           />
         </TitleWrapper>
         <MiddleWrapper>

@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   grid-gap: 20px;
   width: 100%;
+  min-height: calc(100vh - 140px) !important;
   padding-right: 20px;
   overflow-x: scroll;
   border-radius: 10px;
