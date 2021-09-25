@@ -75,8 +75,8 @@ export default function BoardUI(props: IBoardUI) {
                   />
                 }
                 trigger={["click"]}
-                placement="bottomRight"
                 visible={props.isMenu}
+                placement="bottomRight"
                 arrow={false}
               >
                 <MenuIcon onClick={props.onClickMenu} />

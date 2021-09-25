@@ -19,9 +19,11 @@ interface IBasketDetailPageUI {
   isModal: boolean;
   isUpdate: boolean;
   doc: any;
-  isMenu: boolean;
+  isMenu?: boolean;
   updateTitle: string;
-  setIsMenu: Dispatch<SetStateAction<boolean>>;
+  setIsMenu?: Dispatch<SetStateAction<boolean>>;
+  isAdd: boolean;
+  setIsAdd: Dispatch<SetStateAction<boolean>>;
   boardId: string;
   colorCode: string;
   messagesRef: any;
@@ -83,13 +85,16 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                   }
                   trigger={["click"]}
                   placement="bottomRight"
-                  visible={props.isMenu}
                 >
                   <BasketMenu onClick={props.onClickMenu}>...</BasketMenu>
                 </Dropdown>
               </BasketInfo>
             )}
-            <Item basketId={props.doc.data().basketId} />
+            <Item
+              basketId={props.doc.data().basketId}
+              isAdd={props.isAdd}
+              setIsAdd={props.setIsAdd}
+            />
           </Wrapper>
         </ScrollSnapWrapper>
       )}

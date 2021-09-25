@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import ItemEditUI from "./itemEdit.presenter";
 import firebase, { dbservice } from "../../../../commons/firebase/firebase";
 import { Modal } from "antd";
@@ -7,10 +7,11 @@ import { useDocument } from "react-firebase-hooks/firestore";
 
 interface Iprops {
   basketId: string;
+  isAdd: boolean;
+  setIsAdd: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function ItemEdit(props: Iprops) {
-  const [isAdd, setIsAdd] = useState(false);
   const [ItemTitle, setItemTitle] = useState("");
   const router = useRouter();
   const boardId = router.query.boardId;
@@ -41,7 +42,7 @@ export default function ItemEdit(props: Iprops) {
     };
 
     firebase.firestore().collection("item").doc(itemId).set(data);
-    setIsAdd(false);
+    props.setIsAdd(false);
     setItemTitle("");
   };
 
@@ -55,8 +56,8 @@ export default function ItemEdit(props: Iprops) {
         colorCode={value?.data()?.colorCode}
         onChangeItemTitle={onChangeItemTitle}
         onClickAddItem={onClickAddItem}
-        isAdd={isAdd}
-        setIsAdd={setIsAdd}
+        isAdd={props.isAdd}
+        setIsAdd={props.setIsAdd}
         inputRef={inputRef}
       />
     </div>
