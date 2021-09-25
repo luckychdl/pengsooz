@@ -35,7 +35,9 @@ const BasketDetailPage = (props: any) => {
         });
       }
     } else {
-      alert("제목을 입력해주세요 !");
+      Modal.error({
+        content: "제목을 입력해주세요 !",
+      });
     }
   };
   const onClickLeft = async () => {
