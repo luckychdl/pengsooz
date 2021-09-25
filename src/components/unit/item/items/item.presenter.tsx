@@ -1,20 +1,38 @@
+import { Draggable, Droppable } from "react-beautiful-dnd";
 import { Wrapper, ItemContainer } from "./item.styles";
 
 export default function ItemUI(props: any) {
   return (
     <Wrapper>
-      {props.ItemData.map((data: any) => (
-        <div key={data.id}>
-          {data.basketId === props.basketId && (
-            <ItemContainer
-              onClick={props.onClickEnterToItemDetail(data)}
-              color={props.colorCode}
-            >
-              {data.itemTitle}
-            </ItemContainer>
-          )}
-        </div>
-      ))}
+      <Droppable droppableId={props.basketId} type="items">
+        {(provided) => (
+          <div ref={provided.innerRef}>
+            {props.ItemData.map((data: any, index: number) => (
+              <div key={data.itemId}>
+                {data.basketId === props.basketId && (
+                  <Draggable draggableId={data.itemId} index={index}>
+                    {(provided) => (
+                      <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                      >
+                        <ItemContainer
+                          onClick={props.onClickEnterToItemDetail(data)}
+                          color={props.colorCode}
+                        >
+                          {data.itemTitle}
+                        </ItemContainer>
+                      </div>
+                    )}
+                  </Draggable>
+                )}
+              </div>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     </Wrapper>
   );
 }

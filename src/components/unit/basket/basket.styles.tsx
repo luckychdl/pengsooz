@@ -4,9 +4,9 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  grid-gap: 20px;
+  /* grid-gap: 1px; */
   width: 100%;
-  padding-right: 20px;
+  padding: 0, 20px;
   overflow-x: scroll;
   border-radius: 10px;
   scroll-snap-type: x mandatory;

@@ -4,11 +4,25 @@ import firebase from "../../../commons/firebase/firebase";
 
 export default function Basket(props: any) {
   const [value, loading] = useCollection(
-    firebase.firestore().collection("basket").orderBy("createdAt", "asc"),
+    firebase.firestore().collection("basket").orderBy("index", "asc"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
 
-  return <BasketUI value={value} boardId={props.boardId} loading={loading} />;
+  const [itemValue] = useCollection(
+    firebase.firestore().collection("items").orderBy("index", "asc"),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
+
+  return (
+    <BasketUI
+      value={value}
+      boardId={props.boardId}
+      loading={loading}
+      itemValue={itemValue}
+    />
+  );
 }

@@ -18,6 +18,7 @@ import {
 
 export default function BoardUI(props: any) {
   const colorCode = props.value?.data()?.colorCode;
+
   return (
     <div>
       {props.isOpen && (
@@ -41,6 +42,7 @@ export default function BoardUI(props: any) {
         />
       )}
       {props.value?.data()?.title ? (
+        // <DragDropContext onDragEnd={props.onDragEnd}>
         <Wrapper color={`/images/${colorCode.slice(1).concat(".jpeg")}`}>
           <HeadWrapper color={colorCode}>
             <TopWrapper>
@@ -76,6 +78,7 @@ export default function BoardUI(props: any) {
           </BasketPageWrapper>
         </Wrapper>
       ) : (
+        // </DragDropContext>
         <></>
       )}
     </div>
