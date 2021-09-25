@@ -2,8 +2,17 @@ import CommentsDetail from "./commentsDetail/commentsDetail.container";
 import CommentsWrite from "./commentsWrite/commentsWrite.container";
 import { Wrapper, SubWrapper, CommentTitle } from "./comment.styles";
 import { useEffect, useRef } from "react";
+import firebase from "../../../commons/firebase/firebase";
 
-export default function CommentUI(props: any) {
+interface ICommentUI {
+  value: any;
+  loading: boolean;
+  error: firebase.FirebaseError | undefined;
+  itemId: string | string[] | undefined;
+  user: firebase.User | null | undefined;
+}
+
+export default function CommentUI(props: ICommentUI) {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

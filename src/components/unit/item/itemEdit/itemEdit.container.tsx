@@ -1,11 +1,17 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import ItemEditUI from "./itemEdit.presenter";
 import firebase, { dbservice } from "../../../../commons/firebase/firebase";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 
-export default function ItemEdit(props: any) {
+interface Iprops {
+  basketId: string;
+  isAdd: boolean;
+  setIsAdd: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function ItemEdit(props: Iprops) {
   const [ItemTitle, setItemTitle] = useState("");
   const router = useRouter();
   const boardId = router.query.boardId;

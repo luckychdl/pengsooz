@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import {
   CommentTitle,
   CommentsInnerDiv,
@@ -6,7 +7,14 @@ import {
   EnterIcon,
 } from "./commentsWrite.styles";
 
-export default function CommentsWriteUI(props: any) {
+interface ICommentsWriteUI {
+  colorCode: string;
+  onClickSubmit: () => Promise<void>;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  contents: string;
+}
+
+export default function CommentsWriteUI(props: ICommentsWriteUI) {
   return (
     <CommentsWriteDiv>
       <CommentTitle>댓글 작성</CommentTitle>

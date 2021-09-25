@@ -13,15 +13,17 @@ import MicroButton from "../../../commons/button/micro.Button";
 import MenuModal from "../../../commons/modal/Menu.modal";
 import SelectModal from "../../../commons/modal/Select.modal";
 import { Dropdown } from "antd";
-import { ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface IBasketDetailPageUI {
   isModal: boolean;
   isUpdate: boolean;
   doc: any;
+  isMenu?: boolean;
   updateTitle: string;
-  setIsAdd: any;
+  setIsMenu?: Dispatch<SetStateAction<boolean>>;
   isAdd: boolean;
+  setIsAdd: Dispatch<SetStateAction<boolean>>;
   boardId: string;
   colorCode: string;
   messagesRef: any;

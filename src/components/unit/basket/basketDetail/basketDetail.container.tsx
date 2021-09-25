@@ -5,7 +5,13 @@ import { ChangeEvent, useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 
-const BasketDetailPage = (props: any) => {
+interface Iprops {
+  messagesRef: string;
+  boardId: string;
+  doc: any;
+}
+
+const BasketDetailPage = (props: Iprops) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
   const [isModal, setIsModal] = useState(false);

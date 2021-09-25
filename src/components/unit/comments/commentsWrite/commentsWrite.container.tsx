@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import CommentsWriteUI from "./commentsWrite.presenter";
 
-export default function CommentsWrite(props: any) {
+interface Iprops {
+  user: any;
+  itemId: string;
+}
+
+export default function CommentsWrite(props: Iprops) {
   const [contents, setContents] = useState("");
   const router = useRouter();
   const boardId: any = router.query.boardId;
@@ -12,7 +17,7 @@ export default function CommentsWrite(props: any) {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
-  const onChange = (event: any) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setContents(event.target.value);
   };
   const onClickSubmit = async () => {

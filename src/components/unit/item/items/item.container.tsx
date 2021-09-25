@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import firebase, { dbservice } from "../../../../commons/firebase/firebase";
 import { useDocument } from "react-firebase-hooks/firestore";
 
-export default function Items(props: any) {
+interface Iprops {
+  basketId: string;
+}
+
+export default function Items(props: Iprops) {
   const router = useRouter();
   const [ItemData, setItemdata] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
