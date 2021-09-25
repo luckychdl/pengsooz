@@ -6,7 +6,7 @@ import { Modal } from "antd";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function Board(props: any) {
+export default function Board() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const [isModal, setIsModal] = useState(false);
@@ -20,6 +20,7 @@ export default function Board(props: any) {
   const [updateTitle, setUpdateTitle] = useState("");
   const [colorCode, setColorCode] = useState("");
   const [confirmAlive, setConfirmAlive] = useState();
+
   useEffect(() => {
     setUpdateTitle(value?.data()?.title);
     setColorCode(value?.data()?.colorCode);
@@ -32,6 +33,7 @@ export default function Board(props: any) {
   const onClickMenu = () => {
     setIsMenu((prev) => !prev);
   };
+
   const onClickEnterToWS = () => {
     router.push(`/workspace`);
   };
@@ -53,7 +55,9 @@ export default function Board(props: any) {
         });
       }
     } else {
-      alert("제목을 입력해주세요!");
+      Modal.error({
+        content: "제목을 입력해주세요 !",
+      });
     }
   };
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {

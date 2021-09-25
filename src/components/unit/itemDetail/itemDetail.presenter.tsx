@@ -15,8 +15,31 @@ import {
 } from "./itemDetail.styles";
 import Comments from "../comments/comment.container";
 import Select from "../../commons/modal/Select.modal";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
-export default function ItemDetailUI(props: any) {
+interface Iprops {
+  itemData: any;
+  itemTitle?: string;
+  inputRef: any;
+  isOpenModal: boolean;
+  value: any;
+  isOpenTitle: boolean;
+  isOpenContents: boolean;
+  itemContents: string;
+  onChangeItemTitle: (event: ChangeEvent<HTMLInputElement>) => void;
+  updateItemContents: () => void;
+  onChangeItemContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  setIsOpenContents: Dispatch<SetStateAction<boolean>>;
+  setIsOpenTitle: Dispatch<SetStateAction<boolean>>;
+  setIsOpenModal: Dispatch<SetStateAction<boolean>>;
+  onClickItemTitle: () => void;
+  onClickItemContents: () => void;
+  updateItemTitle: () => Promise<void>;
+  onClickEnterToBoard: () => void;
+  onClickDeleteItem: () => void;
+}
+
+export default function ItemDetailUI(props: Iprops) {
   const colorCode = props.value?.data()?.colorCode;
   return (
     <div>
@@ -42,7 +65,7 @@ export default function ItemDetailUI(props: any) {
                 defaultValue={props.itemData?.itemTitle}
                 onChange={props.onChangeItemTitle}
                 ref={props.inputRef}
-                maxLength={30}
+                maxLength={22}
               />
               <ConfirmTitleButton onClick={props.updateItemTitle}>
                 Okay
@@ -59,7 +82,7 @@ export default function ItemDetailUI(props: any) {
           {props.isOpenContents ? (
             <>
               <DetailContentsTextArea
-                placeholder="상세내용을 입력바람."
+                placeholder="상세내용을 입력해주세요."
                 defaultValue={props.itemData?.itemContents}
                 ref={props.inputRef}
                 onChange={props.onChangeItemContents}
@@ -71,7 +94,7 @@ export default function ItemDetailUI(props: any) {
           ) : (
             <DetailContentsDiv
               onClick={props.onClickItemContents}
-              defaultValue={props.ItemContents}
+              defaultValue={props.itemContents}
               readOnly
             />
           )}

@@ -5,7 +5,7 @@ import { dbservice } from "../../../../commons/firebase/firebase";
 import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 
-const BasketWritePage = (props: any) => {
+const BasketWritePage = () => {
   const [isAdd, setIsAdd] = useState(false);
   const [basketTitle, setBasketTitle] = useState("");
   const router = useRouter();
@@ -38,7 +38,9 @@ const BasketWritePage = (props: any) => {
         });
       }
     } else {
-      alert("제목을 입력해주세요 !");
+      Modal.error({
+        content: "제목을 입력해주세요 !",
+      });
     }
   };
   return (

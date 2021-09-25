@@ -2,7 +2,11 @@ import BasketUI from "./basket.presenter";
 import { useCollection } from "react-firebase-hooks/firestore";
 import firebase from "../../../commons/firebase/firebase";
 
-export default function Basket(props: any) {
+interface Iprops {
+  boardId: string;
+}
+
+export default function Basket(props: Iprops) {
   const [value, loading] = useCollection(
     firebase.firestore().collection("basket").orderBy("index", "asc"),
     {

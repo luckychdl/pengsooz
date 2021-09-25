@@ -4,7 +4,13 @@ import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 
-export default function CommentsDetail(props: any) {
+interface Iprops {
+  value: any;
+  itemId: string;
+  user: any;
+}
+
+export default function CommentsDetail(props: Iprops) {
   const [contents, setContents] = useState(props.value.data().contents);
   const [isEdit, setIsEdit] = useState(false);
   const router = useRouter();

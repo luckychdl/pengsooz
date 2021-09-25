@@ -4,6 +4,7 @@ import Menu from "../../commons/modal/Menu.modal";
 import Select from "../../commons/modal/Select.modal";
 import Blur from "../../commons/blur/Blur";
 import { Dropdown } from "antd";
+import firebase from "../../../commons/firebase/firebase";
 import {
   Wrapper,
   HeadWrapper,
@@ -15,8 +16,27 @@ import {
   BasketPageWrapper,
   BasketPage,
 } from "./board.styles";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
-export default function BoardUI(props: any) {
+interface IBoardUI {
+  onClickEnterToWS: () => void;
+  setColorCode: Dispatch<SetStateAction<string>>;
+  onClickMenu: () => void;
+  onClickDelete: () => void;
+  onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClickUpdate: () => Promise<void>;
+  onClickDeleteConfirm: () => void;
+  onClickCreateBoardModal: () => void;
+  onClickCancel: () => void;
+  isOpen: boolean;
+  boardId: any;
+  isMenu: boolean;
+  isModal: boolean;
+  user?: firebase.User | null | undefined;
+  value: any;
+}
+
+export default function BoardUI(props: IBoardUI) {
   const colorCode = props.value?.data()?.colorCode;
 
   return (
@@ -57,8 +77,8 @@ export default function BoardUI(props: any) {
                   />
                 }
                 trigger={["click"]}
-                placement="bottomRight"
                 visible={props.isMenu}
+                placement="bottomRight"
                 arrow={false}
               >
                 <MenuIcon onClick={props.onClickMenu} />

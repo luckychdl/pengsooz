@@ -5,9 +5,15 @@ import { ChangeEvent, useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 
-const BasketDetailPage = (props: any) => {
+interface Iprops {
+  messagesRef: string;
+  boardId: string;
+  doc: any;
+}
+
+const BasketDetailPage = (props: Iprops) => {
   const [isUpdate, setIsUpdate] = useState(false);
-  const [isMenu, setIsMenu] = useState(false);
+  const [isAdd, setIsAdd] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [updateTitle, setUpdateTitle] = useState(props.doc.data().title);
   const router = useRouter();
@@ -17,11 +23,10 @@ const BasketDetailPage = (props: any) => {
   });
 
   const onClickMenu = () => {
-    setIsMenu((prev) => !prev);
+    setIsAdd(false);
   };
   const onClickBasketUpdate = () => {
     setIsUpdate(true);
-    setIsMenu(false);
   };
   const onClickUpdate = async () => {
     if (updateTitle !== "") {
@@ -30,14 +35,15 @@ const BasketDetailPage = (props: any) => {
           title: updateTitle,
         });
         setIsUpdate(false);
-        setIsMenu(false);
       } catch (err) {
         Modal.error({
           content: err.message,
         });
       }
     } else {
-      alert("제목을 입력해주세요 !");
+      Modal.error({
+        content: "제목을 입력해주세요 !",
+      });
     }
   };
   const onClickLeft = async () => {
@@ -51,7 +57,6 @@ const BasketDetailPage = (props: any) => {
   };
   const onClickDeleteComfirm = () => {
     setIsModal(true);
-    setIsMenu(false);
   };
   const onClickRight = () => {
     setIsModal(false);
@@ -62,9 +67,11 @@ const BasketDetailPage = (props: any) => {
   const onClickCancel = () => {
     setIsUpdate(false);
   };
+
   return (
     <BasketDetailPageUI
-      isMenu={isMenu}
+      isAdd={isAdd}
+      setIsAdd={setIsAdd}
       isUpdate={isUpdate}
       isModal={isModal}
       updateTitle={updateTitle}
@@ -72,7 +79,6 @@ const BasketDetailPage = (props: any) => {
       messagesRef={props.messagesRef}
       boardId={props.boardId}
       colorCode={value?.data()?.colorCode}
-      setIsMenu={setIsMenu}
       onClickLeft={onClickLeft}
       onClickRight={onClickRight}
       onClickDeleteComfirm={onClickDeleteComfirm}

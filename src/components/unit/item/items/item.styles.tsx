@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-height: 246px;
+  max-height: 323px;
   overflow-y: scroll;
 `;
 

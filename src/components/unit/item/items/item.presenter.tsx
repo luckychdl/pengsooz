@@ -1,7 +1,17 @@
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import { Dispatch, SetStateAction } from "react";
 import { Wrapper, ItemContainer } from "./item.styles";
 
-export default function ItemUI(props: any) {
+interface Iprops {
+  onClickEnterToItemDetail: (event: any) => () => void;
+  isAdd: boolean;
+  setIsAdd: Dispatch<SetStateAction<boolean>>;
+  ItemData: never[];
+  basketId: string;
+  colorCode: string;
+}
+
+export default function ItemUI(props: Iprops) {
   return (
     <Wrapper>
       <Droppable droppableId={props.basketId} type="items">

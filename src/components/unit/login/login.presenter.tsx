@@ -1,7 +1,12 @@
 import { Wrapper, Title, MainImg } from "./login.styles";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-export default function LoginUI(props: any) {
+interface Iprops {
+  uiConfig: { signInSuccessUrl: string; signInOptions: string[] };
+  firebaseAuth: any;
+}
+
+export default function LoginUI(props: Iprops) {
   return (
     <Wrapper>
       <MainImg src="/images/loading.gif" />
