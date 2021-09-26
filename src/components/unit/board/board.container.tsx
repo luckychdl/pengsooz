@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState, useEffect, KeyboardEvent } from "react";
 import BoardUI from "./board.presenter";
 import { useRouter } from "next/router";
 import firebase, { dbservice } from "../../../commons/firebase/firebase";
@@ -94,7 +94,11 @@ export default function Board() {
       router.push("/workspace");
     }
   }, [confirmAlive]);
-
+  const onKeyPressUpdate = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickUpdate();
+    }
+  };
   return (
     <BoardUI
       isOpen={isOpen}
@@ -103,6 +107,7 @@ export default function Board() {
       isModal={isModal}
       value={value}
       user={user}
+      onKeyPressUpdate={onKeyPressUpdate}
       setColorCode={setColorCode}
       onClickMenu={onClickMenu}
       onClickDelete={onClickDelete}

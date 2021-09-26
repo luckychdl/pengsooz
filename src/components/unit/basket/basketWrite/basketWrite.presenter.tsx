@@ -9,11 +9,13 @@ import {
   Wrapper,
 } from "./basketWrite.styles";
 import MicroButton from "../../../commons/button/micro.Button";
-import { ChangeEvent, RefObject } from "react";
+
+import { ChangeEvent, KeyboardEvent } from "react";
 
 interface IBasketWritePageUIProps {
   isAdd: boolean;
   colorCode: string;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
   onClickAddBasket: () => void;
   onClickCreateBasket: () => void;
   onChangeAddBasket: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -29,6 +31,7 @@ const BasketWritePageUI = (props: IBasketWritePageUIProps) => {
               <BasketCreateInput
                 onChange={props.onChangeAddBasket}
                 maxLength={10}
+                onKeyPress={props.onKeyPress}
                 ref={props.inputRef}
               />
               <BasketCreateBtn>

@@ -1,6 +1,7 @@
 import {
   ChangeEvent,
   Dispatch,
+  KeyboardEvent,
   SetStateAction,
   useEffect,
   useRef,
@@ -59,12 +60,17 @@ export default function ItemEdit(props: Iprops) {
   const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setItemTitle(event.target.value);
   };
-
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickAddItem();
+    }
+  };
   return (
     <div>
       <ItemEditUI
         colorCode={value?.data()?.colorCode}
         onChangeItemTitle={onChangeItemTitle}
+        onKeyPress={onKeyPress}
         onClickAddItem={onClickAddItem}
         isAdd={props.isAdd}
         setIsAdd={props.setIsAdd}

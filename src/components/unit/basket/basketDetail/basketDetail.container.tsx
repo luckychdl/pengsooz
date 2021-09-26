@@ -6,9 +6,10 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 
 interface Iprops {
-  messagesRef: string;
+  messagesRef: any;
   boardId: string;
   doc: any;
+  onClickBasketUpdate: () => void;
 }
 
 const BasketDetailPage = (props: Iprops) => {

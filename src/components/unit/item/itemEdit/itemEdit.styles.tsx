@@ -39,4 +39,5 @@ export const AddItem = styled.div`
   padding-top: 12px;
   font-size: 24px;
   text-align: center;
+  cursor: pointer;
 `;
