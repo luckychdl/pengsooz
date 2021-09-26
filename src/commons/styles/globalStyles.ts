@@ -29,7 +29,7 @@ export const globalStyles = css`
     /* background-color: blue; */
     /* width: 70%; */
     /* height: 600%; */
-    overflow: scroll;
+    overflow: visible;
   }
 
   button {
