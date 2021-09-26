@@ -20,13 +20,20 @@ const BasketWritePage = () => {
     setBasketTitle(event.target.value);
   };
   const basketId = dbservice.collection("basket").doc().id;
-  const value = {
-    basketId: basketId,
-    boardId: boardId,
-    title: basketTitle,
-    createdAt: new Date(),
-  };
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  });
   const onClickCreateBasket = async () => {
+    const basketIndex = dbservice.collection("basket").get();
+    const basketIndexLength = (await basketIndex).docs.length;
+    const value = {
+      basketId: basketId,
+      boardId: boardId,
+      title: basketTitle,
+      createdAt: new Date(),
+      index: basketIndexLength + 1,
+    };
     if (basketTitle !== "") {
       try {
         await dbservice.collection("basket").doc(basketId).set(value);
@@ -56,6 +63,7 @@ const BasketWritePage = () => {
       onClickAddBasket={onClickAddBasket}
       onClickCreateBasket={onClickCreateBasket}
       onChangeAddBasket={onChangeAddBasket}
+      inputRef={inputRef}
     />
   );
 };

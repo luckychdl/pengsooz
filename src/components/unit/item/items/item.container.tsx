@@ -24,7 +24,7 @@ export default function Items(props: Iprops) {
 
   useEffect(() => {
     const getItemData = firebase.firestore().collection("item");
-    getItemData.orderBy("createdAt", "asc").onSnapshot((result: any) => {
+    getItemData.orderBy("index", "asc").onSnapshot((result: any) => {
       const newresult: any = [];
       result.forEach((doc: any) => {
         const docData = doc.data();
@@ -38,13 +38,13 @@ export default function Items(props: Iprops) {
   return (
     <div>
       <ItemUI
-        onClickEnterToItemDetail={onClickEnterToItemDetail}
         isAdd={isAdd}
+        onClickEnterToItemDetail={onClickEnterToItemDetail}
         setIsAdd={setIsAdd}
         ItemData={ItemData}
         basketId={props.basketId}
         colorCode={value?.data()?.colorCode}
-      />
+        />
     </div>
   );
 }

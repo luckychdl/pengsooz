@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { EnterOutlined } from "@ant-design/icons";
 
+const breakPoints = {
+  tablet: `(min-width:650px)and (max-width: 1366px)`,
+  web: `(min-width:1367px)`,
+};
+
 export const CommentsWriteDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,6 +15,11 @@ export const CommentTitle = styled.div`
   width: 100%;
   margin-bottom: 12px;
   font-family: "Oboksanghoe_B";
+
+  @media ${breakPoints.web} {
+    font-size: 20px;
+    margin-top: 20px;
+  }
 `;
 export const CommentsInnerDiv = styled.div`
   display: flex;
