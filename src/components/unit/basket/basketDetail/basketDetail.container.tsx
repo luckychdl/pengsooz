@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 interface Iprops {
   messagesRef: any;
+
   boardId: string;
   doc: any;
   onClickBasketUpdate: () => void;

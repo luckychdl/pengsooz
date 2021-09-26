@@ -31,7 +31,9 @@ export const SubWrapper = styled.div`
     padding: 0px 10px;
   }
   @media ${breakPoints.web} {
-    height: 500px;
+    /* height: 500px; */
+    min-height: 70px;
+    height: 70%;
     padding: 0px 20px;
   }
 `;
