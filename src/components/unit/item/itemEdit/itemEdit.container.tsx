@@ -1,4 +1,11 @@
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ItemEditUI from "./itemEdit.presenter";
 import firebase, { dbservice } from "../../../../commons/firebase/firebase";
 import { Modal } from "antd";
@@ -24,14 +31,17 @@ export default function ItemEdit(props: Iprops) {
     inputRef.current?.focus();
   });
 
-  const onClickAddItem = () => {
+  const onClickAddItem = async () => {
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
 
       return;
     }
 
-    const itemId = firebase.firestore().collection("itme").doc().id;
+    const itemIndex = firebase.firestore().collection("item").get();
+    const indexLength = (await itemIndex).docs.length;
+
+    const itemId = firebase.firestore().collection("item").doc().id;
     const data = {
       itemTitle: ItemTitle,
       createdAt: new Date(),
@@ -39,8 +49,8 @@ export default function ItemEdit(props: Iprops) {
       itemContents: "",
       basketId: props.basketId,
       isAlive: true,
+      index: 1 + indexLength,
     };
-
     firebase.firestore().collection("item").doc(itemId).set(data);
     props.setIsAdd(false);
     setItemTitle("");
