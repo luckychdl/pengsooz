@@ -1,11 +1,6 @@
 import styled from "@emotion/styled";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-
-const breakPoints = {
-  tablet: `(min-width:650px)and (max-width: 1366px)`,
-  web: `(min-width:1367px)`,
-};
-
+import breakPoints from "../../../../commons/media/media";
 export const Wrapper = styled.div`
   width: 100%;
 `;
@@ -27,6 +22,7 @@ export const CommentsListWrapper = styled.div`
   }
   @media ${breakPoints.web} {
     height: 50px;
+    margin-bottom: 20px;
   }
 `;
 export const Avatar = styled.img`
@@ -64,6 +60,16 @@ export const CommentEdit = styled.input`
   border-radius: 5px;
   background: ${(props) => props.color};
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+  }
+  @media ${breakPoints.web} {
+    font-size: 20px;
+    height: 24px;
+    line-height: 24px;
+  }
 `;
 
 export const DispalayName = styled.div`
@@ -72,10 +78,12 @@ export const DispalayName = styled.div`
   line-height: 20px;
 
   @media ${breakPoints.tablet} {
-    font-size: 14px;
+    font-size: 12px;
+    margin-bottom: 4px;
   }
   @media ${breakPoints.web} {
-    font-size: 14px;
+    font-size: 18px;
+    margin-bottom: 4px;
   }
 `;
 
@@ -91,14 +99,14 @@ export const CommentContents = styled.div`
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   @media ${breakPoints.tablet} {
-    font-size: 14px;
+    font-size: 12px;
     height: 24px;
     line-height: 24px;
   }
   @media ${breakPoints.web} {
-    font-size: 14px;
-    height: 24px;
-    line-height: 24px;
+    font-size: 16px;
+    height: 38px;
+    line-height: 32px;
   }
 `;
 export const CommentUpdateButton = styled(EditOutlined)`

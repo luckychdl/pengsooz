@@ -26,10 +26,9 @@ export const globalStyles = css`
 
   body {
     background-color: #fcf9ee;
-    /* background-color: blue; */
-    /* width: 70%; */
-    /* height: 600%; */
-    overflow: scroll;
+
+    overflow: visible;
+
   }
 
   button {
