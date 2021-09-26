@@ -1,30 +1,69 @@
 import styled from "@emotion/styled";
 import { ArrowLeftOutlined, DeleteOutlined } from "@ant-design/icons";
 
+interface backcolor {
+  backColor: { backColor: any; color: string };
+}
+
+const breakPoints = {
+  tablet: `(min-width:650px)and (max-width: 1366px)`,
+  web: `(min-width:1367px)`,
+};
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 100vh;
-  position: relative;
   padding: 18px;
+  /* background-color: red; */
+`;
 
-  ::before {
-    content: "";
-    background-image: url(${(props) => props.color});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: 43%;
-    opacity: 0.5;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+export const BackImg = styled.div`
+  position: absolute;
+
+  opacity: 0.5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-image: url(${(props) => props.color});
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: ${(props: backcolor) => props.backColor};
+
+  @media ${breakPoints.tablet} {
+    background-size: 60%;
+  }
+
+  @media ${breakPoints.web} {
+    background-size: 50%;
   }
 `;
+
+export const InnerWrapper = styled.div`
+  @media ${breakPoints.tablet} {
+    width: 70%;
+    margin: auto;
+    border: 2px black solid;
+    border-radius: 4px;
+    padding: 20px 40px 40px 40px;
+    transition: ease-in-out 500ms all;
+  }
+
+  @media ${breakPoints.web} {
+    width: 1200px;
+    margin: auto;
+    border: 2px black solid;
+    border-radius: 4px;
+    padding: 40px;
+    transition: ease-in-out 500ms all;
+  }
+`;
+
 export const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -34,14 +73,35 @@ export const IconWrapper = styled.div`
 `;
 export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
   font-size: 20px;
+  :hover {
+    cursor: pointer;
+  }
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    transition: ease-in-out 500ms all;
+  }
 `;
 export const DeleteIcon = styled(DeleteOutlined)`
   font-size: 20px;
+  :hover {
+    cursor: pointer;
+  }
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    transition: ease-in-out 500ms all;
+  }
 `;
 export const TitleWrapper = styled.div`
   width: 100%;
   height: 72px;
   position: relative;
+  @media ${breakPoints.web} {
+    margin-bottom: 20px;
+    transition: ease-in-out 500ms all;
+
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
 `;
 export const Text = styled.div`
   width: 100%;
@@ -50,6 +110,14 @@ export const Text = styled.div`
   padding-top: 12px;
   line-height: 28px;
   font-family: "Oboksanghoe_B";
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    transition: ease-in-out 500ms all;
+    /* background-color: s?ilver; */
+    margin-bottom: 10px;
+    /* margin-bottom: 30px;
+    padding-top: 30px; */
+  }
 `;
 export const DetailTitleInput = styled.input`
   width: 100%;
@@ -63,16 +131,37 @@ export const DetailTitleInput = styled.input`
     border: none;
     background-color: rgba(255, 255, 255, 0.7);
   }
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 16px;
+    transition: ease-in-out 500ms all;
+  }
 `;
 export const ConfirmTitleButton = styled.div`
-  width: 100%;
+  width: 50px;
   height: 32px;
   padding: 0 8px;
+  right: 0;
   line-height: 32px;
   position: absolute;
   text-align: right;
   transform: translateY(-100%);
   color: #bdbdbd;
+  :hover {
+    cursor: pointer;
+  }
+
+  @media ${breakPoints.web} {
+    width: 100px;
+    font-size: 20px;
+    height: 42px;
+    line-height: 42px;
+    /* padding: 0 16px; */
+    transition: ease-in-out 500ms all;
+    text-align: right;
+  }
 `;
 export const DetailTitleDiv = styled.div`
   width: 100%;
@@ -81,10 +170,19 @@ export const DetailTitleDiv = styled.div`
   line-height: 32px;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 16px;
+    transition: ease-in-out 500ms all;
+  }
 `;
 export const ContentWrapper = styled.div`
   width: 100%;
   position: relative;
+  @media ${breakPoints.web} {
+  }
 `;
 export const DetailContentsTextArea = styled.textarea`
   width: 100%;
@@ -98,17 +196,36 @@ export const DetailContentsTextArea = styled.textarea`
   :focus {
     background-color: rgba(255, 255, 255, 0.7);
   }
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    height: 220px;
+    padding: 8px 16px;
+    transition: ease-in-out 500ms all;
+  }
 `;
 export const ConfirmContentButton = styled.div`
-  width: 100%;
-  height: 120px;
+  width: 50px;
+  height: 30px;
   padding: 0 8px;
-  line-height: 200px;
+  right: 0;
+  bottom: 0;
   position: absolute;
   vertical-align: bottom;
   text-align: right;
-  transform: translateY(-100%);
   color: #bdbdbd;
+  /* background-color: red; */
+
+  :hover {
+    cursor: pointer;
+  }
+  @media ${breakPoints.web} {
+    position: absolute;
+    vertical-align: bottom;
+    text-align: right;
+    transition: ease-in-out 500ms all;
+    font-size: 20px;
+    width: 100px;
+  }
 `;
 export const DetailContentsDiv = styled.textarea`
   width: 100%;
@@ -119,4 +236,11 @@ export const DetailContentsDiv = styled.textarea`
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   word-break: break-all;
+
+  @media ${breakPoints.web} {
+    font-size: 25px;
+    height: 220px;
+    padding: 8px 16px;
+    transition: ease-in-out 500ms all;
+  }
 `;
