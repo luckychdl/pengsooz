@@ -16,12 +16,11 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 18px;
-  /* background-color: red; */
+  overflow: auto;
 `;
 
 export const BackImg = styled.div`
-  position: absolute;
-
+  position: fixed;
   opacity: 0.5;
   top: 0;
   bottom: 0;

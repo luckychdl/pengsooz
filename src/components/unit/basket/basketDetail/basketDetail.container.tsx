@@ -1,14 +1,15 @@
 import BasketDetailPageUI from "./basketDetail.presenter";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { dbservice } from "../../../../commons/firebase/firebase";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MutableRefObject, useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 
 interface Iprops {
-  messagesRef: string;
+  messagesRef: MutableRefObject<HTMLDivElement | null>;
   boardId: string;
   doc: any;
+  onClickBasketUpdate: () => void;
 }
 
 const BasketDetailPage = (props: Iprops) => {

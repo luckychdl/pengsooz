@@ -8,7 +8,7 @@ interface ICommentUI {
   value: any;
   loading: boolean;
   error: firebase.FirebaseError | undefined;
-  itemId: string;
+  itemId?: any;
   user: firebase.User | null | undefined;
 }
 

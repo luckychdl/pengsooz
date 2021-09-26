@@ -9,7 +9,7 @@ import {
   Wrapper,
 } from "./basketWrite.styles";
 import MicroButton from "../../../commons/button/micro.Button";
-import { ChangeEvent, RefObject } from "react";
+import { ChangeEvent } from "react";
 
 interface IBasketWritePageUIProps {
   isAdd: boolean;
