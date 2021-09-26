@@ -30,7 +30,6 @@ export default function Items(props: Iprops) {
         const docData = doc.data();
         newresult.push(docData);
       });
-
       setItemdata(newresult);
     });
   }, []);

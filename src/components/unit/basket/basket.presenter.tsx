@@ -5,6 +5,14 @@ import { useEffect, useRef } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { dbservice } from "../../../commons/firebase/firebase";
 
+declare const window: typeof globalThis & {
+  state: number[];
+  stateItem: {
+    [key: string]: number[];
+  };
+};
+
+if (typeof window !== "undefined") window.state = [];
 export default function BasketUI(props: any) {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const messagesEndPrevRef = useRef<HTMLDivElement | null>(null);
@@ -18,8 +26,6 @@ export default function BasketUI(props: any) {
   };
   useEffect(scrollToBottom, [props.value]);
 
-  let state: number[] = [];
-
   const resultsRef = useRef<HTMLDivElement | null>(null);
   const scrollToLeft = () => {
     resultsRef.current?.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -27,46 +33,32 @@ export default function BasketUI(props: any) {
   useEffect(scrollToLeft, [props.loading]);
 
   const onDragEnd = async (result: any) => {
-    const dbIdx: number[] = [0.1, ...state, state[state.length - 1] + 1];
-    const { destination: dst, source: src, draggableId } = result;
+    console.log("hi~");
+    console.log(window.stateItem);
+    console.log("hi~");
+    if (result.type === "basket") {
+      const state = window.state;
+      const dbIdx: number[] = [0.1, ...state, state[state.length - 1] + 1];
+      const { destination: dst, source: src, draggableId } = result;
+      const temp =
+        dst.index - src.index > 0
+          ? (dbIdx[dst.index] + dbIdx[dst.index + 1]) / 2
+          : (dbIdx[dst.index] + dbIdx[dst.index - 1]) / 2;
 
-    console.log("==================");
-    console.log(result);
-    console.log("==================");
-
-    console.log("dbIdx", dbIdx);
-    console.log(dst.index);
-    console.log(src.index);
-    // console.log(dbIdx[dst.index - 1]);
-    // console.log(dbIdx[dst.index]);
-    // console.log(dbIdx[dst.index + 1]);
-
-    const temp =
-      dst.index - src.index > 0
-        ? (dbIdx[dst.index] + dbIdx[dst.index + 1]) / 2
-        : (dbIdx[dst.index] + dbIdx[dst.index - 1]) / 2;
-
-    //   const temp =
-    // dst.index - src.index > 0
-    //   ? (dbIdx[dst.index - 1] + dbIdx[dst.index]) / 2
-    //   : (dbIdx[dst.index - 1] + dbIdx[dst.index - 2]) / 2;
-
-    console.log(temp);
-
-    try {
-      await dbservice.collection(result.type).doc(draggableId).update({
-        index: temp,
-      });
-    } catch (err) {}
+      try {
+        await dbservice.collection(result.type).doc(draggableId).update({
+          index: temp,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      console.log(state);
+    }
   };
 
   const filteredDocs = props.value?.docs.filter(
     (doc: any) => props.boardId === doc.data().boardId
   );
-
-  // const filteredItemDocs = props.itemValue?.docs.filter(
-  // (doc: any) => doc.data().basketId === draggableId
-  // );
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -79,8 +71,8 @@ export default function BasketUI(props: any) {
           <Wrapper ref={provided.innerRef}>
             <div ref={resultsRef} />
             {filteredDocs?.map((doc: any, index: number) => {
-              if (state.length < filteredDocs.length)
-                state = [...state, doc.data().index];
+              if (window.state.length < filteredDocs.length)
+                window.state = [...window.state, doc.data().index];
 
               const isPrev = props.value?.docs.length - 1 === index;
               return (
