@@ -3,7 +3,7 @@ import firebase, { dbservice } from "../../../commons/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { Modal } from "antd";
 
 const Workspace = () => {
@@ -66,7 +66,11 @@ const Workspace = () => {
   const onChangeBoardTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setBoardTitle(event.target.value);
   };
-
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickCreateBoard();
+    }
+  };
   return (
     <WorkspaceUI
       user={user}
@@ -75,6 +79,7 @@ const Workspace = () => {
       boardsLoading={boardsLoading}
       isSelectOpen={isSelectOpen}
       setColorCode={setColorCode}
+      onKeyPress={onKeyPress}
       isCustomBoardOpen={isCustomBoardOpen}
       setIsCustomBoardOpen={setIsCustomBoardOpen}
       onClickOpenLogoutModal={onClickOpenLogoutModal}

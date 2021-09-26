@@ -7,11 +7,18 @@ import {
 } from "./itemEdit.styles";
 
 import MicroButton from "../../../commons/button/micro.Button";
-import { ChangeEvent, Dispatch, RefObject, SetStateAction } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  KeyboardEvent,
+  RefObject,
+  SetStateAction,
+} from "react";
 
 interface Iprops {
   onChangeItemTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickAddItem: () => void;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
   isAdd: boolean;
   setIsAdd: Dispatch<SetStateAction<boolean>>;
   inputRef: RefObject<HTMLInputElement>;
@@ -29,6 +36,7 @@ export default function ItemEditUI(props: Iprops) {
                 onChange={props.onChangeItemTitle}
                 maxLength={22}
                 ref={props.inputRef}
+                onKeyPress={props.onKeyPress}
               />
               <ItemCreateBtn>
                 <MicroButton

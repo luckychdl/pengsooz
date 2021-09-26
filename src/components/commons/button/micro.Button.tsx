@@ -8,6 +8,11 @@ export const Button = styled.div`
   color: #1c1c1c;
   background-color: #e2e1d7;
   border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  :active {
+    top: 4px;
+  }
 `;
 
 interface IMicroButtonProps {

@@ -16,7 +16,7 @@ import {
   BasketPageWrapper,
   BasketPage,
 } from "./board.styles";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction } from "react";
 
 interface IBoardUI {
   onClickEnterToWS: () => void;
@@ -28,6 +28,7 @@ interface IBoardUI {
   onClickDeleteConfirm: () => void;
   onClickCreateBoardModal: () => void;
   onClickCancel: () => void;
+  onKeyPressUpdate: (event: KeyboardEvent<HTMLInputElement>) => void;
   isOpen: boolean;
   boardId: any;
   isMenu: boolean;
@@ -49,6 +50,7 @@ export default function BoardUI(props: IBoardUI) {
           onChangeTitle={props.onChangeTitle}
           defaultValue={props.value.data().title}
           setColorCode={props.setColorCode}
+          onKeyPress={props.onKeyPressUpdate}
         />
       )}
       {props.isModal && (

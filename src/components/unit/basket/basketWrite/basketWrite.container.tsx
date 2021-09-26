@@ -1,5 +1,5 @@
 import BasketWritePageUI from "./basketWrite.presenter";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { Modal } from "antd";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import { useRouter } from "next/router";
@@ -50,10 +50,16 @@ const BasketWritePage = () => {
       });
     }
   };
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickCreateBasket();
+    }
+  };
   return (
     <BasketWritePageUI
       isAdd={isAdd}
       colorCode={boardValue?.data()?.colorCode}
+      onKeyPress={onKeyPress}
       onClickAddBasket={onClickAddBasket}
       onClickCreateBasket={onClickCreateBasket}
       onChangeAddBasket={onChangeAddBasket}
