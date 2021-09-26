@@ -1,5 +1,5 @@
 import BasketWritePageUI from "./basketWrite.presenter";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { Modal } from "antd";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import { useRouter } from "next/router";
@@ -20,13 +20,20 @@ const BasketWritePage = () => {
     setBasketTitle(event.target.value);
   };
   const basketId = dbservice.collection("basket").doc().id;
-  const value = {
-    basketId: basketId,
-    boardId: boardId,
-    title: basketTitle,
-    createdAt: new Date(),
-  };
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  });
   const onClickCreateBasket = async () => {
+    const basketIndex = dbservice.collection("basket").get();
+    const basketIndexLength = (await basketIndex).docs.length;
+    const value = {
+      basketId: basketId,
+      boardId: boardId,
+      title: basketTitle,
+      createdAt: new Date(),
+      index: basketIndexLength + 1,
+    };
     if (basketTitle !== "") {
       try {
         await dbservice.collection("basket").doc(basketId).set(value);
@@ -43,13 +50,20 @@ const BasketWritePage = () => {
       });
     }
   };
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickCreateBasket();
+    }
+  };
   return (
     <BasketWritePageUI
       isAdd={isAdd}
       colorCode={boardValue?.data()?.colorCode}
+      onKeyPress={onKeyPress}
       onClickAddBasket={onClickAddBasket}
       onClickCreateBasket={onClickCreateBasket}
       onChangeAddBasket={onChangeAddBasket}
+      inputRef={inputRef}
     />
   );
 };

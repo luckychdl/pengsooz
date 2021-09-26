@@ -35,6 +35,7 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
           onClickLeft={props.onClickCreateBoard}
           onClickRight={props.onClickCloseBoardModal}
           onChangeTitle={props.onChangeBoardTitle}
+          onKeyPress={props.onKeyPress}
           buttonNameLeft="생성하기"
           buttonNameRight="취소하기"
           defaultValue=""
@@ -42,9 +43,6 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
       )}
       <Wrapper>
         <TopWrapper>
-          <LogoutButton onClick={props.onClickOpenLogoutModal}>
-            로그아웃
-          </LogoutButton>
           <ProfileWrapper>
             {!props.userLoading && props.user && (
               <>
@@ -55,6 +53,9 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
                   <DisplayName>{props.user?.displayName}</DisplayName>
                   <Email>{props.user?.email}</Email>
                 </TextWrapper>
+                <LogoutButton onClick={props.onClickOpenLogoutModal}>
+                  로그아웃
+                </LogoutButton>
               </>
             )}
           </ProfileWrapper>

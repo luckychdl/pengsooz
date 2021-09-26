@@ -11,10 +11,11 @@ export const TopWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 172px;
+  padding: 0 50px 0 50px;
 `;
 
 export const LogoutButton = styled.button`
-  align-self: flex-end;
+  /* align-self: flex-end; */
   width: 90px;
   height: 32px;
   border-radius: 8px;
@@ -62,6 +63,9 @@ export const MiddleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 50px 0 0 50px;
+  margin-left: 50px;
+  margin-right: 50px;
 `;
 
 export const Title = styled.div`
@@ -75,5 +79,8 @@ export const BoardsWrapper = styled.div`
   flex-wrap: wrap;
   grid-gap: 18px;
   overflow: scroll;
-  height: 392px;
+  height: 100vh;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;

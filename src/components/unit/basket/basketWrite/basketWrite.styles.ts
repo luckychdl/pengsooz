@@ -53,4 +53,9 @@ export const AddBasket = styled.div`
   font-weight: 400;
   text-align: center;
   scroll-snap-align: center;
+  cursor: pointer;
+  position: relative;
+  :active {
+    top: 4px;
+  }
 `;

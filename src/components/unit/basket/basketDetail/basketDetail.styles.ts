@@ -52,4 +52,5 @@ export const BasketMenu = styled.div`
   width: 30px;
   height: 15px;
   text-align: center;
+  cursor: pointer;
 `;

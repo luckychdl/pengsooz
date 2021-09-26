@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction } from "react";
 import firebase from "../../../commons/firebase/firebase";
 
 export interface IWorkspaceUIProps {
@@ -16,5 +16,6 @@ export interface IWorkspaceUIProps {
   onClickLogout: () => void;
   onClickCreateBoard: () => void;
   onClickCloseBoardModal: () => void;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
   onChangeBoardTitle: (event: ChangeEvent<HTMLInputElement>) => void;
 }

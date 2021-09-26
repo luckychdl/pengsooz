@@ -37,13 +37,13 @@ export default function Items(props: Iprops) {
   return (
     <div>
       <ItemUI
-        onClickEnterToItemDetail={onClickEnterToItemDetail}
         isAdd={isAdd}
+        onClickEnterToItemDetail={onClickEnterToItemDetail}
         setIsAdd={setIsAdd}
         ItemData={ItemData}
         basketId={props.basketId}
         colorCode={value?.data()?.colorCode}
-      />
+        />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import {
   ChangeEvent,
   Dispatch,
+  KeyboardEvent,
   SetStateAction,
   useEffect,
   useRef,
@@ -31,14 +32,17 @@ export default function ItemEdit(props: Iprops) {
     inputRef.current?.focus();
   });
 
-  const onClickAddItem = () => {
+  const onClickAddItem = async () => {
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
 
       return;
     }
 
-    const itemId = firebase.firestore().collection("itme").doc().id;
+    const itemIndex = firebase.firestore().collection("item").get();
+    const indexLength = (await itemIndex).docs.length;
+
+    const itemId = firebase.firestore().collection("item").doc().id;
     const data = {
       itemTitle: ItemTitle,
       createdAt: new Date(),
@@ -46,8 +50,8 @@ export default function ItemEdit(props: Iprops) {
       itemContents: "",
       basketId: props.basketId,
       isAlive: true,
+      index: 1 + indexLength,
     };
-
     firebase.firestore().collection("item").doc(itemId).set(data);
     props.setIsAdd(false);
     setItemTitle("");
@@ -56,12 +60,17 @@ export default function ItemEdit(props: Iprops) {
   const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setItemTitle(event.target.value);
   };
-
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickAddItem();
+    }
+  };
   return (
     <div>
       <ItemEditUI
         colorCode={value?.data()?.colorCode}
         onChangeItemTitle={onChangeItemTitle}
+        onKeyPress={onKeyPress}
         onClickAddItem={onClickAddItem}
         isAdd={props.isAdd}
         setIsAdd={props.setIsAdd}

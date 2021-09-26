@@ -5,14 +5,21 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 96px;
-  height: 96px;
+  width: 300px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 25px -25px;
+  margin: 0 10px 10px 0;
+
+  position: relative;
+  cursor: pointer;
+  :active {
+    top: 4px;
+  }
 `;
 export const Image = styled.div`
   width: 100%;
-  height: 64px;
+  height: 200px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-image: url(${(props) => props.color});
@@ -23,9 +30,10 @@ export const Image = styled.div`
 `;
 export const Text = styled.div`
   width: 100%;
-  height: 32px;
+  font-size: 20px;
+  height: 100px;
   padding: 0 10px;
-  line-height: 32px;
+  line-height: 100px;
   text-align: center;
   overflow: hidden;
   white-space: nowrap;

@@ -14,19 +14,15 @@ export default function Basket(props: Iprops) {
     }
   );
 
-  const [itemValue] = useCollection(
-    firebase.firestore().collection("items").orderBy("index", "asc"),
+  const [itemvalue] = useCollection(
+    firebase.firestore().collection("item").orderBy("index", "asc"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
 
-  return (
-    <BasketUI
-      value={value}
-      boardId={props.boardId}
-      loading={loading}
-      itemValue={itemValue}
-    />
-  );
+  const aaa = itemvalue?.docs.map((doc) => doc.data().basketId);
+
+  console.log(aaa);
+  return <BasketUI value={value} boardId={props.boardId} loading={loading} />;
 }
