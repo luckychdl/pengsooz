@@ -30,7 +30,7 @@ const BasketWritePageUI = (props: IBasketWritePageUIProps) => {
             <BasketCreate color={props.colorCode}>
               <BasketCreateInput
                 onChange={props.onChangeAddBasket}
-                maxLength={10}
+                maxLength={15}
                 onKeyPress={props.onKeyPress}
                 ref={props.inputRef}
               />

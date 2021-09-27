@@ -13,6 +13,7 @@ const BasketWritePage = () => {
   const [boardValue] = useDocument(dbservice.doc(`boards/${boardId}`), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
+
   const onClickAddBasket = () => {
     setIsAdd((prev) => !prev);
   };

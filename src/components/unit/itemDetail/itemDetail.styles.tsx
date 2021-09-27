@@ -1,27 +1,23 @@
 import styled from "@emotion/styled";
 import { ArrowLeftOutlined, DeleteOutlined } from "@ant-design/icons";
+import breakPoints from "../../../commons/media/media";
 
 interface backcolor {
   backColor: { backColor: any; color: string };
 }
-
-const breakPoints = {
-  tablet: `(min-width:650px)and (max-width: 1366px)`,
-  web: `(min-width:1367px)`,
-};
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+
   padding: 18px;
-  /* background-color: red; */
+  overflow: hidden;
 `;
 
 export const BackImg = styled.div`
-  position: absolute;
-
+  position: fixed;
   opacity: 0.5;
   top: 0;
   bottom: 0;
@@ -196,11 +192,15 @@ export const DetailContentsTextArea = styled.textarea`
   :focus {
     background-color: rgba(255, 255, 255, 0.7);
   }
+
   @media ${breakPoints.web} {
     font-size: 25px;
     height: 220px;
     padding: 8px 16px;
     transition: ease-in-out 500ms all;
+    ::placeholder {
+      font-size: 25px;
+    }
   }
 `;
 export const ConfirmContentButton = styled.div`

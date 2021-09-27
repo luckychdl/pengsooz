@@ -42,24 +42,26 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
         />
       )}
       <Wrapper>
-        <TopWrapper>
-          <ProfileWrapper>
-            {!props.userLoading && props.user && (
-              <>
-                <Photo
-                  src={props.user?.photoURL || "/images/default_pengsooz"}
-                />
-                <TextWrapper>
-                  <DisplayName>{props.user?.displayName}</DisplayName>
-                  <Email>{props.user?.email}</Email>
-                </TextWrapper>
-                <LogoutButton onClick={props.onClickOpenLogoutModal}>
-                  로그아웃
-                </LogoutButton>
-              </>
-            )}
-          </ProfileWrapper>
-        </TopWrapper>
+        <div style={{ width: "100%" }}>
+          <TopWrapper>
+            <ProfileWrapper>
+              {!props.userLoading && props.user && (
+                <>
+                  <Photo
+                    src={props.user?.photoURL || "/images/default_pengsooz"}
+                  />
+                  <TextWrapper>
+                    <DisplayName>{props.user?.displayName}</DisplayName>
+                    <Email>{props.user?.email}</Email>
+                  </TextWrapper>
+                </>
+              )}
+            </ProfileWrapper>
+            <LogoutButton onClick={props.onClickOpenLogoutModal}>
+              로그아웃
+            </LogoutButton>
+          </TopWrapper>
+        </div>
         <MiddleWrapper>
           <Title>Boards List</Title>
           <BoardsWrapper>

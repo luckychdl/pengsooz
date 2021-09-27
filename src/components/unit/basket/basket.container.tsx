@@ -13,6 +13,5 @@ export default function Basket(props: Iprops) {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-
   return <BasketUI value={value} boardId={props.boardId} loading={loading} />;
 }
