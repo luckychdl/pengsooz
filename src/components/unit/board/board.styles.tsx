@@ -28,14 +28,13 @@ export const HeadWrapper = styled.div`
   width: 100%;
   padding: 12px;
   background: ${(props) => props.color};
-  /* background-color: saddlebrown; */
 `;
 export const TopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding-bottom: 12px;
-  /* background-color: red; */
+
   @media ${breakPoints.tablet} {
     justify-content: space-around;
     transition: ease-in-out 1000ms all;
@@ -49,7 +48,6 @@ export const TopWrapper = styled.div`
 `;
 export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
   font-size: 20px;
-  /* background-color: salmon; */
   @media ${breakPoints.tablet} {
     font-size: 30px;
     line-height: 60px;
@@ -61,7 +59,6 @@ export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
 `;
 export const MenuIcon = styled(MenuOutlined)`
   font-size: 20px;
-  /* background-color: seashell; */
   @media ${breakPoints.tablet} {
     font-size: 30px;
     line-height: 60px;
@@ -72,14 +69,12 @@ export const MenuIcon = styled(MenuOutlined)`
   }
 `;
 export const BoardTitle = styled.div`
-  /* width: 100%; */
   height: 18px;
   font-family: "Oboksanghoe_B";
   font-size: 18px;
   line-height: 18px;
   text-align: center;
   line-height: 30px;
-  /* background-color: silver; */
   @media ${breakPoints.tablet} {
     font-size: 30px;
     line-height: 60px;

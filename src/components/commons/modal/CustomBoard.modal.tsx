@@ -4,6 +4,7 @@ import {
   Dispatch,
   KeyboardEvent,
   SetStateAction,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -124,7 +125,9 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
     setColorState(newColorState);
     inputRef.current?.focus();
   };
-
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
   return (
     <Wrapper>
       <InnerWrapper>
