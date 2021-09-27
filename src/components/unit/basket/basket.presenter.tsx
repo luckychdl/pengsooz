@@ -36,14 +36,6 @@ export default function BasketUI(props: any) {
   const onDragEnd = async (result: any) => {
     const { destination: dst, source: src, draggableId } = result;
 
-    console.log("==========================");
-    console.log("state", window.state);
-    console.log("itemState", window.itemState);
-    console.log("dst", dst);
-    console.log("src", src);
-    console.log("draggableId", draggableId);
-    console.log("==========================");
-
     if (!dst) {
       return;
     }
@@ -134,7 +126,6 @@ export default function BasketUI(props: any) {
                       ref={provided.innerRef}
                     >
                       <BasketDetail
-                        ref={resultsRef}
                         doc={doc}
                         messagesRef={
                           isPrev ? messagesEndPrevRef : messagesEndRef

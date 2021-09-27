@@ -16,7 +16,6 @@ export default function Items(props: Iprops) {
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-
   const onClickEnterToItemDetail = (event: any) => () => {
     const itemId = event.itemId;
     router.push(`/workspace/${boardId}/${itemId}`);
@@ -43,7 +42,7 @@ export default function Items(props: Iprops) {
         ItemData={ItemData}
         basketId={props.basketId}
         colorCode={value?.data()?.colorCode}
-        />
+      />
     </div>
   );
 }

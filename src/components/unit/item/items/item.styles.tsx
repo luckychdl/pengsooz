@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
     display: none;
   }
 `;
-
 export const ItemContainer = styled.div`
   display: flex;
   justify-content: space-between;

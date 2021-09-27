@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-// 프로젝트 공용
+// 프로젝트 공용 (JH)
 const clientCredentials = {
   apiKey: "AIzaSyDUode-3Ahyy5698hB0usCiM23KRpW2gNo",
   authDomain: "pensooz-fire.firebaseapp.com",

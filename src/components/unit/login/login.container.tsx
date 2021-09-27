@@ -6,7 +6,6 @@ export default function Login() {
     signInSuccessUrl: "/workspace",
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
   };
-
   return (
     <div>
       <LoginUI uiConfig={uiConfig} firebaseAuth={firebase.auth()} />

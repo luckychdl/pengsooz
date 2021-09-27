@@ -40,7 +40,6 @@ interface IBoardUI {
 
 export default function BoardUI(props: IBoardUI) {
   const colorCode = props.value?.data()?.colorCode;
-
   return (
     <div>
       {props.isOpen && (
