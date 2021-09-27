@@ -3,10 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Wrapper, ItemContainer } from "./item.styles";
 
 declare const window: typeof globalThis & {
-  state: number[];
-  stateItem: {
-    [key: string]: number[];
-  };
+  itemState: number[];
 };
 
 interface Iprops {
@@ -18,47 +15,47 @@ interface Iprops {
   colorCode: string;
 }
 
-if (typeof window !== "undefined") window.stateItem = {};
 export default function ItemUI(props: Iprops) {
-  console.log(window.state);
-  console.log(window.stateItem);
   const filteredDocs = props.ItemData.filter(
     (doc: any) => props.basketId === doc.basketId
   );
-  window.stateItem = {
-    aaa: [1, 2, 3, 4, 5],
-  };
+
+  if (typeof window !== "undefined") window.itemState = [];
   return (
-    <Wrapper>
-      <Droppable droppableId={props.basketId} type="items">
-        {(provided) => (
-          <div ref={provided.innerRef}>
-            {filteredDocs.map((data: any, index: number) => (
-              <div key={data.itemId}>
-                {data.basketId === props.basketId && (
-                  <Draggable draggableId={data.itemId} index={index}>
-                    {(provided) => (
-                      <div
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
+    <Droppable droppableId={props.basketId} type="item">
+      {(provided) => (
+        <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
+          <div>
+            {filteredDocs.map((data: any, index: number) => {
+              if (window.itemState.length < filteredDocs.length)
+                window.itemState = [...window.itemState, data.index];
+              return (
+                <Draggable
+                  draggableId={data.itemId}
+                  index={index + 1}
+                  key={data.itemId + index}
+                >
+                  {(provided) => (
+                    <div
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    >
+                      <ItemContainer
+                        onClick={props.onClickEnterToItemDetail(data)}
+                        color={props.colorCode}
                       >
-                        <ItemContainer
-                          onClick={props.onClickEnterToItemDetail(data)}
-                          color={props.colorCode}
-                        >
-                          {data.itemTitle}
-                        </ItemContainer>
-                      </div>
-                    )}
-                  </Draggable>
-                )}
-              </div>
-            ))}
+                        {data.itemTitle}||인덱스{data.index}
+                      </ItemContainer>
+                    </div>
+                  )}
+                </Draggable>
+              );
+            })}
             {provided.placeholder}
           </div>
-        )}
-      </Droppable>
-    </Wrapper>
+        </Wrapper>
+      )}
+    </Droppable>
   );
 }

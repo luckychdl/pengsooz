@@ -7,13 +7,13 @@ import { dbservice } from "../../../commons/firebase/firebase";
 
 declare const window: typeof globalThis & {
   state: number[];
-  stateItem: {
-    [key: string]: number[];
-  };
+  itemState: number[];
 };
 
-if (typeof window !== "undefined") window.state = [];
 export default function BasketUI(props: any) {
+  const filteredDocs = props.value?.docs.filter(
+    (doc: any) => props.boardId === doc.data().boardId
+  );
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const messagesEndPrevRef = useRef<HTMLDivElement | null>(null);
   const scrollToBottom = () => {
@@ -26,6 +26,7 @@ export default function BasketUI(props: any) {
   };
   useEffect(scrollToBottom, [props.value]);
 
+  if (typeof window !== "undefined") window.state = [];
   const resultsRef = useRef<HTMLDivElement | null>(null);
   const scrollToLeft = () => {
     resultsRef.current?.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -33,13 +34,22 @@ export default function BasketUI(props: any) {
   useEffect(scrollToLeft, [props.loading]);
 
   const onDragEnd = async (result: any) => {
-    console.log("hi~");
-    console.log(window.stateItem);
-    console.log("hi~");
+    const { destination: dst, source: src, draggableId } = result;
+
+    if (!dst) {
+      return;
+    }
+
+    if (dst.droppableId === src.droppableId && dst.index === src.index) {
+      return;
+    }
+
     if (result.type === "basket") {
-      const state = window.state;
-      const dbIdx: number[] = [0.1, ...state, state[state.length - 1] + 1];
-      const { destination: dst, source: src, draggableId } = result;
+      const dbIdx: number[] = [
+        0.1,
+        ...window.state,
+        window.state[window.state.length - 1] + 1,
+      ];
       const temp =
         dst.index - src.index > 0
           ? (dbIdx[dst.index] + dbIdx[dst.index + 1]) / 2
@@ -49,16 +59,42 @@ export default function BasketUI(props: any) {
         await dbservice.collection(result.type).doc(draggableId).update({
           index: temp,
         });
-      } catch (err) {
-        console.log(err);
+      } catch (err) {}
+      return;
+    }
+
+    if (result.type === "item") {
+      const itemIdx: number[] = [
+        0.1,
+        ...window.itemState,
+        window.itemState[window.itemState.length - 1] + 1,
+      ];
+
+      if (dst.droppableId === src.droppableId) {
+        const itemTemp =
+          dst.index - src.index > 0
+            ? (itemIdx[dst.index] + itemIdx[dst.index + 1]) / 2
+            : (itemIdx[dst.index] + itemIdx[dst.index - 1]) / 2;
+        try {
+          await dbservice.collection("item").doc(draggableId).update({
+            basketId: dst.droppableId,
+            index: itemTemp,
+          });
+        } catch (err) {}
+      } else {
+        const newItemTemp =
+          dst.index === 0
+            ? (itemIdx[dst.index] + itemIdx[dst.index + 1]) / 2
+            : (itemIdx[dst.index] + itemIdx[dst.index - 1]) / 2;
+        try {
+          await dbservice.collection("item").doc(draggableId).update({
+            basketId: dst.droppableId,
+            index: newItemTemp,
+          });
+        } catch (err) {}
       }
-      console.log(state);
     }
   };
-
-  const filteredDocs = props.value?.docs.filter(
-    (doc: any) => props.boardId === doc.data().boardId
-  );
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -68,18 +104,17 @@ export default function BasketUI(props: any) {
         type="basket"
       >
         {(provided) => (
-          <Wrapper ref={provided.innerRef}>
+          <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
             <div ref={resultsRef} />
             {filteredDocs?.map((doc: any, index: number) => {
               if (window.state.length < filteredDocs.length)
                 window.state = [...window.state, doc.data().index];
-
               const isPrev = props.value?.docs.length - 1 === index;
               return (
                 <Draggable
                   draggableId={doc.data().basketId}
                   index={index + 1}
-                  key={doc.data().basketId + index}
+                  key={index + doc.data().basketId}
                 >
                   {(provided) => (
                     <div
@@ -94,7 +129,6 @@ export default function BasketUI(props: any) {
                         }
                         boardId={props.boardId}
                         onClickBasketUpdate={props.onClickBasketUpdate}
-                        scrollToBottom={scrollToBottom}
                       />
                     </div>
                   )}
@@ -102,7 +136,7 @@ export default function BasketUI(props: any) {
               );
             })}
             {provided.placeholder}
-            <BasketWrite messagesEndRef={messagesEndRef} />
+            <BasketWrite />
           </Wrapper>
         )}
       </Droppable>

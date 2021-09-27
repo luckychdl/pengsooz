@@ -1,5 +1,5 @@
 import BasketWritePageUI from "./basketWrite.presenter";
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Modal } from "antd";
 import { dbservice } from "../../../../commons/firebase/firebase";
 import { useRouter } from "next/router";
