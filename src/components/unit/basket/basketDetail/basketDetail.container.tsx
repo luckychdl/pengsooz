@@ -1,7 +1,7 @@
 import BasketDetailPageUI from "./basketDetail.presenter";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { dbservice } from "../../../../commons/firebase/firebase";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 
@@ -20,6 +20,8 @@ const BasketDetailPage = (props: Iprops) => {
   const [updateTitle, setUpdateTitle] = useState(props.doc.data().title);
   const router = useRouter();
   const boardId = router.query.boardId;
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const clickRef = useRef<HTMLElement | null>(null);
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
@@ -30,6 +32,9 @@ const BasketDetailPage = (props: Iprops) => {
   const onClickBasketUpdate = () => {
     setIsUpdate(true);
   };
+  useEffect(() => {
+    inputRef.current?.focus();
+  });
   const onClickUpdate = async () => {
     if (updateTitle !== "") {
       try {
@@ -69,17 +74,37 @@ const BasketDetailPage = (props: Iprops) => {
   const onClickCancel = () => {
     setIsUpdate(false);
   };
-
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickUpdate();
+      return;
+    }
+    if (e.key === "Escape") {
+      setIsUpdate(false);
+    }
+  };
+  useEffect(() => {
+    const close: any = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModal(false);
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
   return (
     <BasketDetailPageUI
       isAdd={isAdd}
       setIsAdd={setIsAdd}
+      inputRef={inputRef}
+      clickRef={clickRef}
       isUpdate={isUpdate}
       isModal={isModal}
       updateTitle={updateTitle}
       doc={props.doc}
       messagesRef={props.messagesRef}
       boardId={props.boardId}
+      onKeyPress={onKeyPress}
       colorCode={value?.data()?.colorCode}
       onClickLeft={onClickLeft}
       onClickRight={onClickRight}

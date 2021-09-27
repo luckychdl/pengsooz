@@ -50,7 +50,7 @@ export const BasketTitle = styled.div`
 `;
 export const BasketMenu = styled.div`
   width: 30px;
-  height: 15px;
+  height: 30px;
   text-align: center;
   cursor: pointer;
 `;

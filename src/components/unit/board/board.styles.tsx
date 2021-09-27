@@ -5,7 +5,7 @@ import breakPoints from "../../../commons/media/media";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 98vh;
   position: relative;
 
   ::before {
@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     background-position-x: center;
     background-position-y: 43%;
     opacity: 0.6;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
@@ -24,18 +24,18 @@ export const Wrapper = styled.div`
   }
 `;
 export const HeadWrapper = styled.div`
-  position: relative;
+  position: fixed;
   width: 100%;
   padding: 12px;
   background: ${(props) => props.color};
-  /* background-color: saddlebrown; */
+  z-index: 999;
 `;
 export const TopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding-bottom: 12px;
-  /* background-color: red; */
+
   @media ${breakPoints.tablet} {
     justify-content: space-around;
     transition: ease-in-out 1000ms all;
@@ -49,7 +49,6 @@ export const TopWrapper = styled.div`
 `;
 export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
   font-size: 20px;
-  /* background-color: salmon; */
   @media ${breakPoints.tablet} {
     font-size: 30px;
     line-height: 60px;
@@ -61,7 +60,6 @@ export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
 `;
 export const MenuIcon = styled(MenuOutlined)`
   font-size: 20px;
-  /* background-color: seashell; */
   @media ${breakPoints.tablet} {
     font-size: 30px;
     line-height: 60px;
@@ -72,14 +70,12 @@ export const MenuIcon = styled(MenuOutlined)`
   }
 `;
 export const BoardTitle = styled.div`
-  /* width: 100%; */
   height: 18px;
   font-family: "Oboksanghoe_B";
   font-size: 18px;
   line-height: 18px;
   text-align: center;
   line-height: 30px;
-  /* background-color: silver; */
   @media ${breakPoints.tablet} {
     font-size: 30px;
     line-height: 60px;
@@ -95,7 +91,7 @@ export const BasketWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 526px;
-  padding: 20px 0;
+  padding: 100px 0 20px 0;
 `;
 export const BasketPageWrapper = styled.div`
   display: flex;

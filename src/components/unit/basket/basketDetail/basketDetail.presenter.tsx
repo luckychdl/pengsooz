@@ -13,7 +13,7 @@ import MicroButton from "../../../commons/button/micro.Button";
 import MenuModal from "../../../commons/modal/Menu.modal";
 import SelectModal from "../../../commons/modal/Select.modal";
 import { Dropdown } from "antd";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction } from "react";
 
 interface IBasketDetailPageUI {
   isModal: boolean;
@@ -27,6 +27,9 @@ interface IBasketDetailPageUI {
   boardId: string;
   colorCode: string;
   messagesRef: any;
+  inputRef: any;
+  clickRef: any;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
   onClickLeft: () => void;
   onClickRight: () => void;
   onClickCancel: () => void;
@@ -58,6 +61,8 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                   onChange={props.onChangeUpdateTitle}
                   defaultValue={props.doc.data().title}
                   maxLength={15}
+                  onKeyDown={props.onKeyPress}
+                  ref={props.inputRef}
                 />
                 <BasketEditBtn>
                   <MicroButton
@@ -83,7 +88,7 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                       onClickBottom={props.onClickDeleteComfirm}
                     />
                   }
-                  trigger={["click"]}
+                  trigger={["hover"]}
                   placement="bottomRight"
                 >
                   <BasketMenu onClick={props.onClickMenu}>...</BasketMenu>
