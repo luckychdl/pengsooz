@@ -94,6 +94,7 @@ export default function Board() {
       router.push("/workspace");
     }
   }, [confirmAlive]);
+
   const onKeyPressUpdate = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onClickUpdate();
