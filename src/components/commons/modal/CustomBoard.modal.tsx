@@ -38,6 +38,14 @@ const InnerWrapper = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fcf9ee;
+  @media (min-width: 650px) and (max-width: 1366px) {
+    width: 400px;
+    height: 320px;
+  }
+  @media (min-width: 1367px) {
+    width: 600px;
+    height: 450px;
+  } ;
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -63,6 +71,12 @@ const MiddleWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 12px;
+  @media (min-width: 1367px) {
+    height: 290px;
+  }
+  @media (min-width: 650px) and (max-width: 1366px) {
+    height: 180px;
+  }
 `;
 const MiddleInnerDiv = styled.div`
   display: flex;

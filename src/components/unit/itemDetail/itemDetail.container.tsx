@@ -1,6 +1,6 @@
 import ItemDetailUI from "./itemDetail.presenter";
 import { useRouter } from "next/router";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import firebase, { dbservice } from "../../../commons/firebase/firebase";
 import { Modal } from "antd";
 import { useDocument } from "react-firebase-hooks/firestore";
@@ -100,7 +100,11 @@ export default function ItemDetail() {
     setIsOpenContents(true);
     setIsOpenTitle(false);
   };
-
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      updateItemTitle();
+    }
+  };
   return (
     <div>
       <ItemDetailUI
@@ -111,6 +115,7 @@ export default function ItemDetail() {
         isOpenContents={isOpenContents}
         setIsOpenContents={setIsOpenContents}
         setIsOpenTitle={setIsOpenTitle}
+        onKeyPress={onKeyPress}
         itemData={itemData}
         inputRef={inputRef}
         updateItemTitle={updateItemTitle}

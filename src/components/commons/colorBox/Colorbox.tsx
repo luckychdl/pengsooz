@@ -26,6 +26,14 @@ const Wrapper = styled.div`
   :active {
     top: 4px;
   }
+  @media (min-width: 1367px) {
+    width: 130px;
+    height: 130px;
+  }
+  @media (min-width: 650px) and (max-width: 1366px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const CheckOut = styled(CheckOutlined)`

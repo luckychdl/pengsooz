@@ -17,7 +17,7 @@ import {
 } from "./itemDetail.styles";
 import Comments from "../comments/comment.container";
 import Select from "../../commons/modal/Select.modal";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction } from "react";
 
 interface Iprops {
   itemData: any;
@@ -39,6 +39,7 @@ interface Iprops {
   updateItemTitle: () => Promise<void>;
   onClickEnterToBoard: () => void;
   onClickDeleteItem: () => void;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export default function ItemDetailUI(props: Iprops) {
@@ -75,6 +76,7 @@ export default function ItemDetailUI(props: Iprops) {
                     onChange={props.onChangeItemTitle}
                     ref={props.inputRef}
                     maxLength={22}
+                    onKeyPress={props.onKeyPress}
                   />
                   <ConfirmTitleButton onClick={props.updateItemTitle}>
                     Okay
