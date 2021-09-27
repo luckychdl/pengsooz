@@ -7,7 +7,7 @@ import { dbservice } from "../../../commons/firebase/firebase";
 
 declare const window: typeof globalThis & {
   state: number[];
-  itemState: number[];
+  itemState: { [key: string]: number[] };
 };
 
 export default function BasketUI(props: any) {
@@ -35,6 +35,14 @@ export default function BasketUI(props: any) {
 
   const onDragEnd = async (result: any) => {
     const { destination: dst, source: src, draggableId } = result;
+
+    console.log("==========================");
+    console.log("state", window.state);
+    console.log("itemState", window.itemState);
+    console.log("dst", dst);
+    console.log("src", src);
+    console.log("draggableId", draggableId);
+    console.log("==========================");
 
     if (!dst) {
       return;
@@ -64,10 +72,14 @@ export default function BasketUI(props: any) {
     }
 
     if (result.type === "item") {
+      const basketId = dst.droppableId;
       const itemIdx: number[] = [
         0.1,
-        ...window.itemState,
-        window.itemState[window.itemState.length - 1] + 1,
+        ...(window.itemState[basketId] || []),
+        window.itemState[basketId]
+          ? window.itemState[basketId][window.itemState[basketId]?.length - 1] +
+            1
+          : 1,
       ];
 
       if (dst.droppableId === src.droppableId) {
@@ -80,22 +92,21 @@ export default function BasketUI(props: any) {
             basketId: dst.droppableId,
             index: itemTemp,
           });
+          window.itemState = {};
         } catch (err) {}
       } else {
-        const newItemTemp =
-          dst.index === 0
-            ? (itemIdx[dst.index] + itemIdx[dst.index + 1]) / 2
-            : (itemIdx[dst.index] + itemIdx[dst.index - 1]) / 2;
+        const dstIdx = dst.index || 1;
+        const newItemTemp = (itemIdx[dstIdx] + itemIdx[dstIdx - 1]) / 2;
         try {
           await dbservice.collection("item").doc(draggableId).update({
-            basketId: dst.droppableId,
+            basketId,
             index: newItemTemp,
           });
+          window.itemState = {};
         } catch (err) {}
       }
     }
   };
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable
@@ -105,7 +116,7 @@ export default function BasketUI(props: any) {
       >
         {(provided) => (
           <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
-            <div ref={resultsRef} />
+            <div />
             {filteredDocs?.map((doc: any, index: number) => {
               if (window.state.length < filteredDocs.length)
                 window.state = [...window.state, doc.data().index];
@@ -123,6 +134,7 @@ export default function BasketUI(props: any) {
                       ref={provided.innerRef}
                     >
                       <BasketDetail
+                        ref={resultsRef}
                         doc={doc}
                         messagesRef={
                           isPrev ? messagesEndPrevRef : messagesEndRef

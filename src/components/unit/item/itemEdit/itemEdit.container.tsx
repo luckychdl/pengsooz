@@ -21,6 +21,7 @@ interface Iprops {
 
 export default function ItemEdit(props: Iprops) {
   const [ItemTitle, setItemTitle] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const boardId = router.query.boardId;
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
@@ -31,6 +32,9 @@ export default function ItemEdit(props: Iprops) {
     inputRef.current?.focus();
   });
   const onClickAddItem = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
       return;
@@ -50,6 +54,7 @@ export default function ItemEdit(props: Iprops) {
     firebase.firestore().collection("item").doc(itemId).set(data);
     props.setIsAdd(false);
     setItemTitle("");
+    setIsSubmitting(false);
   };
   const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setItemTitle(event.target.value);
