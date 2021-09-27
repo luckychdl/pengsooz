@@ -26,9 +26,7 @@ export const globalStyles = css`
 
   body {
     background-color: #fcf9ee;
-
     overflow: visible;
-
   }
 
   button {

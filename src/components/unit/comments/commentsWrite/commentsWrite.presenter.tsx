@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, KeyboardEvent } from "react";
 import {
   CommentTitle,
   CommentsInnerDiv,
@@ -11,6 +11,7 @@ interface ICommentsWriteUI {
   colorCode: string;
   onClickSubmit: () => Promise<void>;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
   contents: string;
 }
 
@@ -23,6 +24,7 @@ export default function CommentsWriteUI(props: ICommentsWriteUI) {
           onChange={props.onChange}
           value={props.contents}
           maxLength={50}
+          onKeyPress={props.onKeyPress}
         />
         <EnterIcon onClick={props.onClickSubmit} color={props.colorCode} />
       </CommentsInnerDiv>
