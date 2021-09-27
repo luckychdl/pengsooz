@@ -13,7 +13,6 @@ export const Title = styled.div`
   font-weight: 700;
   margin-top: 20px;
 `;
-
 export const MainImg = styled.img`
   width: 250px;
   height: 250px;

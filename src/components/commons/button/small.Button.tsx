@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Button = styled.div`
+const Button = styled.div`
   width: 122px;
   height: 36px;
   line-height: 36px;

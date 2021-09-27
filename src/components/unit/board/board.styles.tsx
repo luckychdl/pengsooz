@@ -1,13 +1,11 @@
 import styled from "@emotion/styled";
 import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
-
 import breakPoints from "../../../commons/media/media";
 
 export const Wrapper = styled.div`
   width: 100%;
   height: 98vh;
   position: relative;
-
   ::before {
     content: "";
     background-image: url(${(props) => props.color});
@@ -35,7 +33,6 @@ export const TopWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   padding-bottom: 12px;
-
   @media ${breakPoints.tablet} {
     justify-content: space-around;
     transition: ease-in-out 1000ms all;

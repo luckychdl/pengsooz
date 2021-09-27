@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
   height: 96px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 25px -25px;
-
   @media ${breakPoints.tablet} {
     cursor: pointer;
     position: relative;
@@ -37,7 +36,6 @@ export const Wrapper = styled.div`
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 25px -25px;
     margin: 0 10px 10px 0;
-
     position: relative;
     cursor: pointer;
     :active {
@@ -55,7 +53,6 @@ export const Image = styled.div`
   background-size: cover;
   background-position-x: center;
   background-position-y: 43%;
-
   @media ${breakPoints.tablet} {
     width: 100%;
     height: 200px;

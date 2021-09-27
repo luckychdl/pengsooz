@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 100%;
 `;
-
 export const ItemContainerEdit = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@ export const ItemContainerEdit = styled.div`
   background: ${(props) => props.color};
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 `;
-
 export const ItemCreateInput = styled.input`
   width: 100%;
   height: 36px;
@@ -24,14 +22,12 @@ export const ItemCreateInput = styled.input`
   outline: none;
   border-color: whitesmoke;
 `;
-
 export const ItemCreateBtn = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
   margin-top: 12px;
 `;
-
 export const AddItem = styled.div`
   width: 100%;
   height: 96px;

@@ -7,10 +7,9 @@ export const Wrapper = styled.div`
   padding: 18px;
   display: flex;
   flex-direction: column;
-
   @media ${breakPoints.tablet} {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 18px;
   }
   @media ${breakPoints.web} {
@@ -19,81 +18,74 @@ export const Wrapper = styled.div`
     margin: auto;
   }
 `;
-
 export const TopWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 360px;
+  flex-direction: column-reverse;
+  width: 100%;
   height: 132px;
   margin: auto;
-  /* background-color: silver; */
-
   @media ${breakPoints.tablet} {
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
-    width: 95%;
+    width: 100%;
     height: 172px;
+    padding: 0 56px;
   }
   @media ${breakPoints.web} {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1450px;
+    align-items: center;
+    width: 100%;
     height: 172px;
     margin: auto;
-    /* background-color: slateblue; */
   }
 `;
-
 export const LogoutButton = styled.button`
+  align-self: flex-end;
   width: 90px;
   height: 32px;
   border-radius: 8px;
   font-size: 16px;
   line-height: 32px;
   background-color: #e2e1d7;
-
   @media ${breakPoints.tablet} {
+    align-self: center;
     width: 200px;
     height: 64px;
     border-radius: 8px;
     font-size: 24px;
-    transform: translateY(80%);
-    margin-right: 80px;
     background-color: #e2e1d7;
   }
   @media ${breakPoints.web} {
+    align-self: center;
     width: 200px;
     height: 64px;
     border-radius: 8px;
     font-size: 24px;
-    transform: translateY(60%);
     background-color: #e2e1d7;
   }
 `;
-
 export const ProfileWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 140px;
-
   @media ${breakPoints.tablet} {
     display: flex;
     justify-content: flex-start;
     width: 80%;
     height: 140px;
-    margin-left: 30px;
     transform: translateY(20px);
   }
   @media ${breakPoints.web} {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 140px;
   }
 `;
-
 export const Photo = styled.img`
   width: 80px;
   height: 80px;
@@ -109,7 +101,6 @@ export const Photo = styled.img`
     border-radius: 50%;
   }
 `;
-
 export const TextWrapper = styled.div`
   width: 100%;
   padding-left: 30px;
@@ -121,7 +112,6 @@ export const TextWrapper = styled.div`
     width: 600px;
   }
 `;
-
 export const DisplayName = styled.div`
   height: 28px;
   margin-bottom: 5px;
@@ -133,10 +123,8 @@ export const DisplayName = styled.div`
     height: 36px;
     margin-bottom: 5px;
     font-family: "Oboksanghoe_B";
-
     line-height: 28px;
     color: #1c1c1c;
-
     font-size: 36px;
   }
   @media ${breakPoints.web} {
@@ -169,19 +157,15 @@ export const Email = styled.div`
     color: #707070;
   }
 `;
-
 export const MiddleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* min-width: 555px; */
-
   @media ${breakPoints.tablet} {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 50px;
-    height: 810px;
   }
   @media ${breakPoints.web} {
     display: flex;
@@ -190,12 +174,12 @@ export const MiddleWrapper = styled.div`
     padding: 50px 0 0 0;
   }
 `;
-
 export const Title = styled.div`
   font-size: 16px;
   padding-bottom: 10px;
   @media ${breakPoints.tablet} {
     font-size: 32px;
+    padding-left: 12px;
     padding-bottom: 40px;
   }
   @media ${breakPoints.web} {
@@ -204,16 +188,17 @@ export const Title = styled.div`
     width: 200px;
   }
 `;
-
 export const BoardsWrapper = styled.div`
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
   grid-gap: 18px;
   overflow: scroll;
-  height: 445px;
+  height: 437px;
   padding-bottom: 10px;
-
+  ::-webkit-scrollbar {
+    display: none;
+  }
   @media ${breakPoints.tablet} {
     display: flex;
     justify-content: flex-start;
@@ -221,7 +206,8 @@ export const BoardsWrapper = styled.div`
     flex-wrap: wrap;
     grid-gap: 18px;
     overflow: scroll;
-    height: 100vh;
+    height: 968px;
+    padding-left: 12px;
     ::-webkit-scrollbar {
       display: none;
     }
@@ -233,7 +219,6 @@ export const BoardsWrapper = styled.div`
     grid-gap: 18px;
     overflow: scroll;
     height: 100vh;
-
     ::-webkit-scrollbar {
       display: none;
     }

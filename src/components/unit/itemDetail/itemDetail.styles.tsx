@@ -11,11 +11,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-
   padding: 18px;
   overflow: hidden;
 `;
-
 export const BackImg = styled.div`
   position: fixed;
   opacity: 0.5;
@@ -23,23 +21,19 @@ export const BackImg = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-
   background-image: url(${(props) => props.color});
   background-position-x: center;
   background-position-y: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: ${(props: backcolor) => props.backColor};
-
   @media ${breakPoints.tablet} {
     background-size: 60%;
   }
-
   @media ${breakPoints.web} {
     background-size: 50%;
   }
 `;
-
 export const InnerWrapper = styled.div`
   @media ${breakPoints.tablet} {
     width: 70%;
@@ -49,7 +43,6 @@ export const InnerWrapper = styled.div`
     padding: 20px 40px 40px 40px;
     transition: ease-in-out 500ms all;
   }
-
   @media ${breakPoints.web} {
     width: 1200px;
     margin: auto;
@@ -59,7 +52,6 @@ export const InnerWrapper = styled.div`
     transition: ease-in-out 500ms all;
   }
 `;
-
 export const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -109,10 +101,7 @@ export const Text = styled.div`
   @media ${breakPoints.web} {
     font-size: 25px;
     transition: ease-in-out 500ms all;
-    /* background-color: s?ilver; */
     margin-bottom: 10px;
-    /* margin-bottom: 30px;
-    padding-top: 30px; */
   }
 `;
 export const DetailTitleInput = styled.input`
@@ -154,7 +143,6 @@ export const ConfirmTitleButton = styled.div`
     font-size: 20px;
     height: 42px;
     line-height: 42px;
-    /* padding: 0 16px; */
     transition: ease-in-out 500ms all;
     text-align: right;
   }
@@ -192,7 +180,6 @@ export const DetailContentsTextArea = styled.textarea`
   :focus {
     background-color: rgba(255, 255, 255, 0.7);
   }
-
   @media ${breakPoints.web} {
     font-size: 25px;
     height: 220px;
@@ -213,8 +200,6 @@ export const ConfirmContentButton = styled.div`
   vertical-align: bottom;
   text-align: right;
   color: #bdbdbd;
-  /* background-color: red; */
-
   :hover {
     cursor: pointer;
   }
@@ -236,7 +221,6 @@ export const DetailContentsDiv = styled.textarea`
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   word-break: break-all;
-
   @media ${breakPoints.web} {
     font-size: 25px;
     height: 220px;

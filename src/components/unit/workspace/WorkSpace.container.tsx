@@ -22,11 +22,9 @@ const Workspace = () => {
   const onClickOpenLogoutModal = () => {
     setIsSelectOpen(true);
   };
-
   const onClickCloseLogoutModal = () => {
     setIsSelectOpen(false);
   };
-
   const onClickLogout = async () => {
     await firebase.auth().signOut();
     router.push("/");
@@ -57,12 +55,10 @@ const Workspace = () => {
       }
     }
   };
-
   const onClickCloseBoardModal = () => {
     setIsCustomBoardOpen(false);
     setColorCode("");
   };
-
   const onChangeBoardTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setBoardTitle(event.target.value);
   };

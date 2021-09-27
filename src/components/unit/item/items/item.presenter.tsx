@@ -36,8 +36,6 @@ export default function ItemUI(props: Iprops) {
                   ...window.itemState,
                   [basketId]: [...(window.itemState[basketId] || []), itemIdx],
                 };
-              // window.itemState = [...window.itemState, data.index];
-              console.log("fffff", window.itemState);
               return (
                 <Draggable
                   draggableId={data.itemId}

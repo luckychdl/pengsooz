@@ -71,7 +71,6 @@ export const CommentEdit = styled.input`
     line-height: 24px;
   }
 `;
-
 export const DispalayName = styled.div`
   height: 20px;
   font-size: 10px;
@@ -86,7 +85,6 @@ export const DispalayName = styled.div`
     margin-bottom: 4px;
   }
 `;
-
 export const CommentContents = styled.div`
   height: 20px;
   padding: 0 5px;
