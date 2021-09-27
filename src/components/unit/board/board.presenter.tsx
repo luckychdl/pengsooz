@@ -67,6 +67,7 @@ export default function BoardUI(props: IBoardUI) {
           <HeadWrapper color={colorCode}>
             <TopWrapper>
               <ArrowLeftIcon onClick={props.onClickEnterToWS} />
+              <BoardTitle>{props.value.data().title}</BoardTitle>
               <Dropdown
                 overlay={
                   <Menu
@@ -84,7 +85,6 @@ export default function BoardUI(props: IBoardUI) {
                 <MenuIcon onClick={props.onClickMenu} />
               </Dropdown>
             </TopWrapper>
-            <BoardTitle>{props.value.data().title}</BoardTitle>
           </HeadWrapper>
           <BasketWrapper>
             {props.isMenu && <Blur />}

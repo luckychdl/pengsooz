@@ -57,7 +57,7 @@ const BasketDetailPageUI = (props: IBasketDetailPageUI) => {
                 <BasketEditInput
                   onChange={props.onChangeUpdateTitle}
                   defaultValue={props.doc.data().title}
-                  maxLength={10}
+                  maxLength={15}
                 />
                 <BasketEditBtn>
                   <MicroButton

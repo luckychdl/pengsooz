@@ -110,7 +110,9 @@ export default function ItemDetailUI(props: Iprops) {
                 />
               )}
             </ContentWrapper>
-            <Comments />
+            <div>
+              <Comments />
+            </div>
           </InnerWrapper>
         </div>
       </Wrapper>

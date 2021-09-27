@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { EnterOutlined } from "@ant-design/icons";
-
-const breakPoints = {
-  tablet: `(min-width:650px)and (max-width: 1366px)`,
-  web: `(min-width:1367px)`,
-};
+import breakPoints from "../../../../commons/media/media";
 
 export const CommentsWriteDiv = styled.div`
   display: flex;
