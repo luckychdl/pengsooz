@@ -5,7 +5,7 @@ import breakPoints from "../../../commons/media/media";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 98vh;
   position: relative;
 
   ::before {
@@ -28,6 +28,7 @@ export const HeadWrapper = styled.div`
   width: 100%;
   padding: 12px;
   background: ${(props) => props.color};
+  z-index: 999;
 `;
 export const TopWrapper = styled.div`
   display: flex;

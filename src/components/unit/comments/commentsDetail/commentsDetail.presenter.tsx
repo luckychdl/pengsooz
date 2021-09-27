@@ -19,6 +19,7 @@ interface ICommentsDetailUi {
   onClickSwitchEdit: () => void;
   onClickUpdate: (id: string | undefined) => () => Promise<void>;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+
   itemId: any;
   user: any;
 }
