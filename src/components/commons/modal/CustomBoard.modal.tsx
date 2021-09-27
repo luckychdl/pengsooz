@@ -4,6 +4,7 @@ import {
   Dispatch,
   KeyboardEvent,
   SetStateAction,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -18,7 +19,7 @@ interface ICustomBoardModalProps {
   onClickLeft: () => void;
   onClickRight: () => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  onKeyPress: (event: KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
   setColorCode: Dispatch<SetStateAction<string>>;
 }
 const Wrapper = styled.div`
@@ -124,7 +125,9 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
     setColorState(newColorState);
     inputRef.current?.focus();
   };
-
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
   return (
     <Wrapper>
       <InnerWrapper>
@@ -135,7 +138,7 @@ const CustomBoard = (props: ICustomBoardModalProps) => {
             onChange={props.onChangeTitle}
             placeholder="보드 이름을 입력하세요 :)"
             defaultValue={props.defaultValue}
-            onKeyPress={props.onKeyPress}
+            onKeyDown={props.onKeyDown}
             ref={inputRef}
           />
         </TitleWrapper>

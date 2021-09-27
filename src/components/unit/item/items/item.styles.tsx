@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 100%;
   max-height: calc(100vh - 350px) !important;
-  min-height: 100px;
+  min-height: 40px;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;

@@ -54,8 +54,13 @@ const BasketWritePage = () => {
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onClickCreateBasket();
+      return;
+    }
+    if (e.key === "Escape") {
+      setIsAdd((prev) => !prev);
     }
   };
+
   return (
     <BasketWritePageUI
       isAdd={isAdd}

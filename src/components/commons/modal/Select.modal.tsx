@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
+
 import SmallButton from "../button/small.Button";
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 1;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  background: rgba(83, 61, 61, 0.4);
   backdrop-filter: blur(2px);
+  position: fixed;
 `;
 const InnerWrapper = styled.div`
   background-color: #fcf9ee;
@@ -32,6 +35,7 @@ export const ButtonWrapper = styled.div`
 interface ISelectorModalProps {
   onClickLeft: () => void;
   onClickRight: () => void;
+
   buttonNameLeft: string;
   buttonNameRight: string;
   content: string;

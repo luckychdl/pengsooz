@@ -63,6 +63,9 @@ export default function ItemEdit(props: Iprops) {
     if (e.key === "Enter") {
       onClickAddItem();
     }
+    if (e.key === "Escape") {
+      props.setIsAdd(false);
+    }
   };
 
   return (
