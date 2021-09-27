@@ -35,7 +35,7 @@ const WorkspaceUI = (props: IWorkspaceUIProps) => {
           onClickLeft={props.onClickCreateBoard}
           onClickRight={props.onClickCloseBoardModal}
           onChangeTitle={props.onChangeBoardTitle}
-          onKeyPress={props.onKeyPress}
+          onKeyDown={props.onKeyPress}
           buttonNameLeft="생성하기"
           buttonNameRight="취소하기"
           defaultValue=""

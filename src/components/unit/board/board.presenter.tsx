@@ -29,6 +29,7 @@ interface IBoardUI {
   onClickCreateBoardModal: () => void;
   onClickCancel: () => void;
   onKeyPressUpdate: (event: KeyboardEvent<HTMLInputElement>) => void;
+  onKeyPressCancel: (event: KeyboardEvent<HTMLInputElement>) => void;
   isOpen: boolean;
   boardId: any;
   isMenu: boolean;
@@ -39,6 +40,7 @@ interface IBoardUI {
 
 export default function BoardUI(props: IBoardUI) {
   const colorCode = props.value?.data()?.colorCode;
+
   return (
     <div>
       {props.isOpen && (
@@ -50,7 +52,7 @@ export default function BoardUI(props: IBoardUI) {
           onChangeTitle={props.onChangeTitle}
           defaultValue={props.value.data().title}
           setColorCode={props.setColorCode}
-          onKeyPress={props.onKeyPressUpdate}
+          onKeyDown={props.onKeyPressUpdate}
         />
       )}
       {props.isModal && (

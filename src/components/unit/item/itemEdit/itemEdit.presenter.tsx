@@ -36,7 +36,7 @@ export default function ItemEditUI(props: Iprops) {
                 onChange={props.onChangeItemTitle}
                 maxLength={22}
                 ref={props.inputRef}
-                onKeyPress={props.onKeyPress}
+                onKeyDown={props.onKeyPress}
               />
               <ItemCreateBtn>
                 <MicroButton

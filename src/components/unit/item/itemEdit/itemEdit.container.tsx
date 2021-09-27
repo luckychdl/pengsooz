@@ -26,22 +26,17 @@ export default function ItemEdit(props: Iprops) {
   const [value] = useDocument(dbservice.doc(`boards/${boardId}`), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
   });
-
   const onClickAddItem = async () => {
     if (ItemTitle === "") {
       Modal.error({ content: "내용을 입력해주세요." });
-
       return;
     }
-
     const itemIndex = firebase.firestore().collection("item").get();
     const indexLength = (await itemIndex).docs.length;
-
     const itemId = firebase.firestore().collection("item").doc().id;
     const data = {
       itemTitle: ItemTitle,
@@ -50,13 +45,12 @@ export default function ItemEdit(props: Iprops) {
       itemContents: "",
       basketId: props.basketId,
       isAlive: true,
-      index: 1 + indexLength,
+      index: indexLength + 1,
     };
     firebase.firestore().collection("item").doc(itemId).set(data);
     props.setIsAdd(false);
     setItemTitle("");
   };
-
   const onChangeItemTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setItemTitle(event.target.value);
   };
@@ -64,7 +58,11 @@ export default function ItemEdit(props: Iprops) {
     if (e.key === "Enter") {
       onClickAddItem();
     }
+    if (e.key === "Escape") {
+      props.setIsAdd(false);
+    }
   };
+
   return (
     <div>
       <ItemEditUI

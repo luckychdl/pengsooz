@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 330px;
   padding: 12px;
+  margin-right: 20px;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.7);
   scroll-snap-align: center;
@@ -49,7 +50,7 @@ export const BasketTitle = styled.div`
 `;
 export const BasketMenu = styled.div`
   width: 30px;
-  height: 15px;
+  height: 30px;
   text-align: center;
   cursor: pointer;
 `;

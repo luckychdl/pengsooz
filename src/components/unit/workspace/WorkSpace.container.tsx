@@ -69,6 +69,10 @@ const Workspace = () => {
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onClickCreateBoard();
+      return;
+    }
+    if (e.key === "Escape") {
+      onClickCloseBoardModal();
     }
   };
   return (

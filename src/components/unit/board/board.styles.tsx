@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     background-position-x: center;
     background-position-y: 43%;
     opacity: 0.6;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   }
 `;
 export const HeadWrapper = styled.div`
-  position: relative;
+  position: fixed;
   width: 100%;
   padding: 12px;
   background: ${(props) => props.color};
@@ -90,7 +90,7 @@ export const BasketWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 526px;
-  padding: 20px 0;
+  padding: 100px 0 20px 0;
 `;
 export const BasketPageWrapper = styled.div`
   display: flex;

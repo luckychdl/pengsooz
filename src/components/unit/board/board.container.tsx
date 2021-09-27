@@ -94,11 +94,35 @@ export default function Board() {
       router.push("/workspace");
     }
   }, [confirmAlive]);
+
   const onKeyPressUpdate = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onClickUpdate();
     }
+    if (e.key === "Escape") {
+      onClickCancel();
+    }
   };
+  const onKeyPressCancel = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickDelete();
+      return;
+    }
+    if (e.key === "Escape") {
+      onClickDeleteConfirm();
+    }
+  };
+
+  useEffect(() => {
+    const close: any = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModal(false);
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
+
   return (
     <BoardUI
       isOpen={isOpen}
@@ -107,6 +131,7 @@ export default function Board() {
       isModal={isModal}
       value={value}
       user={user}
+      onKeyPressCancel={onKeyPressCancel}
       onKeyPressUpdate={onKeyPressUpdate}
       setColorCode={setColorCode}
       onClickMenu={onClickMenu}

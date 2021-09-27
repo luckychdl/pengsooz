@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 114px) !important;
   padding-right: 20px;
-  overflow-x: scroll;
   border-radius: 10px;
   scroll-snap-type: x mandatory;
   scroll-snap-align: center;
