@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Wrapper, ItemContainer } from "./item.styles";
 
 declare const window: typeof globalThis & {
-  itemState: number[];
+  itemState: { [key: string]: number[] };
 };
 
 interface Iprops {
@@ -15,20 +15,29 @@ interface Iprops {
   colorCode: string;
 }
 
+if (typeof window !== "undefined") window.itemState = {};
 export default function ItemUI(props: Iprops) {
   const filteredDocs = props.ItemData.filter(
     (doc: any) => props.basketId === doc.basketId
   );
 
-  if (typeof window !== "undefined") window.itemState = [];
   return (
     <Droppable droppableId={props.basketId} type="item">
       {(provided) => (
         <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
           <div>
             {filteredDocs.map((data: any, index: number) => {
-              if (window.itemState.length < filteredDocs.length)
-                window.itemState = [...window.itemState, data.index];
+              const basketId = data.basketId;
+              const itemIdx = data.index;
+              if (
+                (window.itemState[basketId]?.length || 0) < filteredDocs.length
+              )
+                window.itemState = {
+                  ...window.itemState,
+                  [basketId]: [...(window.itemState[basketId] || []), itemIdx],
+                };
+              // window.itemState = [...window.itemState, data.index];
+              console.log("fffff", window.itemState);
               return (
                 <Draggable
                   draggableId={data.itemId}
