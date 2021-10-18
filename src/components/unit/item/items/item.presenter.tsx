@@ -52,7 +52,7 @@ export default function ItemUI(props: Iprops) {
                         onClick={props.onClickEnterToItemDetail(data)}
                         color={props.colorCode}
                       >
-                        {data.itemTitle}||인덱스{data.index}
+                        {data.itemTitle}
                       </ItemContainer>
                     </div>
                   )}
