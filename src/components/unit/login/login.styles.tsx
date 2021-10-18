@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   background: linear-gradient(#fcf9ee, #ffffff, #fcf9ee);
 `;
-export const Title = styled.div`
+export const Title = styled.button`
   font-size: 20px;
   font-weight: 700;
   margin-top: 20px;
