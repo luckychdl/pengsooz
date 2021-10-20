@@ -1,0 +1,47 @@
+[debug] [2021-10-20T20:55:30.480Z] ----------------------------------------------------------------------
+[debug] [2021-10-20T20:55:30.481Z] Command:       /Users/dongwonshin/.nvm/versions/node/v12.14.1/bin/node /Users/dongwonshin/.nvm/versions/node/v12.14.1/bin/firebase init
+[debug] [2021-10-20T20:55:30.481Z] CLI Version:   9.20.0
+[debug] [2021-10-20T20:55:30.481Z] Platform:      darwin
+[debug] [2021-10-20T20:55:30.482Z] Node Version:  v12.14.1
+[debug] [2021-10-20T20:55:30.483Z] Time:          Thu Oct 21 2021 05:55:30 GMT+0900 (GMT+09:00)
+[debug] [2021-10-20T20:55:30.483Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-20T20:55:30.532Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-20T20:55:30.532Z] > authorizing via signed-in user (luckysksk@naver.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/dongwonshin/Desktop/pengsooz
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using pengsooz. 
+[debug] [2021-10-20T20:55:34.169Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/pengsooz [none]
+[debug] [2021-10-20T20:55:35.186Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/pengsooz 403
+[debug] [2021-10-20T20:55:35.186Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/pengsooz {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-10-20T20:55:35.188Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-10-20T20:55:35.392Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/Users/dongwonshin/.nvm/versions/node/v12.14.1/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Client.doRequest (/Users/dongwonshin/.nvm/versions/node/v12.14.1/lib/node_modules/firebase-tools/lib/apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+    at async Client.request (/Users/dongwonshin/.nvm/versions/node/v12.14.1/lib/node_modules/firebase-tools/lib/apiv2.js:96:20)
+    at async Object.getFirebaseProject (/Users/dongwonshin/.nvm/versions/node/v12.14.1/lib/node_modules/firebase-tools/lib/management/projects.js:290:21)
+    at async Object.doSetup [as project] (/Users/dongwonshin/.nvm/versions/node/v12.14.1/lib/node_modules/firebase-tools/lib/init/features/project.js:77:27)
+    at async init (/Users/dongwonshin/.nvm/versions/node/v12.14.1/lib/node_modules/firebase-tools/lib/init/index.js:19:9)
+[error] 
+[error] Error: Failed to get Firebase project pengsooz. Please make sure the project exists and your account has permission to access it.
